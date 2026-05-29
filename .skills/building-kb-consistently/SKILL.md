@@ -1,13 +1,5 @@
 # SKILL.md — building-kb-consistently (Team Vibecoding Standard)
 
-<aside>
-📋
-
-Nội dung dưới đây là **toàn bộ file `SKILL.md`** — copy nguyên văn vào `.skills/building-kb-consistently/SKILL.md` trong repo. Phần đầu là YAML frontmatter (chuẩn Agent Skills), giữ nguyên dấu `---`.
-
-</aside>
-
-```markdown
 ---
 name: building-kb-consistently
 description: >
