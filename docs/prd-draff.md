@@ -1,248 +1,319 @@
-# PRD — Hệ thống KB Enterprise cho Hành chính Nhân sự (Baseline)
+# PRD — KB Enterprise HC-NS (Pipeline so sánh)
+
+<aside>
+📄
+
+**PRD — Hệ thống KB Enterprise cho Hành chính Nhân sự** · Trạng thái: **Draft v1.0** — đang review
+
+Mục đích: định nghĩa pipeline **team mới** (LangGraph) và **evaluation framework** để **so sánh khách quan** với pipeline **team hiện tại đang triển khai**.
+
+</aside>
+
+**Thông tin phiên bản tài liệu**
+
+| Phiên bản | Cập nhật | Tác giả | Trạng thái |
+| --- | --- | --- | --- |
+| v1.0 | 29/05/2026 | Thành | Draft — đang review |
+
+## 1. Bối cảnh & mục tiêu
 
 <aside>
 🎯
 
-**Mục tiêu tài liệu:** Định nghĩa yêu cầu cho phiên bản **baseline** của một ứng dụng agent E2E phục vụ tra cứu tri thức (Knowledge Base) trong lĩnh vực **Hành chính – Nhân sự (HC-NS)**, kèm **evaluation framework** cho agents. Bản baseline dùng để **so sánh đối chứng (benchmark)** với pipeline mà team hiện tại đang triển khai, đồng thời chuẩn bị đường nâng cấp lên **Pipecon Nexus** khi được cấp early access.
+**Bài toán:** Xây dựng một ứng dụng agent **end-to-end** cho hệ thống **Knowledge Base nội bộ** doanh nghiệp, **domain Hành chính — Nhân sự (HC-NS)**, kèm **evaluation framework** cho agents.
+
+**Mục đích cốt lõi:** Pipeline của **team mình (team mới)** được dựng để **đối chứng / so sánh** với pipeline mà **team hiện tại đang triển khai**, trên cùng một bộ dữ liệu và cùng một bộ đo.
 
 </aside>
+
+**Phân định rõ 2 team (quan trọng — đọc kỹ):**
+
+| Vai trò | Mô tả |
+| --- | --- |
+| **Team hiện tại** (đang triển khai) | Đã có pipeline RAG đang chạy thật → đây là **baseline** để đối chứng. KHÔNG phải pipeline của team mình, cũng không phải hướng team mình nhắm tới. |
+| **Team mới** (team mình) | Xây một pipeline **mới, cấu hình linh hoạt** để so sánh với team hiện tại. Có thể swap chunking / embedding / eval… để dễ benchmark cùng điều kiện. Agents dùng **LangGraph**. |
+
+## 2. Mục tiêu & tiêu chí thành công
+
+1. Dựng pipeline E2E (ingestion → retrieval → generation) cho HC-NS, **chạy được trên cùng golden set** với team hiện tại.
+2. Mỗi thành phần (parse/chunking/embedding/retrieval/reranker/LLM/eval) là **module có thể thay thế (swappable)** để chạy ablation và so sánh.
+3. **Evaluation framework** tách riêng, **pipeline-agnostic**, đo được cả 2 pipeline qua một lớp adapter chung.
+4. Có **bảng so sánh số liệu** baseline vs team mới với delta rõ ràng (Recall@k, Context Precision, Faithfulness, Correctness, Cost, Latency…).
+5. Repo chuẩn hóa: 3 source (frontend/backend/agents) chung repo + `eval/` + `docs/` (human & AI) + `.skills/` + `AGENTS.md`.
+
+## 3. Phạm vi
+
+| Trong scope | Ngoài scope |
+| --- | --- |
+| Pipeline team mới (LangGraph), các thành phần swappable, evaluation framework, repo chuẩn + skills, bảng so sánh 2 team | **Xử lý PII** (không có personal data → bỏ hoàn toàn), **tự xây guardrail** (giữ dịch vụ vendor), thay đổi hệ thống team hiện tại |
 
 <aside>
-⚠️
+🗂️
 
-**Trạng thái:** Draft v0.1 · Cần review. Một số quyết định còn để mở (xem mục *Câu hỏi mở*): phạm vi guardrail, thời điểm có Pipecon Nexus, và việc bổ sung reranker.
+Nguồn dữ liệu là **SharePoint của HR (source of truth)**; team chỉ fetch để index embeddings, **không lưu raw data** → không vướng data residency, dùng cloud thoải mái (Pinecone / OpenAI / Cohere…). Tham chiếu chi tiết chiến lược tối ưu từng thành phần ở tài liệu *“Chiến lược Optimize Hệ thống Team Cũ (Component-by-Component)”*.
 
 </aside>
 
-## 1. Bối cảnh & Vấn đề
+## 4. Hai pipeline
 
-- Doanh nghiệp cần một trợ lý hỏi-đáp dựa trên kho tài liệu nội bộ HC-NS (quy chế, chính sách, quy trình, biểu mẫu, FAQ nhân sự).
-- Tài liệu phân tán trên **SharePoint**, cập nhật định kỳ, định dạng đa dạng (văn bản, bảng, file scan/ảnh).
-- Cần một **agent E2E** truy xuất chính xác, trả lời có dẫn nguồn, kiểm soát được rủi ro (guardrail), và **đo lường được chất lượng** một cách hệ thống.
-- Đã có một team nội bộ triển khai pipeline riêng → cần **baseline chuẩn hóa** để so sánh khách quan.
-
-## 2. Mục tiêu & Phi mục tiêu
-
-### Mục tiêu (Goals)
-
-1. Xây dựng pipeline RAG/agent **baseline** chạy E2E từ ingest → trả lời.
-2. Xây dựng **evaluation framework** đo được retrieval, generation, agent behavior và guardrail.
-3. Cho phép **so sánh định lượng** baseline vs. pipeline của team hiện tại trên cùng bộ test.
-4. Thiết lập **repo mẫu chuẩn** (monorepo) với chuẩn code, docs cho người & AI, và `.skills`/`AGENTS.md`.
-5. Thiết kế kiến trúc **module hóa** để dễ thay thế từng thành phần (parser, embedding, reranker, LLM) và nâng cấp lên Pipecon Nexus.
-
-### Phi mục tiêu (Non-goals)
-
-- Không xây dựng guardrail riêng trong phase baseline (do bên thứ ba cung cấp — *cần confirm*).
-- Không tối ưu hạ tầng production-scale ở phase đầu (ưu tiên đo lường & đối chứng).
-- Không tự huấn luyện model embedding/LLM.
-
-## 3. Phạm vi (Scope)
-
-| **Trong phạm vi** | **Ngoài phạm vi (phase này)** |
-| --- | --- |
-| Ingest từ SharePoint, parse, chunking, embedding, retrieval, sinh câu trả lời | Tự phát triển guardrail/LLM-route |
-| Agent hỏi-đáp HC-NS có dẫn nguồn | Tích hợp Pipecon Nexus (chờ early access) |
-| Evaluation framework + bộ test đối chứng | Multi-tenant, phân quyền chi tiết theo phòng ban (giai đoạn sau) |
-| Repo mẫu (FE/BE/agents + docs + .skills) | Mobile app |
-
-## 4. Người dùng & Use cases
-
-- **Nhân viên:** tra cứu chính sách nghỉ phép, bảo hiểm, lương thưởng, quy trình onboarding/offboarding.
-- **Cán bộ HC-NS:** tra cứu nhanh quy chế, biểu mẫu, hướng dẫn xử lý tình huống.
-- **Quản lý/Lãnh đạo:** câu hỏi tổng hợp về quy định, tổng quan chính sách.
-
-**Use case mẫu:**
-
-- [ ]  "Quy định nghỉ phép năm hiện tại là bao nhiêu ngày?"
-- [ ]  "Quy trình xin nghỉ thai sản gồm những bước nào, cần biểu mẫu gì?"
-- [ ]  "Chính sách công tác phí mới nhất khác gì bản cũ?"
-- [ ]  "Tải mẫu đơn xác nhận nhân sự ở đâu?"
-
-## 5. Kiến trúc & Pipeline Baseline
+### 4.1. Pipeline team hiện tại (baseline)
 
 ```mermaid
-flowchart TD
-	A["SharePoint (fetch / crawl)"] --> B["Cập nhật dữ liệu định kỳ (scheduled sync)"]
-	B --> C["Parse: LlamaParse (ưu tiên) / VLM fallback"]
-	C --> D["Parent-Child Chunking"]
-	D --> E["Embedding: Gemini embedding large (3072 dims)"]
-	E --> F["Vector Store"]
-	F --> G["Retrieval: Top k=5 (chưa có reranker)"]
-	G --> H["LLM: Gemini 3 Flash — sinh câu trả lời + trích dẫn"]
-	H --> I["Guardrail / LLM-route (bên thứ 3 — cần confirm)"]
-	I --> J["Người dùng"]
+flowchart LR
+    SP[("SharePoint HR")] --> SYNC["Auto-sync định kỳ"]
+    SYNC --> P["Parse: LlamaParse / VLM"]
+    P --> CH["Parent-Child chunking"]
+    CH --> EM["Embedding Gemini large 3072"]
+    EM --> VDB[("Vector DB")]
+    Q["User query"] --> RET["Dense retrieval top k=5<br>(chưa reranker)"]
+    VDB --> RET
+    RET --> GEN["LLM: Gemini 3 Flash"]
+    GEN --> GUARD["Guardrail vendor (LLM route)"]
+    GUARD --> ANS["Trả lời"]
+    EVAL["DeepEval"] -.-> RET
+    EVAL -.-> ANS
 ```
 
-### Chi tiết từng thành phần
+- Eval của team hiện tại: **DeepEval**.
+- Đặc điểm: pipeline tĩnh, dense-only, **chưa có reranker**, single LLM.
 
-| **Bước** | **Lựa chọn baseline** | **Ghi chú / điểm có thể thay thế** |
-| --- | --- | --- |
-| Nguồn dữ liệu | SharePoint (fetch/crawl) | Cần cơ chế auth + phân quyền đọc |
-| Đồng bộ | Cập nhật định kỳ (cron/scheduled) | Cần xử lý incremental update & xóa tài liệu cũ |
-| Parse | LlamaParse (ưu tiên), VLM fallback | VLM cho file scan/ảnh/bảng phức tạp |
-| Chunking | Parent-child chunking | Tune kích thước parent/child theo eval |
-| Embedding | Gemini embedding large, 3072 dims | Cố định để đối chứng công bằng |
-| Retrieval | Top k = 5 | **Chưa dùng reranker** — đề xuất A/B thêm reranker |
-| Generation | Gemini 3 Flash | Bắt buộc trả lời kèm trích dẫn nguồn |
-| Guardrail | LLM-route (bên thứ 3) | Team có thể tự làm hoặc không — **confirm sau** |
+### 4.2. Pipeline team mới (cấu hình linh hoạt)
 
-## 6. Đường nâng cấp: Pipecon Nexus vs. Baseline
+```mermaid
+flowchart LR
+    SP[("SharePoint HR")] --> ING["Ingestion: fetch/crawl + incremental sync"]
+    ING --> P["Parse layer (swappable)<br>LlamaParse / VLM / docling"]
+    P --> CH["Chunking layer (swappable)<br>parent-child + contextual headers"]
+    CH --> EM["Embedding layer (swappable)<br>Gemini / voyage / BGE-M3"]
+    EM --> VDB[("Vector DB<br>dense + sparse + metadata")]
+    Q["User query"] --> AG["LangGraph agent"]
+    AG --> HS["Hybrid search (dense+sparse, RRF)"]
+    VDB --> HS
+    HS --> RR["Reranker (Cohere v3.5 / bge-reranker)"]
+    RR --> ROUTE["LLM routing<br>Flash &lt;-&gt; Pro/GPT-4o/Claude"]
+    ROUTE --> GUARD["Guardrail vendor (TBD)"]
+    GUARD --> ANS["Trả lời + citations"]
+    EVAL["Eval harness: DeepEval + RAGAS"] -.-> HS
+    EVAL -.-> ANS
+```
 
 <aside>
-🔀
+🧭
 
-**Chiến lược 2 nhánh:** Ưu tiên **Pipecon Nexus** (đang xin early access). Nếu chưa có quyền truy cập, dùng **baseline** mô tả ở trên làm phương án dự phòng. Kiến trúc module hóa để khi có Nexus chỉ cần thay lớp pipeline mà không ảnh hưởng FE/agents/eval.
+**Nền tảng điều phối:** **ưu tiên Pipecon Nexus** (đang xin early access). Nếu chưa có quyền truy cập → **fallback** về cách dựng baseline tự host. PRD này hiện viết cho cả 2 đường, lõi nghiệp vụ giữ nguyên (adapter interface không đổi).
 
 </aside>
 
-- Định nghĩa **interface trừu tượng** cho pipeline (ingest/retrieve/generate) → cho phép hoán đổi baseline ↔ Nexus.
-- Cùng một **evaluation harness** chạy được trên cả hai để so sánh trực tiếp.
+## 5. Bảng so sánh: Team hiện tại (baseline) vs Team mới
 
-## 7. Yêu cầu chức năng (Functional)
-
-1. **Ingestion:** kết nối SharePoint, fetch/crawl, đồng bộ định kỳ, theo dõi phiên bản tài liệu.
-2. **Processing:** parse (LlamaParse/VLM), parent-child chunking, embedding 3072d, lưu vector store + metadata (nguồn, ngày cập nhật, phòng ban).
-3. **Retrieval & Answering:** truy vấn top-k, sinh câu trả lời có **trích dẫn nguồn** và link tới tài liệu gốc.
-4. **Agent:** hội thoại đa lượt, giữ ngữ cảnh, biết nói "không tìm thấy" khi thiếu dữ liệu.
-5. **Guardrail (tùy chọn):** lọc nội dung nhạy cảm/ngoài phạm vi, định tuyến qua LLM-route.
-6. **Observability:** log truy vấn, chunk được lấy, độ trễ, chi phí token.
-
-## 8. Yêu cầu phi chức năng (Non-functional)
-
-- **Độ chính xác:** ưu tiên hàng đầu (domain HC-NS nhạy cảm, cần đúng quy định).
-- **Độ trễ:** mục tiêu p95 < 5s cho phản hồi (cần chốt).
-- **Bảo mật:** tôn trọng phân quyền tài liệu SharePoint, không rò rỉ dữ liệu ngoài phạm vi người dùng.
-- **Khả năng quan sát & tái lập:** mọi eval phải reproducible (seed, version dữ liệu, version model).
-- **Module hóa:** thay thế từng thành phần không phá vỡ hệ thống.
-
-## 9. Evaluation Framework cho Agents
+| Thành phần | Team hiện tại (baseline) | Team mới (đề xuất) |
+| --- | --- | --- |
+| Orchestration | Pipeline tĩnh | **LangGraph agent**  • Pipecon Nexus (ưu tiên) / fallback baseline |
+| Ingestion | Auto-sync SharePoint | Fetch/crawl + incremental sync + metadata (`last_updated`, `category`) |
+| Parse | LlamaParse / VLM | Swappable: LlamaParse (ưu tiên) / VLM / docling / unstructured.io |
+| Chunking | Parent-Child | Parent-Child + contextual headers + structure-aware (swappable) |
+| Embedding | Gemini large 3072 | Benchmark đa model: Gemini / voyage / **BGE-M3** (swappable) |
+| Retrieval | Dense-only, top k=5 | **Hybrid** dense+sparse (RRF), tune alpha |
+| Reranker | ❌ Không có | ✅ Cross-encoder (Cohere Rerank v3.5 / bge-reranker-v2-m3) |
+| LLM | Gemini 3 Flash (single) | **Routing 2 tầng**: Flash ↔ Pro / GPT-4o / Claude |
+| Guardrail | Vendor (LLM route) | Vendor (giữ nguyên — cần confirm team có làm hay không) |
+| Evaluation | **DeepEval** | **DeepEval + RAGAS**, golden set versioned, regression gate |
+| Agents framework | — | **LangGraph** |
 
 <aside>
 📊
 
-Mục tiêu: đo lường khách quan, **so sánh được** baseline vs. team hiện tại vs. Pipecon Nexus trên cùng bộ test & cùng metric.
+Khung số liệu so sánh (điền sau khi có golden set & chạy benchmark):
+
+**Retrieval:** Recall@5 · Context Precision · MRR · NDCG@5 — **Generation:** Faithfulness · Answer Relevancy · Correctness · Hallucination rate — **System:** Latency P95 · Cost/query. Mỗi dòng ghi: *Baseline | Team mới | Δ*.
 
 </aside>
 
-### 9.1. Các tầng đánh giá
+## 6. Kiến trúc agents (LangGraph)
 
-| **Tầng** | **Đo cái gì** | **Metric đề xuất** |
-| --- | --- | --- |
-| Retrieval | Chất lượng chunk lấy về | Recall@k, Precision@k, MRR, nDCG, Context Relevance |
-| Generation | Chất lượng câu trả lời | Faithfulness/Groundedness, Answer Relevance, Correctness, Citation accuracy |
-| Agent behavior | Hành vi hội thoại | Task success rate, Tỷ lệ từ chối đúng lúc, Hallucination rate, Multi-turn coherence |
-| Guardrail | An toàn & định tuyến | Tỷ lệ chặn đúng, False positive/negative, Leakage rate |
-| Vận hành | Hiệu năng & chi phí | Latency p50/p95, Cost/query, Token usage |
+Agent là một **state graph** với các node tách bạch, dễ test và observe:
 
-### 9.2. Bộ dữ liệu test (Golden set)
+1. **Query classifier** — phân loại factual / procedural / multi-hop / comparative / out-of-scope.
+2. **Retrieve** — gọi hybrid search (dense + sparse, RRF).
+3. **Rerank** — cross-encoder, retrieve N=20–30 → keep k=3–8; có **score threshold** → no-context thì trả “liên hệ HR”.
+4. **Route & Generate** — route theo độ khó (Flash ↔ model mạnh), ép citation, temp 0.1.
+5. **(Tùy chọn) Self-correct / fallback** — nếu faithfulness/confidence thấp → escalate model mạnh hoặc re-retrieve.
 
 <aside>
-📥
+🧩
 
-**Team tôi:** golden dataset / raw data sẽ được **cung cấp sau**. Trong lúc chờ, định nghĩa trước cấu trúc golden set (schema câu hỏi/đáp án/nguồn) và pipeline nạp dữ liệu để sẵn sàng chạy eval ngay khi nhận được data.
-
-</aside>
-
-- Xây **golden Q&A** cho HC-NS: câu hỏi + đáp án chuẩn + tài liệu nguồn kỳ vọng.
-- Bao phủ: câu hỏi factual, câu hỏi quy trình nhiều bước, câu hỏi so sánh phiên bản, câu hỏi **không có đáp án** (kiểm tra từ chối/hallucination).
-- Gắn nhãn theo độ khó & chủ đề (nghỉ phép, bảo hiểm, lương, onboarding...).
-
-### 9.3. Phương pháp chấm điểm
-
-- **LLM-as-a-judge** cho faithfulness/relevance (kèm rubric rõ ràng).
-- **Đối chiếu tự động** với ground truth cho retrieval (so URL/chunk nguồn).
-- **Human review** trên mẫu để hiệu chỉnh và kiểm tra độ tin cậy của judge.
-
-### 9.4. Quy trình so sánh đối chứng
-
-<aside>
-⚖️
-
-**Công cụ eval của hai bên:**
-
-- **Baseline team hiện tại:** dùng **DeepEval** để đánh giá.
-- **Team tôi:** dùng evaluation harness mô tả ở mục 9 (golden set + LLM-as-a-judge + đối chiếu ground truth).
-
-Để so sánh **công bằng**, cần thống nhất cùng golden set, cùng metric và cùng định nghĩa cách chấm; có thể cân nhắc chạy thêm DeepEval trên cùng bộ test để đối chiếu kết quả giữa hai công cụ.
+Mỗi node expose cùng **interface chuẩn** (`ingest` / `retrieve` / `generate`) để `eval/` gọi chung cho cả baseline lẫn team mới qua lớp adapter. State graph giúp visualize flow, isolate behavior, thêm loopback/fallback dễ dàng.
 
 </aside>
 
-1. Cố định golden set + phiên bản dữ liệu.
-2. Chạy cùng bộ test qua: Baseline → Pipeline team hiện tại → (sau này) Pipecon Nexus.
-3. Xuất **bảng so sánh metric** + báo cáo phân tích định tính các case lỗi.
+## 7. Các thành phần linh hoạt (swappable) để so sánh
 
-## 10. Cấu trúc Repo mẫu (Monorepo)
+Dựa trên chiến lược optimize từng thành phần (file MD tham chiếu). Tất cả đều bật/tắt qua config để chạy ablation:
 
-```jsx
-repo-root/
-├─ AGENTS.md                 # Quy chuẩn chung cho agents/coding (root)
-├─ README.md
-├─ docs/
-│  ├─ human/                 # Tài liệu cho người: kiến trúc, setup, vận hành
-│  └─ ai/                    # Tài liệu tối ưu cho AI/agents đọc
-├─ .skills/                  # Skills dùng chung cho agents
-├─ frontend/                 # Giao diện chat / tra cứu KB
-├─ backend/                  # API, ingestion, retrieval, orchestration
-├─ agents/                   # Định nghĩa agent, prompt, công cụ (KHÔNG chứa eval)
-└─ eval/                     # Evaluation — deliverable độc lập
-   ├─ datasets/              # Golden set + raw data (cung cấp sau)
-   ├─ harness/               # Runner + adapter cho từng pipeline
-   ├─ metrics/               # Định nghĩa metric (retrieval/generation/agent...)
-   ├─ judges/                # Rubric + prompt LLM-as-a-judge
-   ├─ reports/               # Kết quả + bảng so sánh đối chứng
-   └─ README.md
-```
+- **Chunking:** parent-child + contextual headers + structure-aware (cắt theo Điều/Khoản/heading), giữ bảng nguyên khối. Sweep child 256–512, overlap 10–20%, parent 1024–2048.
+- **Embedding:** benchmark OpenAI 3-large / voyage-3-large / **BGE-M3** / e5-large / Vietnamese-bi-encoder trên labeled set; tối ưu dimension (Matryoshka). Chỉ đổi khi thắng rõ (vì phải re-index).
+- **Hybrid search:** dense + BM25/SPLADE, word segmentation tiếng Việt (underthesea/VnCoreNLP), fusion RRF / weighted alpha (sweep 0.3–0.8).
+- **Reranker:** Cohere Rerank v3.5 (managed) hoặc bge-reranker-v2-m3 (self-host). Tune N→k, threshold.
+- **LLM routing:** classifier → Flash cho câu dễ, model mạnh cho multi-hop/comparative; cascade fallback; cost guard.
+- **Eval:** DeepEval + RAGAS, tách Retrieval/Generation, tracing (Langfuse/LangSmith), regression gate.
 
-| **Thư mục** | **Trách nhiệm** |
-| --- | --- |
-| `frontend/` | UI hội thoại, hiển thị câu trả lời + trích dẫn nguồn |
-| `backend/` | Ingest SharePoint, parse, chunk, embed, retrieve, API |
-| `agents/` | Logic agent, prompt, công cụ (không chứa eval) |
-| `eval/` | **Deliverable độc lập:** golden set, harness, metrics, judges, reports; chạy được trên **mọi pipeline** (baseline / team hiện tại / Nexus) qua lớp adapter |
-| `docs/human/` | Tài liệu cho người phát triển & vận hành |
-| `docs/ai/` | Ngữ cảnh & hướng dẫn cho agent/AI |
-| `.skills/` | Skill tái sử dụng cho agents |
-| `AGENTS.md` | Chuẩn code & quy ước chung để mọi agent code đồng nhất |
+## 8. Evaluation framework (deliverable lõi)
 
 <aside>
 🧪
 
-**Tại sao tách `eval/` riêng:** Eval là **deliverable cốt lõi** của task (mục tiêu chính là so sánh đối chứng), không phải chức năng phụ của `agents/`.
+Eval là **trọng tâm của task này** và là **deliverable độc lập**, đặt ở thư mục `eval/` riêng (xem mục 9). Lý do tách riêng: (1) là sản phẩm cốt lõi để so sánh 2 team; (2) **pipeline-agnostic** — chạy chung cho baseline & team mới qua adapter; (3) vòng đời & ownership riêng; (4) có CI gate riêng.
 
-- **Trung lập với pipeline:** harness phải chạy được trên nhiều hệ (baseline, team hiện tại, Nexus) — nếu nhét trong `agents/` thì bị bó vào một implementation.
-- **Vòng đời & quyền sở hữu riêng:** golden set / raw data được cung cấp sau, có owner riêng, version riêng.
-- **CI riêng:** chạy eval theo lịch / khi có dữ liệu mới, xuất báo cáo so sánh độc lập.
-- **Adapter pattern:** mỗi pipeline expose cùng interface (ingest/retrieve/generate) để `eval/` gọi chung một cách.
 </aside>
+
+- **Golden dataset / raw data:** sẽ được **cung cấp sau** → thiết kế harness trước, cắm dữ liệu sau. Bố cục theo loại câu (factual / procedural / multi-hop / comparative / edge / out-of-scope), versioned (JSON), HR validate đáp án chuẩn.
+- **Adapter pattern:** `baseline_adapter` và `newteam_adapter` cùng implement một interface → harness chạy **cùng golden set** cho cả hai, xuất bảng delta.
+- **Hai tầng metric:**
+
+| Tầng | Metric | Target khởi điểm |
+| --- | --- | --- |
+| Retrieval | Recall@5 / Context Precision / MRR / NDCG@5 | ≥0.90 / ≥0.75 / ≥0.75 / ≥0.80 |
+| Generation | Faithfulness / Answer Relevancy / Correctness | ≥0.90 / ≥0.85 / ≥0.80 |
+| Generation | Hallucination rate | &lt; 5% |
+| System | Latency P95 / Cost per query | ≤ baseline / theo dõi |
+- **RAG triad** (context relevance, groundedness, answer relevance) + **regression gate** trong CI mỗi khi đổi component.
+
+## 9. Cấu trúc thư mục tham khảo (monorepo)
+
+```
+hr-kb-platform/
+├── AGENTS.md                      # quy chuẩn chung cho toàn repo
+├── README.md
+├── docker-compose.yml
+├── .github/
+│   └── workflows/
+│       └── eval-regression.yml    # CI: chạy eval gate mỗi PR đổi pipeline
+├── .skills/
+│   └── building-kb-consistently/  # SKILL CHUNG DUY NHẤT (tự viết & maintain)
+│       ├── SKILL.md
+│       ├── references/
+│       └── scripts/
+├── docs/
+│   ├── human/
+│   │   ├── architecture.md
+│   │   ├── setup.md
+│   │   └── decisions/             # ADRs
+│   └── ai/
+│       ├── context.md
+│       └── glossary.md
+├── frontend/
+│   ├── AGENTS.md
+├── backend/
+│   ├── AGENTS.md
+│   ├── src/
+│   │   ├── ingestion/             # SharePoint fetch/crawl + sync
+│   │   ├── parsing/               # swappable: llamaparse / vlm / docling
+│   │   ├── chunking/              # swappable strategies
+│   │   ├── embedding/             # swappable models
+│   │   ├── retrieval/             # hybrid + rerank
+│   │   └── api/
+│   └── pyproject.toml
+├── agents/
+│   ├── AGENTS.md
+│   ├── src/
+│   │   ├── graph/                 # LangGraph state graph
+│   │   ├── nodes/                 # classifier, retrieve, rerank, generate
+│   │   ├── prompts/
+│   │   └── tools/
+│   └── pyproject.toml
+├── eval/                          # DELIVERABLE LÕI — pipeline-agnostic
+│   ├── AGENTS.md
+│   ├── README.md
+│   ├── datasets/
+│   │   ├── golden/                # golden set versioned (cung cấp sau)
+│   │   └── raw/                   # raw data (cung cấp sau)
+│   ├── adapters/                  # baseline_adapter, newteam_adapter
+│   ├── harness/                   # runner chạy cùng golden set
+│   ├── metrics/                   # retrieval + generation metrics
+│   ├── judges/                    # LLM-as-judge configs
+│   └── reports/                   # benchmark + ablation outputs
+└── packages/
+    └── shared-types/              # type/interface dùng chung
+```
+
+## 10. Skills cho `.skills/`
+
+<aside>
+🧠
+
+**Nguyên tắc:** chỉ tự viết & maintain **MỘT skill chung** = `building-kb-consistently` (cách triển khai đồng nhất trên toàn repo). Các năng lực theo tech stack thì **tái sử dụng skill có sẵn** (chuẩn mở Agent Skills — folder + `SKILL.md` + `scripts/`/`references/`, đặt tên dạng gerund, progressive disclosure), không viết lại từ đầu.
+
+</aside>
+
+### 10.1. Skill chung duy nhất (tự viết)
+
+| Skill | Nội dung |
+| --- | --- |
+| `building-kb-consistently` | Convention chung: cấu trúc repo & [AGENTS.md](http://AGENTS.md) lồng nhau, coding standard cho frontend/backend/agents, cách thêm một component **swappable** theo adapter interface, cách viết & chạy eval, quy ước commit/PR, cách dùng các skill ngoài. |
+
+### 10.2. Skills đề xuất theo tech stack (tái sử dụng, không tự viết)
+
+| Skill / Nguồn | Dùng cho |
+| --- | --- |
+| **LangChain Skills** (`langchain-ai/langchain-skills`): `framework-selection`, `langchain-dependencies`, build agent với LangGraph/Deep Agents | Chuẩn hóa cách dựng LangGraph agent, chọn pattern, quản version dependency |
+| **rag-implementation** (wshobson / Smithery) | Khung dựng RAG với vector DB + semantic search |
+| Skill hybrid search + reranking | Triển khai dense+sparse (RRF) và cross-encoder rerank đúng chuẩn |
+| Skill embedding model evaluation | Benchmark đa model embedding trên labeled set, tối ưu dimension |
+| Skill RAG evaluation (DeepEval / RAGAS) | Dựng golden set, RAG triad, regression gate cho `eval/` |
+
+**Nguồn tham khảo:**
+
+- [Agent Skills —](https://agentskills.io/) [agentskills.io](http://agentskills.io) · [Specification](https://agentskills.io/specification)
+- [LangChain Skills (GitHub)](https://github.com/langchain-ai/langchain-skills) · [Deep Agents — Skills](https://docs.langchain.com/oss/python/deepagents/skills)
+- [Build a custom RAG agent với LangGraph](https://docs.langchain.com/oss/python/langgraph/agentic-rag)
+- [rag-implementation skill (Smithery)](https://smithery.ai/skills/wshobson/rag-implementation)
+- [Pinecone — Rerank results](https://docs.pinecone.io/guides/search/rerank-results) · [AGENTS.md](http://AGENTS.md) [format](https://agents.md/)
 
 ## 11. Guardrail (cần confirm)
 
-- Hiện do **một bên khác cung cấp** dưới dạng **LLM-route**.
-- Team có thể tự làm **hoặc** không → **chưa chốt**.
-- Đề xuất: định nghĩa **interface guardrail** để cắm bên ngoài hoặc tự triển khai sau mà không đổi kiến trúc.
+- Guardrail (LLM route) **do bên khác cung cấp** (vendor). Team mình **có thể làm hoặc không** — **chưa chốt**, confirm sau.
+- Trước mắt: giữ nguyên vendor, chỉ cấu hình **ngưỡng no-context** ở tầng retrieval/rerank trước khi gọi LLM.
 
-## 12. Lộ trình (Milestones — đề xuất)
+## 12. Dữ liệu & golden dataset
 
-- [ ]  **M1 — Ingestion & Processing:** SharePoint sync, parse, chunk, embed, vector store.
-- [ ]  **M2 — Retrieval & Agent:** top-k retrieval, agent trả lời có trích dẫn, FE cơ bản.
-- [ ]  **M3 — Evaluation Framework:** golden set + harness + báo cáo metric.
-- [ ]  **M4 — Đối chứng:** so sánh baseline vs. team hiện tại.
-- [ ]  **M5 — Mở rộng:** reranker A/B, tích hợp guardrail, sẵn sàng cắm Pipecon Nexus.
+- Source of truth: **SharePoint HR**; chỉ fetch để index, không lưu raw.
+- **Golden dataset / raw data: cung cấp sau** → harness & adapter thiết kế trước, cắm dữ liệu khi có.
+- Cần chốt: ai sở hữu nội dung & nghiệm thu đáp án chuẩn HC-NS.
 
-## 13. Chỉ số thành công (Success Metrics)
+## 13. Roadmap (ordered experiments)
 
-- Retrieval Recall@5 và Faithfulness đạt ngưỡng chốt (TBD) trên golden set.
-- Baseline chạy E2E ổn định, reproducible.
-- Có **bảng so sánh** rõ ràng giữa baseline và pipeline team hiện tại.
-- Repo mẫu được team áp dụng làm chuẩn.
+| Bước | Hành động | Deliverable |
+| --- | --- | --- |
+| 0. Khung | Dựng repo chuẩn + `eval/` harness + adapter (baseline & team mới) | Repo skeleton + eval chạy được khi có data |
+| 1. Baseline | Cắm golden set, đo baseline (DeepEval + RAGAS) | Bộ số baseline + golden set versioned |
+| 2. Hybrid + Reranker (P0) | Bật sparse + fusion + cross-encoder | Delta retrieval/precision vs baseline |
+| 3. Chunking + Embedding (P1) | Contextual headers + benchmark model | Delta context recall + bảng so sánh model |
+| 4. LLM Routing (P1) | Classifier + route + citation | Delta correctness theo query_type |
+| 5. Tuning + Report | Sweep tham số + ablation + regression gate | Benchmark report cuối + config tối ưu |
 
-## 14. Câu hỏi mở (Open Questions)
+## 14. Rủi ro & lưu ý
 
-1. **Guardrail:** team tự làm hay dùng bên thứ ba? Phạm vi & SLA?
-2. **Pipecon Nexus:** khi nào có early access? Khả năng/giới hạn cụ thể?
-3. **Reranker:** có thêm vào baseline để A/B ngay không, hay giữ nguyên top-k=5 để đối chứng "công bằng"?
-4. **Ngưỡng metric** chấp nhận được cho HC-NS là bao nhiêu?
-5. **Phân quyền tài liệu:** mức độ cần tôn trọng quyền SharePoint ở phase baseline?
-6. **Vector store & hạ tầng:** chọn giải pháp nào (cần chốt)?
-7. **Golden set:** ai sở hữu nội dung & nghiệm thu đáp án chuẩn HC-NS?
+| Rủi ro | Giảm thiểu |
+| --- | --- |
+| Golden set/raw data cung cấp trễ → block benchmark | Thiết kế harness + adapter trước; dùng tập mẫu nhỏ để smoke-test |
+| Pipecon Nexus chưa được early access | Fallback baseline tự host; giữ adapter interface bất biến |
+| Reranker đôi khi làm tụt recall | A/B có/không rerank trên golden set, giữ theo số đo |
+| Đổi embedding phải re-index toàn bộ | Chỉ đổi khi thắng rõ; re-index off-peak |
+| Tokenization tiếng Việt ảnh hưởng BM25 | underthesea/VnCoreNLP; đo nhánh sparse riêng |
+| Guardrail chưa chốt scope | Confirm sớm; tạm giữ vendor + ngưỡng no-context |
+
+## 15. Câu hỏi mở
+
+1. **Guardrail:** team mình có tự làm không, hay giữ hoàn toàn vendor?
+2. **Golden set:** ai sở hữu nội dung & nghiệm thu đáp án chuẩn HC-NS, khi nào có?
+3. **Pipecon Nexus:** timeline early access? Tiêu chí quyết định fallback?
+4. **Vector DB:** chốt Pinecone (sparse-native) hay Qdrant/khác?
+
+## 16. Changelog
+
+| Phiên bản | Ngày | Thay đổi |
+| --- | --- | --- |
+| v0.1 | 29/05/2026 | Bản draft đầu tiên (PRD baseline). |
+| v0.2 | 29/05/2026 | Thêm: baseline dùng DeepEval; golden/raw data cung cấp sau; tách `eval/`. |
+| v0.3 | 29/05/2026 | Thêm version + changelog; mở rộng cây thư mục; mục skills tham khảo. |
+| v1.0 | 29/05/2026 | **Viết lại toàn bộ**: định khung lại 2 team (baseline = team hiện tại; team mới xây pipeline so sánh); pipeline linh hoạt theo file optimize; agents **LangGraph**; bảng so sánh 2 team; skills = 1 skill chung + đề xuất theo tech stack. |
