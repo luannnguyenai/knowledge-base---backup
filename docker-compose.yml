@@ -1,0 +1,57 @@
+version: "3.9"
+
+services:
+  # Vector store for embeddings (dense + sparse + metadata)
+  # TODO: Replace with managed Pinecone or Qdrant in production
+  vector-db:
+    image: qdrant/qdrant:latest
+    ports:
+      - "6333:6333"
+      - "6334:6334"
+    volumes:
+      - vector-data:/qdrant/storage
+    environment:
+      - QDRANT_ALLOW_RECOVERY_MODE=true
+    profiles:
+      - local-dev
+
+  # Frontend dev server
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      - NEXT_PUBLIC_API_URL=http://backend:8000
+    depends_on:
+      - backend
+    profiles:
+      - local-dev
+
+  # Backend API (ingestion, retrieval, orchestration)
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+    environment:
+      - SHAREPOINT_TENANT_ID=${SHAREPOINT_TENANT_ID}
+      - SHAREPOINT_CLIENT_ID=${SHAREPOINT_CLIENT_ID}
+      - SHAREPOINT_CLIENT_SECRET=${SHAREPOINT_CLIENT_SECRET}
+      - VECTOR_DB_URL=http://vector-db:6333
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+    depends_on:
+      - vector-db
+    profiles:
+      - local-dev
+
+volumes:
+  vector-data:

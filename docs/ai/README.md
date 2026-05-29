@@ -4,13 +4,12 @@
 
 Tài liệu được cấu trúc đặc biệt để AI agents (coding agents, LLM-based tools) có thể đọc, hiểu, và sử dụng hiệu quả khi làm việc với codebase. Nội dung tập trung vào context, conventions, và decision records.
 
-## Intended Contents
+## Contents
 
-- **System context:** Tổng quan kiến trúc ngắn gọn, dependency graph, data flow
-- **Coding conventions:** TypeScript, Next.js App Router patterns, testing standards
-- **Decision records:** ADRs, architectural decisions, trade-offs đã chọn
-- **Domain knowledge:** Glossary HC-NS, quy định thường dùng, format dữ liệu
-- **Agent instructions:** Hướng dẫn cụ thể cho AI agents khi extend codebase
+| File | Description |
+|------|-------------|
+| `context.md` | System overview, two-pipeline strategy, LangGraph state graph, adapter pattern, conventions, tech stack |
+| `glossary.md` | HC-NS domain terms, technical terms, pipeline component comparison, metric definitions |
 
 ## Audience
 
@@ -18,5 +17,5 @@ Coding agents (GSD, Claude, Cursor), AI-assisted tools, và developer muốn con
 
 ## Milestone Mapping
 
-- **M001 (S01):** Thư mục này được tạo, chưa có tài liệu
+- **M001 (S01):** Thư mục này được tạo, context.md + glossary.md added
 - **M002+:** Context docs và decision records sẽ được cập nhật theo từng milestone

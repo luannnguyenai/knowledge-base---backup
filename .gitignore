@@ -41,3 +41,12 @@ vendor/
 coverage/
 .cache/
 tmp/
+
+# ── Project-specific ──
+.gsd/quick/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+uv.lock
+packages/shared-types/dist/
+packages/shared-types/*.egg-info/
