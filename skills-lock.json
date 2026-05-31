@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "skills": {
+    "langchain-architecture": {
+      "source": "sickn33/antigravity-awesome-skills",
+      "sourceType": "github",
+      "skillPath": "skills/langchain-architecture/SKILL.md",
+      "computedHash": "00751d08438c2de939624deb6434a2b7c9a1b90e47505eaa0af70b782399218c"
+    },
+    "langfuse": {
+      "source": "sickn33/antigravity-awesome-skills",
+      "sourceType": "github",
+      "skillPath": "skills/langfuse/SKILL.md",
+      "computedHash": "33a67962a9f5e892f275f13ff685a8976ce4aefb8b62b78f28eb5adf585b4b4d"
+    },
+    "langgraph": {
+      "source": "sickn33/antigravity-awesome-skills",
+      "sourceType": "github",
+      "skillPath": "skills/langgraph/SKILL.md",
+      "computedHash": "4a2ab8a8444cae1ef3e714c37725e693e64c9cdad63c2fc72406e3f6cb5b7c5f"
+    }
+  }
+}
