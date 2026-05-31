@@ -16,16 +16,16 @@ Thư mục chứa các skill definitions được chia sẻ cho agents trong h�
 
 | Skill / Nguồn | Dùng cho |
 |--------------|---------|
-| **LangChain Skills** (`langchain-ai/langchain-skills`) | LangGraph agent patterns, dependency management |
-| **rag-implementation** (Smithery) | RAG với vector DB + semantic search |
-| Hybrid search + reranking skills | Dense+sparse (RRF), cross-encoder rerank |
-| Embedding evaluation skills | Benchmark đa model, tối ưu dimension |
-| RAG evaluation skills | DeepEval + RAGAS, golden set, regression gate |
+| **langchain-architecture** | Kiến trúc LangChain: agents, chains, memory, tools |
+| **langgraph** | LangGraph: stateful graphs, persistence, HITL |
+| **langfuse** | Observability: tracing, evals, prompt management |
+| **rag-engineer** | RAG design: embedding, chunking, retrieval optimization |
+| **rag-implementation** | RAG implementation: vector DB, indexing, tuning |
 
 ## Intended Contents
 
 - **`building-kb-consistently/`:** SKILL.md + references/ + scripts/ (tự viết & maintain)
-- **External skill references:** Links or installed skill packages theo Agent Skills specification
+- **External skills:** SKILL.md theo Agent Skills specification (cài sẵn trong thư mục)
 
 ## Design Principle
 
