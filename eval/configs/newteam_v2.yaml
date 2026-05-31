@@ -1,0 +1,79 @@
+# New-team pipeline v2 — full P2 component stack.
+#
+# Stack:
+#   LlamaParse → ContextualParentChild → BGE-M3 (1024d dense+sparse)
+#   → Qdrant hybrid → HybridRRF retrieval → BGE reranker → RoutedGenerator
+#
+# Requirements (env vars — set in .env):
+#   LLAMA_CLOUD_API_KEY  — LlamaParse cloud API
+#   GOOGLE_API_KEY       — Gemini generation (used inside RoutedGenerator)
+#
+# Note: BGE-M3 and BGE-reranker run locally. First run downloads ~3 GB of model weights.
+
+pipeline:
+  name: newteam_v2
+
+  parser:
+    name: llamaparse
+    result_type: markdown
+    language: vi
+
+  chunker:
+    name: contextual_parent_child
+    parent_chunk_size: 1000
+    child_chunk_size: 300
+    child_overlap: 30
+
+  embedder:
+    name: bge_m3
+    model_name: BAAI/bge-m3
+    device: cpu
+    batch_size: 32
+    return_sparse: true
+
+  vector_store:
+    name: qdrant
+    mode: local
+    path: ./data/qdrant_newteam
+    collection: hcns_newteam
+    dim: 1024
+    distance: Cosine
+
+  retriever:
+    name: hybrid_rrf
+    top_k: 5
+    candidate_k: 20
+    rrf_k: 60
+
+  reranker:
+    name: bge
+    model: BAAI/bge-reranker-v2-m3
+    top_k: 5
+    score_threshold: 0.1
+    device: cpu
+
+  generator:
+    name: routed
+    complex_keywords:
+      - "so sánh"
+      - "giải thích chi tiết"
+      - "phân tích"
+      - "tại sao"
+      - "ưu nhược điểm"
+    min_words_for_smart: 15
+    fast_generator:
+      name: gemini
+      model: gemini-2.0-flash
+      temperature: 0.1
+      max_output_tokens: 1024
+    smart_generator:
+      name: gemini
+      model: gemini-2.0-flash
+      temperature: 0.2
+      max_output_tokens: 2048
+
+eval:
+  golden_set: data/golden/mini_v1.json
+  top_k: 5
+  seed: 42
+  output_dir: reports
