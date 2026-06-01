@@ -1,0 +1,21 @@
+# Smoke sweep — uses fake components, no API keys required.
+# Sweeps chunker chunk_size and retriever top_k.
+# Outputs: reports/sweeps/smoke_sweep/ranking.md + ablation.md
+
+name: smoke_sweep
+base_config: ../../configs/_smoke.yaml
+corpus: ../../data/corpus_smoke
+
+grid:
+  pipeline.chunker.chunk_size: [100, 200, 400]
+  pipeline.chunker.overlap: [10, 20]
+  pipeline.retriever.top_k: [2, 3]
+
+optimize_metric: faithfulness
+optimize_direction: maximize
+
+output_dir: ../../reports/sweeps
+
+eval_overrides:
+  eval.judge.skip_on_missing_key: true
+  eval.judge.cache_dir: ../../.judge_cache_sweep

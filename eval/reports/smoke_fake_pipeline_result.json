@@ -1,0 +1,580 @@
+{
+  "pipeline_name": "smoke_fake_pipeline",
+  "manifest": {
+    "config_hash": "c0fec63f78c2f0dd",
+    "git_sha": "ffb2656c",
+    "data_version": "1.0.0",
+    "data_hash": "9d1cb77f16f877a7",
+    "judge_model": "gpt-4o",
+    "judge_prompt_version": "1.0.0",
+    "ragbench_version": "0.1.0",
+    "timestamp": "2026-06-01T01:48:01.889539+00:00",
+    "pipeline_name": "smoke_fake_pipeline"
+  },
+  "retrieval": {
+    "recall_at_k": 0.0,
+    "precision_at_k": 0.0,
+    "mrr": 0.0,
+    "ndcg_at_k": 0.0,
+    "num_questions": 10,
+    "k": 3
+  },
+  "generation": {
+    "faithfulness": 0.0,
+    "answer_relevancy": 0.0,
+    "context_precision": 0.0,
+    "correctness": 0.0,
+    "hallucination_rate": 0.0,
+    "num_questions": 10,
+    "num_cached": 0,
+    "num_llm_calls": 50
+  },
+  "avg_latency_ms": 0.07024569640634581,
+  "total_cost_usd": 0.0,
+  "question_results": [
+    {
+      "question_id": "q001",
+      "question": "Quy trình xin nghỉ phép năm gồm những bước nào?",
+      "expected_answer": "Nhân viên điền form xin nghỉ phép, trình quản lý trực tiếp phê duyệt, sau đó HR cập nhật hệ thống và xác nhận qua email.",
+      "expected_sources": [
+        "leave_policy.pdf"
+      ],
+      "generated_answer": "không được tích lũy quá 6 ngày sang năm sau.\n | Chính sách phúc lợi nhân viên\n\nHỗ trợ bữa trưa: 30.000 VND/ngày cho nhân viên đi làm tại văn phòng.\nPhụ cấp điện thoại: 200.000 VND/tháng cho nhân viê | Chính sách nghỉ phép năm HC-NS\n\nNhân viên chính thức được hưởng 12 ngày nghỉ phép năm. Thâm niên trên 3 năm: +1 ngày; trên 5 năm: +2 ngày.\n\nQuy trình ",
+      "citations": [
+        "71f19df494a42826",
+        "bc9ee987ecd03b8e",
+        "63936023e57eae1f"
+      ],
+      "contexts": [
+        "không được tích lũy quá 6 ngày sang năm sau.\n",
+        "Chính sách phúc lợi nhân viên\n\nHỗ trợ bữa trưa: 30.000 VND/ngày cho nhân viên đi làm tại văn phòng.\nPhụ cấp điện thoại: 200.000 VND/tháng cho nhân viê",
+        "Chính sách nghỉ phép năm HC-NS\n\nNhân viên chính thức được hưởng 12 ngày nghỉ phép năm. Thâm niên trên 3 năm: +1 ngày; trên 5 năm: +2 ngày.\n\nQuy trình "
+      ],
+      "latency_ms": 0.13324999599717557,
+      "usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "retrieval": {
+        "question_id": "q001",
+        "retrieved_ids": [
+          "71f19df494a42826",
+          "bc9ee987ecd03b8e",
+          "63936023e57eae1f"
+        ],
+        "relevant_ids": [
+          "leave_policy.pdf"
+        ],
+        "recall": 0.0,
+        "precision": 0.0,
+        "rr": 0.0,
+        "ndcg": 0.0
+      },
+      "generation": {
+        "question_id": "q001",
+        "faithfulness": 0.0,
+        "answer_relevancy": 0.0,
+        "context_precision": 0.0,
+        "correctness": 0.0,
+        "hallucination_rate": 0.0,
+        "cached_flags": {
+          "faithfulness": false,
+          "answer_relevancy": false,
+          "context_precision": false,
+          "correctness": false,
+          "hallucination": false
+        }
+      }
+    },
+    {
+      "question_id": "q002",
+      "question": "Số ngày nghỉ phép năm tối đa của nhân viên chính thức là bao nhiêu?",
+      "expected_answer": "Nhân viên chính thức được hưởng 12 ngày nghỉ phép năm theo quy định lao động Việt Nam, có thể cộng thêm theo thâm niên.",
+      "expected_sources": [
+        "leave_policy.pdf",
+        "labor_regulations.pdf"
+      ],
+      "generated_answer": " (vượt mức).\n- Nhân viên dưới 6 tháng trong năm được tính theo tỉ lệ.\n | rm xin nghỉ phép trên HR Portal.\n2. Trình quản lý trực tiếp phê duyệt (trong vòng 2 ngày làm việc).\n3. HR cập nhật hệ thống và gửi xác nhận qua email  | e: áp dụng từ tháng đầu tiên sau khi ký hợp đồng chính thức.\n\nThưởng Tết (tháng 13):\n- Bằng 1 tháng lương gross cơ bản.\n- Điều chỉnh theo hệ số KPI cu",
+      "citations": [
+        "813c70e0d417fb10",
+        "f2484c285eaea256",
+        "5841328ad4d4e59c"
+      ],
+      "contexts": [
+        " (vượt mức).\n- Nhân viên dưới 6 tháng trong năm được tính theo tỉ lệ.\n",
+        "rm xin nghỉ phép trên HR Portal.\n2. Trình quản lý trực tiếp phê duyệt (trong vòng 2 ngày làm việc).\n3. HR cập nhật hệ thống và gửi xác nhận qua email ",
+        "e: áp dụng từ tháng đầu tiên sau khi ký hợp đồng chính thức.\n\nThưởng Tết (tháng 13):\n- Bằng 1 tháng lương gross cơ bản.\n- Điều chỉnh theo hệ số KPI cu"
+      ],
+      "latency_ms": 0.07612499757669866,
+      "usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "retrieval": {
+        "question_id": "q002",
+        "retrieved_ids": [
+          "813c70e0d417fb10",
+          "f2484c285eaea256",
+          "5841328ad4d4e59c"
+        ],
+        "relevant_ids": [
+          "leave_policy.pdf",
+          "labor_regulations.pdf"
+        ],
+        "recall": 0.0,
+        "precision": 0.0,
+        "rr": 0.0,
+        "ndcg": 0.0
+      },
+      "generation": {
+        "question_id": "q002",
+        "faithfulness": 0.0,
+        "answer_relevancy": 0.0,
+        "context_precision": 0.0,
+        "correctness": 0.0,
+        "hallucination_rate": 0.0,
+        "cached_flags": {
+          "faithfulness": false,
+          "answer_relevancy": false,
+          "context_precision": false,
+          "correctness": false,
+          "hallucination": false
+        }
+      }
+    },
+    {
+      "question_id": "q003",
+      "question": "Thủ tục thanh toán chi phí công tác nước ngoài như thế nào?",
+      "expected_answer": "Nộp claim form kèm hóa đơn gốc trong vòng 7 ngày sau khi về, quản lý và kế toán ký duyệt, thanh toán qua tài khoản ngân hàng đã đăng ký.",
+      "expected_sources": [
+        "travel_expense_policy.pdf"
+      ],
+      "generated_answer": "không được tích lũy quá 6 ngày sang năm sau.\n | rm xin nghỉ phép trên HR Portal.\n2. Trình quản lý trực tiếp phê duyệt (trong vòng 2 ngày làm việc).\n3. HR cập nhật hệ thống và gửi xác nhận qua email  |  (vượt mức).\n- Nhân viên dưới 6 tháng trong năm được tính theo tỉ lệ.\n",
+      "citations": [
+        "71f19df494a42826",
+        "f2484c285eaea256",
+        "813c70e0d417fb10"
+      ],
+      "contexts": [
+        "không được tích lũy quá 6 ngày sang năm sau.\n",
+        "rm xin nghỉ phép trên HR Portal.\n2. Trình quản lý trực tiếp phê duyệt (trong vòng 2 ngày làm việc).\n3. HR cập nhật hệ thống và gửi xác nhận qua email ",
+        " (vượt mức).\n- Nhân viên dưới 6 tháng trong năm được tính theo tỉ lệ.\n"
+      ],
+      "latency_ms": 0.06691600719932467,
+      "usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "retrieval": {
+        "question_id": "q003",
+        "retrieved_ids": [
+          "71f19df494a42826",
+          "f2484c285eaea256",
+          "813c70e0d417fb10"
+        ],
+        "relevant_ids": [
+          "travel_expense_policy.pdf"
+        ],
+        "recall": 0.0,
+        "precision": 0.0,
+        "rr": 0.0,
+        "ndcg": 0.0
+      },
+      "generation": {
+        "question_id": "q003",
+        "faithfulness": 0.0,
+        "answer_relevancy": 0.0,
+        "context_precision": 0.0,
+        "correctness": 0.0,
+        "hallucination_rate": 0.0,
+        "cached_flags": {
+          "faithfulness": false,
+          "answer_relevancy": false,
+          "context_precision": false,
+          "correctness": false,
+          "hallucination": false
+        }
+      }
+    },
+    {
+      "question_id": "q004",
+      "question": "Mức hỗ trợ tiền cơm trưa hàng ngày là bao nhiêu?",
+      "expected_answer": "Mức hỗ trợ tiền cơm trưa là 30.000 VND/ngày cho nhân viên đi làm tại văn phòng.",
+      "expected_sources": [
+        "benefits_policy.pdf"
+      ],
+      "generated_answer": "rm xin nghỉ phép trên HR Portal.\n2. Trình quản lý trực tiếp phê duyệt (trong vòng 2 ngày làm việc).\n3. HR cập nhật hệ thống và gửi xác nhận qua email  | không được tích lũy quá 6 ngày sang năm sau.\n | Chính sách nghỉ phép năm HC-NS\n\nNhân viên chính thức được hưởng 12 ngày nghỉ phép năm. Thâm niên trên 3 năm: +1 ngày; trên 5 năm: +2 ngày.\n\nQuy trình ",
+      "citations": [
+        "f2484c285eaea256",
+        "71f19df494a42826",
+        "63936023e57eae1f"
+      ],
+      "contexts": [
+        "rm xin nghỉ phép trên HR Portal.\n2. Trình quản lý trực tiếp phê duyệt (trong vòng 2 ngày làm việc).\n3. HR cập nhật hệ thống và gửi xác nhận qua email ",
+        "không được tích lũy quá 6 ngày sang năm sau.\n",
+        "Chính sách nghỉ phép năm HC-NS\n\nNhân viên chính thức được hưởng 12 ngày nghỉ phép năm. Thâm niên trên 3 năm: +1 ngày; trên 5 năm: +2 ngày.\n\nQuy trình "
+      ],
+      "latency_ms": 0.06866699550300837,
+      "usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "retrieval": {
+        "question_id": "q004",
+        "retrieved_ids": [
+          "f2484c285eaea256",
+          "71f19df494a42826",
+          "63936023e57eae1f"
+        ],
+        "relevant_ids": [
+          "benefits_policy.pdf"
+        ],
+        "recall": 0.0,
+        "precision": 0.0,
+        "rr": 0.0,
+        "ndcg": 0.0
+      },
+      "generation": {
+        "question_id": "q004",
+        "faithfulness": 0.0,
+        "answer_relevancy": 0.0,
+        "context_precision": 0.0,
+        "correctness": 0.0,
+        "hallucination_rate": 0.0,
+        "cached_flags": {
+          "faithfulness": false,
+          "answer_relevancy": false,
+          "context_precision": false,
+          "correctness": false,
+          "hallucination": false
+        }
+      }
+    },
+    {
+      "question_id": "q005",
+      "question": "Nhân viên mới cần hoàn thành những thủ tục onboarding nào trong tuần đầu?",
+      "expected_answer": "Ký hợp đồng lao động, nhận thẻ nhân viên, cài đặt tài khoản hệ thống IT, tham gia buổi orientation HR, và hoàn thành các module đào tạo bắt buộc online.",
+      "expected_sources": [
+        "onboarding_checklist.pdf"
+      ],
+      "generated_answer": "Chính sách phúc lợi nhân viên\n\nHỗ trợ bữa trưa: 30.000 VND/ngày cho nhân viên đi làm tại văn phòng.\nPhụ cấp điện thoại: 200.000 VND/tháng cho nhân viê | không được tích lũy quá 6 ngày sang năm sau.\n | e: áp dụng từ tháng đầu tiên sau khi ký hợp đồng chính thức.\n\nThưởng Tết (tháng 13):\n- Bằng 1 tháng lương gross cơ bản.\n- Điều chỉnh theo hệ số KPI cu",
+      "citations": [
+        "bc9ee987ecd03b8e",
+        "71f19df494a42826",
+        "5841328ad4d4e59c"
+      ],
+      "contexts": [
+        "Chính sách phúc lợi nhân viên\n\nHỗ trợ bữa trưa: 30.000 VND/ngày cho nhân viên đi làm tại văn phòng.\nPhụ cấp điện thoại: 200.000 VND/tháng cho nhân viê",
+        "không được tích lũy quá 6 ngày sang năm sau.\n",
+        "e: áp dụng từ tháng đầu tiên sau khi ký hợp đồng chính thức.\n\nThưởng Tết (tháng 13):\n- Bằng 1 tháng lương gross cơ bản.\n- Điều chỉnh theo hệ số KPI cu"
+      ],
+      "latency_ms": 0.06262499664444476,
+      "usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "retrieval": {
+        "question_id": "q005",
+        "retrieved_ids": [
+          "bc9ee987ecd03b8e",
+          "71f19df494a42826",
+          "5841328ad4d4e59c"
+        ],
+        "relevant_ids": [
+          "onboarding_checklist.pdf"
+        ],
+        "recall": 0.0,
+        "precision": 0.0,
+        "rr": 0.0,
+        "ndcg": 0.0
+      },
+      "generation": {
+        "question_id": "q005",
+        "faithfulness": 0.0,
+        "answer_relevancy": 0.0,
+        "context_precision": 0.0,
+        "correctness": 0.0,
+        "hallucination_rate": 0.0,
+        "cached_flags": {
+          "faithfulness": false,
+          "answer_relevancy": false,
+          "context_precision": false,
+          "correctness": false,
+          "hallucination": false
+        }
+      }
+    },
+    {
+      "question_id": "q006",
+      "question": "Chính sách làm việc từ xa (WFH) áp dụng cho những đối tượng nào?",
+      "expected_answer": "Nhân viên chính thức sau thử việc từ 3 tháng trở lên có thể đăng ký WFH tối đa 2 ngày/tuần, tùy thuộc phê duyệt của quản lý trực tiếp.",
+      "expected_sources": [
+        "wfh_policy.pdf"
+      ],
+      "generated_answer": "Chính sách phúc lợi nhân viên\n\nHỗ trợ bữa trưa: 30.000 VND/ngày cho nhân viên đi làm tại văn phòng.\nPhụ cấp điện thoại: 200.000 VND/tháng cho nhân viê | không được tích lũy quá 6 ngày sang năm sau.\n | e: áp dụng từ tháng đầu tiên sau khi ký hợp đồng chính thức.\n\nThưởng Tết (tháng 13):\n- Bằng 1 tháng lương gross cơ bản.\n- Điều chỉnh theo hệ số KPI cu",
+      "citations": [
+        "bc9ee987ecd03b8e",
+        "71f19df494a42826",
+        "5841328ad4d4e59c"
+      ],
+      "contexts": [
+        "Chính sách phúc lợi nhân viên\n\nHỗ trợ bữa trưa: 30.000 VND/ngày cho nhân viên đi làm tại văn phòng.\nPhụ cấp điện thoại: 200.000 VND/tháng cho nhân viê",
+        "không được tích lũy quá 6 ngày sang năm sau.\n",
+        "e: áp dụng từ tháng đầu tiên sau khi ký hợp đồng chính thức.\n\nThưởng Tết (tháng 13):\n- Bằng 1 tháng lương gross cơ bản.\n- Điều chỉnh theo hệ số KPI cu"
+      ],
+      "latency_ms": 0.060582999140024185,
+      "usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "retrieval": {
+        "question_id": "q006",
+        "retrieved_ids": [
+          "bc9ee987ecd03b8e",
+          "71f19df494a42826",
+          "5841328ad4d4e59c"
+        ],
+        "relevant_ids": [
+          "wfh_policy.pdf"
+        ],
+        "recall": 0.0,
+        "precision": 0.0,
+        "rr": 0.0,
+        "ndcg": 0.0
+      },
+      "generation": {
+        "question_id": "q006",
+        "faithfulness": 0.0,
+        "answer_relevancy": 0.0,
+        "context_precision": 0.0,
+        "correctness": 0.0,
+        "hallucination_rate": 0.0,
+        "cached_flags": {
+          "faithfulness": false,
+          "answer_relevancy": false,
+          "context_precision": false,
+          "correctness": false,
+          "hallucination": false
+        }
+      }
+    },
+    {
+      "question_id": "q007",
+      "question": "Quy trình đánh giá hiệu suất cuối năm diễn ra như thế nào?",
+      "expected_answer": "Tháng 11: nhân viên tự đánh giá. Tháng 12: quản lý đánh giá và họp 1-1. Tháng 1: HR tổng hợp kết quả và công bố mức tăng lương/thưởng.",
+      "expected_sources": [
+        "performance_review_process.pdf"
+      ],
+      "generated_answer": " (vượt mức).\n- Nhân viên dưới 6 tháng trong năm được tính theo tỉ lệ.\n | e: áp dụng từ tháng đầu tiên sau khi ký hợp đồng chính thức.\n\nThưởng Tết (tháng 13):\n- Bằng 1 tháng lương gross cơ bản.\n- Điều chỉnh theo hệ số KPI cu | Chính sách phúc lợi nhân viên\n\nHỗ trợ bữa trưa: 30.000 VND/ngày cho nhân viên đi làm tại văn phòng.\nPhụ cấp điện thoại: 200.000 VND/tháng cho nhân viê",
+      "citations": [
+        "813c70e0d417fb10",
+        "5841328ad4d4e59c",
+        "bc9ee987ecd03b8e"
+      ],
+      "contexts": [
+        " (vượt mức).\n- Nhân viên dưới 6 tháng trong năm được tính theo tỉ lệ.\n",
+        "e: áp dụng từ tháng đầu tiên sau khi ký hợp đồng chính thức.\n\nThưởng Tết (tháng 13):\n- Bằng 1 tháng lương gross cơ bản.\n- Điều chỉnh theo hệ số KPI cu",
+        "Chính sách phúc lợi nhân viên\n\nHỗ trợ bữa trưa: 30.000 VND/ngày cho nhân viên đi làm tại văn phòng.\nPhụ cấp điện thoại: 200.000 VND/tháng cho nhân viê"
+      ],
+      "latency_ms": 0.05979099660180509,
+      "usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "retrieval": {
+        "question_id": "q007",
+        "retrieved_ids": [
+          "813c70e0d417fb10",
+          "5841328ad4d4e59c",
+          "bc9ee987ecd03b8e"
+        ],
+        "relevant_ids": [
+          "performance_review_process.pdf"
+        ],
+        "recall": 0.0,
+        "precision": 0.0,
+        "rr": 0.0,
+        "ndcg": 0.0
+      },
+      "generation": {
+        "question_id": "q007",
+        "faithfulness": 0.0,
+        "answer_relevancy": 0.0,
+        "context_precision": 0.0,
+        "correctness": 0.0,
+        "hallucination_rate": 0.0,
+        "cached_flags": {
+          "faithfulness": false,
+          "answer_relevancy": false,
+          "context_precision": false,
+          "correctness": false,
+          "hallucination": false
+        }
+      }
+    },
+    {
+      "question_id": "q008",
+      "question": "Nhân viên thử việc có được hưởng bảo hiểm y tế không?",
+      "expected_answer": "Nhân viên trong thời gian thử việc chưa được tham gia bảo hiểm y tế; chế độ BHYT chỉ áp dụng kể từ tháng đầu tiên sau khi ký hợp đồng chính thức.",
+      "expected_sources": [
+        "insurance_policy.pdf",
+        "labor_regulations.pdf"
+      ],
+      "generated_answer": " (vượt mức).\n- Nhân viên dưới 6 tháng trong năm được tính theo tỉ lệ.\n | Chính sách phúc lợi nhân viên\n\nHỗ trợ bữa trưa: 30.000 VND/ngày cho nhân viên đi làm tại văn phòng.\nPhụ cấp điện thoại: 200.000 VND/tháng cho nhân viê | e: áp dụng từ tháng đầu tiên sau khi ký hợp đồng chính thức.\n\nThưởng Tết (tháng 13):\n- Bằng 1 tháng lương gross cơ bản.\n- Điều chỉnh theo hệ số KPI cu",
+      "citations": [
+        "813c70e0d417fb10",
+        "bc9ee987ecd03b8e",
+        "5841328ad4d4e59c"
+      ],
+      "contexts": [
+        " (vượt mức).\n- Nhân viên dưới 6 tháng trong năm được tính theo tỉ lệ.\n",
+        "Chính sách phúc lợi nhân viên\n\nHỗ trợ bữa trưa: 30.000 VND/ngày cho nhân viên đi làm tại văn phòng.\nPhụ cấp điện thoại: 200.000 VND/tháng cho nhân viê",
+        "e: áp dụng từ tháng đầu tiên sau khi ký hợp đồng chính thức.\n\nThưởng Tết (tháng 13):\n- Bằng 1 tháng lương gross cơ bản.\n- Điều chỉnh theo hệ số KPI cu"
+      ],
+      "latency_ms": 0.058416990214027464,
+      "usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "retrieval": {
+        "question_id": "q008",
+        "retrieved_ids": [
+          "813c70e0d417fb10",
+          "bc9ee987ecd03b8e",
+          "5841328ad4d4e59c"
+        ],
+        "relevant_ids": [
+          "insurance_policy.pdf",
+          "labor_regulations.pdf"
+        ],
+        "recall": 0.0,
+        "precision": 0.0,
+        "rr": 0.0,
+        "ndcg": 0.0
+      },
+      "generation": {
+        "question_id": "q008",
+        "faithfulness": 0.0,
+        "answer_relevancy": 0.0,
+        "context_precision": 0.0,
+        "correctness": 0.0,
+        "hallucination_rate": 0.0,
+        "cached_flags": {
+          "faithfulness": false,
+          "answer_relevancy": false,
+          "context_precision": false,
+          "correctness": false,
+          "hallucination": false
+        }
+      }
+    },
+    {
+      "question_id": "q009",
+      "question": "Làm thế nào để đăng ký tham gia khóa đào tạo nội bộ?",
+      "expected_answer": "Tra cứu lịch đào tạo trên cổng nội bộ HR Portal, điền form đăng ký, chờ phê duyệt từ quản lý và bộ phận L&D trong vòng 3 ngày làm việc.",
+      "expected_sources": [
+        "training_registration_guide.pdf"
+      ],
+      "generated_answer": "Chính sách phúc lợi nhân viên\n\nHỗ trợ bữa trưa: 30.000 VND/ngày cho nhân viên đi làm tại văn phòng.\nPhụ cấp điện thoại: 200.000 VND/tháng cho nhân viê | Chính sách nghỉ phép năm HC-NS\n\nNhân viên chính thức được hưởng 12 ngày nghỉ phép năm. Thâm niên trên 3 năm: +1 ngày; trên 5 năm: +2 ngày.\n\nQuy trình  | e: áp dụng từ tháng đầu tiên sau khi ký hợp đồng chính thức.\n\nThưởng Tết (tháng 13):\n- Bằng 1 tháng lương gross cơ bản.\n- Điều chỉnh theo hệ số KPI cu",
+      "citations": [
+        "bc9ee987ecd03b8e",
+        "63936023e57eae1f",
+        "5841328ad4d4e59c"
+      ],
+      "contexts": [
+        "Chính sách phúc lợi nhân viên\n\nHỗ trợ bữa trưa: 30.000 VND/ngày cho nhân viên đi làm tại văn phòng.\nPhụ cấp điện thoại: 200.000 VND/tháng cho nhân viê",
+        "Chính sách nghỉ phép năm HC-NS\n\nNhân viên chính thức được hưởng 12 ngày nghỉ phép năm. Thâm niên trên 3 năm: +1 ngày; trên 5 năm: +2 ngày.\n\nQuy trình ",
+        "e: áp dụng từ tháng đầu tiên sau khi ký hợp đồng chính thức.\n\nThưởng Tết (tháng 13):\n- Bằng 1 tháng lương gross cơ bản.\n- Điều chỉnh theo hệ số KPI cu"
+      ],
+      "latency_ms": 0.05795799370389432,
+      "usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "retrieval": {
+        "question_id": "q009",
+        "retrieved_ids": [
+          "bc9ee987ecd03b8e",
+          "63936023e57eae1f",
+          "5841328ad4d4e59c"
+        ],
+        "relevant_ids": [
+          "training_registration_guide.pdf"
+        ],
+        "recall": 0.0,
+        "precision": 0.0,
+        "rr": 0.0,
+        "ndcg": 0.0
+      },
+      "generation": {
+        "question_id": "q009",
+        "faithfulness": 0.0,
+        "answer_relevancy": 0.0,
+        "context_precision": 0.0,
+        "correctness": 0.0,
+        "hallucination_rate": 0.0,
+        "cached_flags": {
+          "faithfulness": false,
+          "answer_relevancy": false,
+          "context_precision": false,
+          "correctness": false,
+          "hallucination": false
+        }
+      }
+    },
+    {
+      "question_id": "q010",
+      "question": "Chính sách thưởng Tết (thưởng tháng 13) được tính như thế nào?",
+      "expected_answer": "Thưởng Tết bằng 1 tháng lương gross cơ bản, điều chỉnh theo hệ số đánh giá hiệu suất năm (0.5x–1.5x). Nhân viên có thời gian làm việc dưới 6 tháng trong năm được tính theo tỉ lệ.",
+      "expected_sources": [
+        "bonus_policy.pdf"
+      ],
+      "generated_answer": "e: áp dụng từ tháng đầu tiên sau khi ký hợp đồng chính thức.\n\nThưởng Tết (tháng 13):\n- Bằng 1 tháng lương gross cơ bản.\n- Điều chỉnh theo hệ số KPI cu | Chính sách nghỉ phép năm HC-NS\n\nNhân viên chính thức được hưởng 12 ngày nghỉ phép năm. Thâm niên trên 3 năm: +1 ngày; trên 5 năm: +2 ngày.\n\nQuy trình  | Chính sách phúc lợi nhân viên\n\nHỗ trợ bữa trưa: 30.000 VND/ngày cho nhân viên đi làm tại văn phòng.\nPhụ cấp điện thoại: 200.000 VND/tháng cho nhân viê",
+      "citations": [
+        "5841328ad4d4e59c",
+        "63936023e57eae1f",
+        "bc9ee987ecd03b8e"
+      ],
+      "contexts": [
+        "e: áp dụng từ tháng đầu tiên sau khi ký hợp đồng chính thức.\n\nThưởng Tết (tháng 13):\n- Bằng 1 tháng lương gross cơ bản.\n- Điều chỉnh theo hệ số KPI cu",
+        "Chính sách nghỉ phép năm HC-NS\n\nNhân viên chính thức được hưởng 12 ngày nghỉ phép năm. Thâm niên trên 3 năm: +1 ngày; trên 5 năm: +2 ngày.\n\nQuy trình ",
+        "Chính sách phúc lợi nhân viên\n\nHỗ trợ bữa trưa: 30.000 VND/ngày cho nhân viên đi làm tại văn phòng.\nPhụ cấp điện thoại: 200.000 VND/tháng cho nhân viê"
+      ],
+      "latency_ms": 0.058124991483055055,
+      "usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "retrieval": {
+        "question_id": "q010",
+        "retrieved_ids": [
+          "5841328ad4d4e59c",
+          "63936023e57eae1f",
+          "bc9ee987ecd03b8e"
+        ],
+        "relevant_ids": [
+          "bonus_policy.pdf"
+        ],
+        "recall": 0.0,
+        "precision": 0.0,
+        "rr": 0.0,
+        "ndcg": 0.0
+      },
+      "generation": {
+        "question_id": "q010",
+        "faithfulness": 0.0,
+        "answer_relevancy": 0.0,
+        "context_precision": 0.0,
+        "correctness": 0.0,
+        "hallucination_rate": 0.0,
+        "cached_flags": {
+          "faithfulness": false,
+          "answer_relevancy": false,
+          "context_precision": false,
+          "correctness": false,
+          "hallucination": false
+        }
+      }
+    }
+  ]
+}

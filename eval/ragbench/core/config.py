@@ -74,6 +74,28 @@ class PipelineConfig(BaseModel):
     )
 
 
+class JudgeConfig(BaseModel):
+    """LLM-as-judge configuration for generation metrics.
+
+    Params:
+        model           -- judge model id (default: "gpt-4o")
+        temperature     -- sampling temperature; 0.0 = deterministic (default: 0.0)
+        api_key_env     -- env var for OpenAI API key (default: "OPENAI_API_KEY")
+        cache_dir       -- directory for prompt → score cache (default: ".judge_cache")
+        prompt_version  -- semver string for judge prompts; bump when prompts change
+                           (default: "1.0.0")
+        skip_on_missing_key -- if True and API key absent, return 0.0 instead of raising
+                               (default: True)
+    """
+
+    model: str = "gpt-4o"
+    temperature: float = 0.0
+    api_key_env: str = "OPENAI_API_KEY"
+    cache_dir: str = ".judge_cache"
+    prompt_version: str = "1.0.0"
+    skip_on_missing_key: bool = True
+
+
 class EvalConfig(BaseModel):
     """Evaluation harness settings.
 
@@ -82,12 +104,41 @@ class EvalConfig(BaseModel):
         top_k      -- retrieval depth to evaluate at (default: 5)
         seed       -- random seed for reproducibility (default: 42)
         output_dir -- directory to write reports (default: reports/)
+        judge      -- LLM-as-judge configuration (default: JudgeConfig())
     """
 
     golden_set: Path
     top_k: int = 5
     seed: int = 42
     output_dir: Path = Path("reports")
+    judge: JudgeConfig = Field(default_factory=JudgeConfig)
+
+
+class AgentConfig(BaseModel):
+    """LangGraph agent behaviour parameters.
+
+    Params:
+        type                   -- "static" (StaticPipeline) or "langgraph" (LangGraphAgent)
+                                  (default: "static")
+        faithfulness_threshold -- self-correct triggers retry below this score (default: 0.1)
+        max_retry              -- max re-retrieve attempts before escalation (default: 1)
+        classify_method        -- "keyword" (rule-based) or "llm" (LLM call) (default: "keyword")
+        top_k                  -- retrieval depth used inside the agent (default: 5)
+        fast_generator         -- ComponentSpec for simple / factual queries (default: {name: fake})
+        smart_generator        -- ComponentSpec for complex / multi-hop queries (default: {name: fake})
+    """
+
+    type: str = "static"
+    faithfulness_threshold: float = 0.1
+    max_retry: int = 1
+    classify_method: str = "keyword"
+    top_k: int = 5
+    fast_generator: ComponentSpec = Field(
+        default_factory=lambda: ComponentSpec(name="fake")
+    )
+    smart_generator: ComponentSpec = Field(
+        default_factory=lambda: ComponentSpec(name="fake")
+    )
 
 
 class BenchmarkConfig(BaseModel):
@@ -95,10 +146,12 @@ class BenchmarkConfig(BaseModel):
 
     Params:
         pipeline -- PipelineConfig block
+        agent    -- AgentConfig block (optional; default type="static")
         eval     -- EvalConfig block
     """
 
     pipeline: PipelineConfig = Field(default_factory=PipelineConfig)
+    agent: AgentConfig = Field(default_factory=AgentConfig)
     eval: EvalConfig
 
     @model_validator(mode="before")

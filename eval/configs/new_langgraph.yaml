@@ -1,0 +1,59 @@
+# New-team LangGraph agent — E2E runnable with fake components (no API keys required).
+# For real deployment swap parser/embedder/generator to llamaparse/bge_m3/gemini.
+#
+# Graph: classify → retrieve → rerank → route_generate → self_correct
+#        (with retry loop and out-of-scope short-circuit)
+
+pipeline:
+  name: new_langgraph
+
+  parser:
+    name: echo
+
+  chunker:
+    name: contextual_parent_child
+    parent_chunk_size: 300
+    child_chunk_size: 100
+    child_overlap: 10
+
+  embedder:
+    name: hash
+    dim: 64
+
+  vector_store:
+    name: inmemory
+
+  retriever:
+    name: hybrid_rrf
+    top_k: 3
+    candidate_k: 10
+    rrf_k: 60
+
+  reranker:
+    name: noop
+
+  # pipeline.generator is unused by LangGraphAgent (agent.fast/smart_generator are used)
+  # Keep it to satisfy BenchmarkConfig schema validation.
+  generator:
+    name: fake
+
+agent:
+  type: langgraph
+  faithfulness_threshold: 0.05   # low threshold so fake generator (context concat) passes
+  max_retry: 1
+  classify_method: keyword
+  top_k: 3
+
+  fast_generator:
+    name: fake
+    max_context_chars: 200
+
+  smart_generator:
+    name: fake
+    max_context_chars: 500
+
+eval:
+  golden_set: data/golden/mini_v1.json
+  top_k: 3
+  seed: 42
+  output_dir: reports

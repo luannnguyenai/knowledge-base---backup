@@ -20,6 +20,10 @@ dependencies = [
     "FlagEmbedding>=1.2",
     "cohere>=5.0",
     "rank-bm25>=0.2",
+    # P3 LangGraph pipeline
+    "langgraph>=0.3",
+    # P4 Eval & Report
+    "openai>=1.30",
 ]
 
 [project.optional-dependencies]
