@@ -39,15 +39,13 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Install dependencies
-        run: uv sync --extra dev
+      - name: Install dependencies (uv workspace)
+        working-directory: ${{ github.workspace }}
+        run: uv sync   # syncs all workspace members + dev group into root .venv
 
       # ── Unit tests (fast gate before heavy eval) ──────────────────────────────
       - name: Run unit tests
         run: uv run pytest tests/ -q --tb=short
-        env:
-          # No API keys needed — tests mock all external calls
-          PYTHONPATH: .
 
       # ── Index corpus ──────────────────────────────────────────────────────────
       - name: Index smoke corpus

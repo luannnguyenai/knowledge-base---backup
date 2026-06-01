@@ -14,15 +14,15 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from ragbench.components.chunkers import FixedChunker
-from ragbench.components.embedders import HashEmbedder
-from ragbench.components.generators import FakeGenerator
-from ragbench.components.parsers import EchoParser
-from ragbench.components.rerankers import NoReranker
-from ragbench.components.retrievers import DenseRetriever
-from ragbench.components.vector_stores import InMemoryVectorStore
-from ragbench.core.types import Answer, Chunk, ScoredChunk
-from ragbench.pipelines.langgraph_agent import (
+from hcns_backend.chunking import FixedChunker
+from hcns_backend.embedding import HashEmbedder
+from hcns_agents.generators import FakeGenerator
+from hcns_backend.parsing import EchoParser
+from hcns_backend.reranking import NoReranker
+from hcns_backend.retrieval.retrievers import DenseRetriever
+from hcns_backend.retrieval.vector_stores import InMemoryVectorStore
+from hcns_shared.types import Answer, Chunk, ScoredChunk
+from hcns_agents.graph.langgraph_agent import (
     LangGraphAgent,
     _classify_keyword,
     _expand_parents,
@@ -99,7 +99,7 @@ class TestLangGraphAgentIndex:
         assert len(agent._indexed_ids) == first
 
     def test_index_calls_retriever_index_chunks(self):
-        from ragbench.components.retrievers import HybridRrfRetriever
+        from hcns_backend.retrieval.retrievers import HybridRrfRetriever
 
         emb = HashEmbedder(dim=8)
         store = InMemoryVectorStore()
@@ -318,8 +318,8 @@ eval:
   output_dir: {tmp_path / "reports"}
 """)
 
-        from ragbench.core.config import BenchmarkConfig
-        from ragbench.pipelines.langgraph_agent import build_langgraph_from_config
+        from hcns_shared.config import BenchmarkConfig
+        from hcns_agents.graph.langgraph_agent import build_langgraph_from_config
 
         cfg = BenchmarkConfig.from_yaml(cfg_yaml)
         agent = build_langgraph_from_config(cfg)
@@ -354,12 +354,15 @@ eval:
   output_dir: {tmp_path}
 """)
 
-        from ragbench.cli import _build_from_config
-        from ragbench.core.config import BenchmarkConfig
+        from hcns_eval.adapters.newteam_adapter import NewTeamAdapter
+        from hcns_eval.cli import _build_from_config
+        from hcns_shared.config import BenchmarkConfig
 
         cfg = BenchmarkConfig.from_yaml(cfg_yaml)
-        pipeline = _build_from_config(cfg)
-        assert isinstance(pipeline, LangGraphAgent)
+        adapter = _build_from_config(cfg)
+        # CLI now returns a PipelineAdapter (NewTeamAdapter) wrapping the LangGraphAgent
+        assert isinstance(adapter, NewTeamAdapter)
+        assert isinstance(adapter._pipeline, LangGraphAgent)
 
 
 # ── E2E: configs/new_langgraph.yaml ──────────────────────────────────────────
@@ -367,8 +370,8 @@ eval:
 class TestE2ENewLangGraphConfig:
     def test_e2e_index_and_query(self):
         """Full smoke run using configs/new_langgraph.yaml with fake components."""
-        from ragbench.core.config import BenchmarkConfig
-        from ragbench.pipelines.langgraph_agent import build_langgraph_from_config
+        from hcns_shared.config import BenchmarkConfig
+        from hcns_agents.graph.langgraph_agent import build_langgraph_from_config
 
         config_path = Path(__file__).parent.parent / "configs" / "new_langgraph.yaml"
         assert config_path.exists(), f"Config not found: {config_path}"
@@ -392,9 +395,9 @@ class TestE2ENewLangGraphConfig:
 
     def test_e2e_eval_runs_on_golden_set(self):
         """Harness can evaluate LangGraph agent just like StaticPipeline."""
-        from ragbench.core.config import BenchmarkConfig
-        from ragbench.harness import run_eval
-        from ragbench.pipelines.langgraph_agent import build_langgraph_from_config
+        from hcns_shared.config import BenchmarkConfig
+        from hcns_eval.legacy_harness import run_eval
+        from hcns_agents.graph.langgraph_agent import build_langgraph_from_config
 
         config_path = Path(__file__).parent.parent / "configs" / "new_langgraph.yaml"
         cfg = BenchmarkConfig.from_yaml(config_path)

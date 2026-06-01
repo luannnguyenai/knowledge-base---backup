@@ -1,29 +1,16 @@
 [project]
-name = "ragbench"
+name = "hcns-eval"
 version = "0.1.0"
-description = "Pipeline-agnostic RAG benchmark framework for HC-NS KB Agent"
+description = "HC-NS pipeline-agnostic evaluation framework: golden set, metrics, judge, harness, report, sweep, regression gate"
 requires-python = ">=3.11"
 dependencies = [
-    "pydantic>=2.7",
-    "pydantic-settings>=2.3",
+    "hcns-shared",
+    "hcns-agents",
+    "openai>=1.30",
     "typer>=0.12",
     "rich>=13.7",
     "pyyaml>=6.0",
     "numpy>=1.26",
-    # P1 real components
-    "llama-parse>=0.5",
-    "google-genai>=1.0",
-    "qdrant-client>=1.9",
-    "python-dotenv>=1.0",
-    "tenacity>=8.3",
-    # P2 new components
-    "FlagEmbedding>=1.2",
-    "cohere>=5.0",
-    "rank-bm25>=0.2",
-    # P3 LangGraph pipeline
-    "langgraph>=0.3",
-    # P4 Eval & Report
-    "openai>=1.30",
 ]
 
 [project.optional-dependencies]
@@ -34,14 +21,14 @@ dev = [
 ]
 
 [project.scripts]
-ragbench = "ragbench.cli:app"
+ragbench = "hcns_eval.cli:app"
 
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
-packages = ["ragbench"]
+packages = ["src/hcns_eval"]
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"

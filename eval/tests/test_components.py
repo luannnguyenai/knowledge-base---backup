@@ -4,14 +4,14 @@ from pathlib import Path
 
 import pytest
 
-from ragbench.components.chunkers import FixedChunker
-from ragbench.components.embedders import HashEmbedder
-from ragbench.components.generators import FakeGenerator
-from ragbench.components.parsers import EchoParser
-from ragbench.components.rerankers import NoReranker
-from ragbench.components.retrievers import DenseRetriever
-from ragbench.components.vector_stores import InMemoryVectorStore
-from ragbench.core.types import Chunk, Document, ScoredChunk
+from hcns_backend.chunking import FixedChunker
+from hcns_backend.embedding import HashEmbedder
+from hcns_agents.generators import FakeGenerator
+from hcns_backend.parsing import EchoParser
+from hcns_backend.reranking import NoReranker
+from hcns_backend.retrieval.retrievers import DenseRetriever
+from hcns_backend.retrieval.vector_stores import InMemoryVectorStore
+from hcns_shared.types import Chunk, Document, ScoredChunk
 
 
 # ── Parser ─────────────────────────────────────────────────────────────────────

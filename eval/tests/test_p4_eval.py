@@ -14,16 +14,16 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from ragbench.eval.golden_set import GoldenQuestion, GoldenSet
-from ragbench.eval.judge import Judge, _parse_score
-from ragbench.eval.manifest import RunManifest
-from ragbench.eval.metrics.generation import (
+from hcns_eval.golden_set import GoldenQuestion, GoldenSet
+from hcns_eval.judge import Judge, _parse_score
+from hcns_eval.manifest import RunManifest
+from hcns_eval.metrics.generation import (
     AggGenerationMetrics,
     GenerationResult,
     aggregate_generation,
     score_generation,
 )
-from ragbench.eval.metrics.retrieval import (
+from hcns_eval.metrics.retrieval import (
     aggregate_retrieval,
     ndcg_at_k,
     precision_at_k,
@@ -31,7 +31,7 @@ from ragbench.eval.metrics.retrieval import (
     reciprocal_rank,
     score_retrieval,
 )
-from ragbench.eval.report import (
+from hcns_eval.report import (
     CompareReport,
     _find_winner,
     compare_runs,
@@ -246,9 +246,9 @@ class TestGenerationMetrics:
 
 class TestRunResult:
     def _make_run_result(self):
-        from ragbench.eval.harness import RunResult
-        from ragbench.eval.metrics.retrieval import AggRetrievalMetrics
-        from ragbench.eval.metrics.generation import AggGenerationMetrics
+        from hcns_eval.harness import RunResult
+        from hcns_eval.metrics.retrieval import AggRetrievalMetrics
+        from hcns_eval.metrics.generation import AggGenerationMetrics
 
         manifest = RunManifest(
             config_hash="abc123", git_sha="def456", data_version="1.0.0",
@@ -290,9 +290,9 @@ class TestRunResult:
 
 class TestCompareRuns:
     def _make_results(self) -> list:
-        from ragbench.eval.harness import RunResult
-        from ragbench.eval.metrics.retrieval import AggRetrievalMetrics
-        from ragbench.eval.metrics.generation import AggGenerationMetrics
+        from hcns_eval.harness import RunResult
+        from hcns_eval.metrics.retrieval import AggRetrievalMetrics
+        from hcns_eval.metrics.generation import AggGenerationMetrics
 
         def _manifest(name: str) -> RunManifest:
             return RunManifest(config_hash=name[:8], git_sha="aabbccdd",
@@ -431,12 +431,12 @@ eval:
         cfg_b = _write_cfg("pipe_b")
         out_md = tmp_path / "compare.md"
 
-        from ragbench.core.config import BenchmarkConfig
-        from ragbench.eval.golden_set import GoldenSet
-        from ragbench.eval.harness import run_full_eval
-        from ragbench.eval.judge import Judge
-        from ragbench.eval.report import compare_runs
-        from ragbench.cli import _build_from_config
+        from hcns_shared.config import BenchmarkConfig
+        from hcns_eval.golden_set import GoldenSet
+        from hcns_eval.harness import run_full_eval
+        from hcns_eval.judge import Judge
+        from hcns_eval.report import compare_runs
+        from hcns_eval.cli import _build_from_config
 
         results = []
         for cfg_path in [cfg_a, cfg_b]:
@@ -470,11 +470,11 @@ eval:
 
     def test_run_result_reproducible(self, tmp_path: Path):
         """Two evaluations on the same data with cached judge → identical metrics."""
-        from ragbench.core.config import BenchmarkConfig
-        from ragbench.eval.golden_set import GoldenSet
-        from ragbench.eval.harness import run_full_eval
-        from ragbench.eval.judge import Judge
-        from ragbench.cli import _build_from_config
+        from hcns_shared.config import BenchmarkConfig
+        from hcns_eval.golden_set import GoldenSet
+        from hcns_eval.harness import run_full_eval
+        from hcns_eval.judge import Judge
+        from hcns_eval.cli import _build_from_config
 
         corpus = Path(__file__).parent.parent / "data" / "corpus_smoke"
         golden_path = Path(__file__).parent.parent / "data" / "golden" / "mini_v1.json"

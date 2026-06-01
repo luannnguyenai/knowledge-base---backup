@@ -1,7 +1,7 @@
 """Unit tests for the registry module."""
 import pytest
 
-from ragbench.core.registry import (
+from hcns_shared.registry import (
     ComponentNotFoundError,
     _REGISTRY,
     build,

@@ -4,7 +4,7 @@
   "optimize_direction": "maximize",
   "total_combinations": 12,
   "successful_combinations": 12,
-  "duration_s": 0.15,
+  "duration_s": 0.17,
   "best": {
     "params": {
       "pipeline.chunker.chunk_size": 100,
@@ -21,7 +21,7 @@
       "context_precision": 0.0,
       "correctness": 0.0,
       "hallucination_rate": 0.0,
-      "avg_latency_ms": 0.047162499686237425,
+      "avg_latency_ms": 0.05064149881945923,
       "total_cost_usd": 0.0
     }
   },
@@ -44,7 +44,7 @@
         "context_precision": 0.0,
         "correctness": 0.0,
         "hallucination_rate": 0.0,
-        "avg_latency_ms": 0.047162499686237425,
+        "avg_latency_ms": 0.05064149881945923,
         "total_cost_usd": 0.0
       }
     },
@@ -66,7 +66,7 @@
         "context_precision": 0.0,
         "correctness": 0.0,
         "hallucination_rate": 0.0,
-        "avg_latency_ms": 0.04702910082414746,
+        "avg_latency_ms": 0.04796249995706603,
         "total_cost_usd": 0.0
       }
     },
@@ -88,7 +88,7 @@
         "context_precision": 0.0,
         "correctness": 0.0,
         "hallucination_rate": 0.0,
-        "avg_latency_ms": 0.05472089833347127,
+        "avg_latency_ms": 0.05538329860428348,
         "total_cost_usd": 0.0
       }
     },
@@ -110,7 +110,7 @@
         "context_precision": 0.0,
         "correctness": 0.0,
         "hallucination_rate": 0.0,
-        "avg_latency_ms": 0.05743750080000609,
+        "avg_latency_ms": 0.05369999707909301,
         "total_cost_usd": 0.0
       }
     },
@@ -132,7 +132,7 @@
         "context_precision": 0.0,
         "correctness": 0.0,
         "hallucination_rate": 0.0,
-        "avg_latency_ms": 0.030683497607242316,
+        "avg_latency_ms": 0.03258329816162586,
         "total_cost_usd": 0.0
       }
     },
@@ -154,7 +154,7 @@
         "context_precision": 0.0,
         "correctness": 0.0,
         "hallucination_rate": 0.0,
-        "avg_latency_ms": 0.031229200249072164,
+        "avg_latency_ms": 0.032896002812776715,
         "total_cost_usd": 0.0
       }
     },
@@ -176,7 +176,7 @@
         "context_precision": 0.0,
         "correctness": 0.0,
         "hallucination_rate": 0.0,
-        "avg_latency_ms": 0.03224579704692587,
+        "avg_latency_ms": 0.03479990118648857,
         "total_cost_usd": 0.0
       }
     },
@@ -198,7 +198,7 @@
         "context_precision": 0.0,
         "correctness": 0.0,
         "hallucination_rate": 0.0,
-        "avg_latency_ms": 0.033775201882235706,
+        "avg_latency_ms": 0.03310839820187539,
         "total_cost_usd": 0.0
       }
     },
@@ -220,7 +220,7 @@
         "context_precision": 0.0,
         "correctness": 0.0,
         "hallucination_rate": 0.0,
-        "avg_latency_ms": 0.023154099471867085,
+        "avg_latency_ms": 0.025975202152039856,
         "total_cost_usd": 0.0
       }
     },
@@ -242,7 +242,7 @@
         "context_precision": 0.0,
         "correctness": 0.0,
         "hallucination_rate": 0.0,
-        "avg_latency_ms": 0.02443759876769036,
+        "avg_latency_ms": 0.025150200235657394,
         "total_cost_usd": 0.0
       }
     },
@@ -264,7 +264,7 @@
         "context_precision": 0.0,
         "correctness": 0.0,
         "hallucination_rate": 0.0,
-        "avg_latency_ms": 0.02735410089371726,
+        "avg_latency_ms": 0.024429199402220547,
         "total_cost_usd": 0.0
       }
     },
@@ -286,7 +286,7 @@
         "context_precision": 0.0,
         "correctness": 0.0,
         "hallucination_rate": 0.0,
-        "avg_latency_ms": 0.023141699784900993,
+        "avg_latency_ms": 0.025145901599898934,
         "total_cost_usd": 0.0
       }
     }

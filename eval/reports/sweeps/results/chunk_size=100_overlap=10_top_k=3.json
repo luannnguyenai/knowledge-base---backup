@@ -2,13 +2,13 @@
   "pipeline_name": "combo_b2308137",
   "manifest": {
     "config_hash": "c0fec63f78c2f0dd",
-    "git_sha": "ffb2656c",
+    "git_sha": "7a0f8ba9",
     "data_version": "1.0.0",
     "data_hash": "9d1cb77f16f877a7",
     "judge_model": "gpt-4o",
     "judge_prompt_version": "1.0.0",
     "ragbench_version": "0.1.0",
-    "timestamp": "2026-06-01T02:28:35.504834+00:00",
+    "timestamp": "2026-06-01T03:07:16.799850+00:00",
     "pipeline_name": "combo_b2308137"
   },
   "retrieval": {
@@ -29,7 +29,7 @@
     "num_cached": 0,
     "num_llm_calls": 50
   },
-  "avg_latency_ms": 0.04702910082414746,
+  "avg_latency_ms": 0.04796249995706603,
   "total_cost_usd": 0.0,
   "question_results": [
     {
@@ -50,7 +50,7 @@
         "e: áp dụng từ tháng đầu tiên sau khi ký hợp đồng chính thức.\n\nThưởng Tết (tháng 13):\n- Bằng 1 tháng ",
         "rm xin nghỉ phép trên HR Portal.\n2. Trình quản lý trực tiếp phê duyệt (trong vòng 2 ngày làm việc).\n"
       ],
-      "latency_ms": 0.07562499376945198,
+      "latency_ms": 0.08341700595337898,
       "usage": {
         "prompt_tokens": 0,
         "completion_tokens": 0
@@ -105,7 +105,7 @@
         " (vượt mức).\n- Nhân viên dưới 6 tháng trong năm được tính theo tỉ lệ.\n",
         "m niên trên 3 năm: +1 ngày; trên 5 năm: +2 ngày.\n\nQuy trình xin nghỉ:\n1. Nhân viên điền form xin ngh"
       ],
-      "latency_ms": 0.04733300011139363,
+      "latency_ms": 0.046959001338109374,
       "usage": {
         "prompt_tokens": 0,
         "completion_tokens": 0
@@ -160,7 +160,7 @@
         "không được tích lũy quá 6 ngày sang năm sau.\n",
         "ăn phòng.\nPhụ cấp điện thoại: 200.000 VND/tháng cho nhân viên kinh doanh.\nBảo hiểm sức khỏe: áp dụng"
       ],
-      "latency_ms": 0.04712500958703458,
+      "latency_ms": 0.04404099308885634,
       "usage": {
         "prompt_tokens": 0,
         "completion_tokens": 0
@@ -214,7 +214,7 @@
         "m niên trên 3 năm: +1 ngày; trên 5 năm: +2 ngày.\n\nQuy trình xin nghỉ:\n1. Nhân viên điền form xin ngh",
         "không được tích lũy quá 6 ngày sang năm sau.\n"
       ],
-      "latency_ms": 0.04833299317397177,
+      "latency_ms": 0.042665997170843184,
       "usage": {
         "prompt_tokens": 0,
         "completion_tokens": 0
@@ -268,7 +268,7 @@
         "Chính sách phúc lợi nhân viên\n\nHỗ trợ bữa trưa: 30.000 VND/ngày cho nhân viên đi làm tại văn phòng.\n",
         "e: áp dụng từ tháng đầu tiên sau khi ký hợp đồng chính thức.\n\nThưởng Tết (tháng 13):\n- Bằng 1 tháng "
       ],
-      "latency_ms": 0.04341600288171321,
+      "latency_ms": 0.042041996493935585,
       "usage": {
         "prompt_tokens": 0,
         "completion_tokens": 0
@@ -322,7 +322,7 @@
         "g 1 tháng lương gross cơ bản.\n- Điều chỉnh theo hệ số KPI cuối năm: 0.5x (dưới mức) → 1.5x (vượt mức",
         "ăn phòng.\nPhụ cấp điện thoại: 200.000 VND/tháng cho nhân viên kinh doanh.\nBảo hiểm sức khỏe: áp dụng"
       ],
-      "latency_ms": 0.042041996493935585,
+      "latency_ms": 0.04212500061839819,
       "usage": {
         "prompt_tokens": 0,
         "completion_tokens": 0
@@ -376,7 +376,7 @@
         "Chính sách phúc lợi nhân viên\n\nHỗ trợ bữa trưa: 30.000 VND/ngày cho nhân viên đi làm tại văn phòng.\n",
         " (vượt mức).\n- Nhân viên dưới 6 tháng trong năm được tính theo tỉ lệ.\n"
       ],
-      "latency_ms": 0.04187499871477485,
+      "latency_ms": 0.04237500252202153,
       "usage": {
         "prompt_tokens": 0,
         "completion_tokens": 0
@@ -431,7 +431,7 @@
         " (vượt mức).\n- Nhân viên dưới 6 tháng trong năm được tính theo tỉ lệ.\n",
         "ăn phòng.\nPhụ cấp điện thoại: 200.000 VND/tháng cho nhân viên kinh doanh.\nBảo hiểm sức khỏe: áp dụng"
       ],
-      "latency_ms": 0.0416670081904158,
+      "latency_ms": 0.045334003516472876,
       "usage": {
         "prompt_tokens": 0,
         "completion_tokens": 0
@@ -486,7 +486,7 @@
         " (vượt mức).\n- Nhân viên dưới 6 tháng trong năm được tính theo tỉ lệ.\n",
         "Chính sách nghỉ phép năm HC-NS\n\nNhân viên chính thức được hưởng 12 ngày nghỉ phép năm. Thâm niên trê"
       ],
-      "latency_ms": 0.04183400596957654,
+      "latency_ms": 0.04549999721348286,
       "usage": {
         "prompt_tokens": 0,
         "completion_tokens": 0
@@ -540,7 +540,7 @@
         "e: áp dụng từ tháng đầu tiên sau khi ký hợp đồng chính thức.\n\nThưởng Tết (tháng 13):\n- Bằng 1 tháng ",
         "àm việc).\n3. HR cập nhật hệ thống và gửi xác nhận qua email cho nhân viên.\n\nNghỉ phép năm không được"
       ],
-      "latency_ms": 0.041040999349206686,
+      "latency_ms": 0.04516600165516138,
       "usage": {
         "prompt_tokens": 0,
         "completion_tokens": 0

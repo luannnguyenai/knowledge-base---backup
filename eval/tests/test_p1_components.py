@@ -12,9 +12,9 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 
-from ragbench.components.chunkers import ParentChildChunker
-from ragbench.components.vector_stores import QdrantVectorStore, _chunk_to_payload, _payload_to_chunk
-from ragbench.core.types import Chunk, Document, ScoredChunk
+from hcns_backend.chunking import ParentChildChunker
+from hcns_backend.retrieval.vector_stores import QdrantVectorStore, _chunk_to_payload, _payload_to_chunk
+from hcns_shared.types import Chunk, Document, ScoredChunk
 
 
 # ── ParentChildChunker ─────────────────────────────────────────────────────────
@@ -61,7 +61,7 @@ class TestParentChildChunker:
 
 class TestQdrantVectorStore:
     def _chunks_and_vecs(self, n: int = 3, dim: int = 8):
-        from ragbench.components.embedders import HashEmbedder
+        from hcns_backend.embedding import HashEmbedder
         chunks = [Chunk(id=f"c{i:02x}", doc_id="d", text=f"doc {i}") for i in range(n)]
         vecs = HashEmbedder(dim=dim).embed([c.text for c in chunks])
         return chunks, vecs
@@ -106,7 +106,7 @@ class TestQdrantVectorStore:
 class TestGeminiEmbedderMocked:
     def _make_embedder(self, dim: int = 8):
         """Build a GeminiEmbedder bypassing __init__ with a mock client."""
-        from ragbench.components.embedders import GeminiEmbedder
+        from hcns_backend.embedding import GeminiEmbedder
 
         emb = GeminiEmbedder.__new__(GeminiEmbedder)
         emb.model = "text-embedding-004"
@@ -137,7 +137,7 @@ class TestGeminiEmbedderMocked:
         env = {k: v for k, v in os.environ.items() if k != "GOOGLE_API_KEY"}
         with patch.dict(os.environ, env, clear=True):
             with pytest.raises(EnvironmentError, match="GOOGLE_API_KEY"):
-                from ragbench.components.embedders import GeminiEmbedder
+                from hcns_backend.embedding import GeminiEmbedder
                 GeminiEmbedder(dim=8, api_key_env="GOOGLE_API_KEY")
 
 
@@ -145,7 +145,7 @@ class TestGeminiEmbedderMocked:
 
 class TestGeminiGeneratorMocked:
     def _make_generator(self):
-        from ragbench.components.generators import GeminiGenerator
+        from hcns_agents.generators import GeminiGenerator
 
         gen = GeminiGenerator.__new__(GeminiGenerator)
         gen.model = "gemini-2.0-flash"
@@ -186,14 +186,14 @@ class TestGeminiGeneratorMocked:
 
 class TestStaticPipelineParentChild:
     def _build_pipeline(self):
-        from ragbench.components.chunkers import ParentChildChunker
-        from ragbench.components.embedders import HashEmbedder
-        from ragbench.components.generators import FakeGenerator
-        from ragbench.components.parsers import EchoParser
-        from ragbench.components.rerankers import NoReranker
-        from ragbench.components.retrievers import DenseRetriever
-        from ragbench.components.vector_stores import InMemoryVectorStore
-        from ragbench.core.pipeline import StaticPipeline
+        from hcns_backend.chunking import ParentChildChunker
+        from hcns_backend.embedding import HashEmbedder
+        from hcns_agents.generators import FakeGenerator
+        from hcns_backend.parsing import EchoParser
+        from hcns_backend.reranking import NoReranker
+        from hcns_backend.retrieval.retrievers import DenseRetriever
+        from hcns_backend.retrieval.vector_stores import InMemoryVectorStore
+        from hcns_agents.pipelines.static_pipeline import StaticPipeline
 
         embedder = HashEmbedder(dim=16)
         store = InMemoryVectorStore()

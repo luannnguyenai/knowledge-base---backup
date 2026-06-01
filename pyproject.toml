@@ -1,0 +1,32 @@
+[project]
+name = "hcns-kb-workspace"
+version = "0.1.0"
+description = "HC-NS Enterprise Knowledge Base Agent — monorepo workspace (shared-types, backend, agents, eval)"
+requires-python = ">=3.11"
+dependencies = [
+    "hcns-shared",
+    "hcns-backend",
+    "hcns-agents",
+    "hcns-eval",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.2",
+    "pytest-asyncio>=0.23",
+    "pytest-mock>=3.14",
+]
+
+[tool.uv.workspace]
+members = [
+    "packages/shared-types",
+    "backend",
+    "agents",
+    "eval",
+]
+
+[tool.uv.sources]
+hcns-shared  = { workspace = true }
+hcns-backend = { workspace = true }
+hcns-agents  = { workspace = true }
+hcns-eval    = { workspace = true }

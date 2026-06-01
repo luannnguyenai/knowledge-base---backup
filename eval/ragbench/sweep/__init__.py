@@ -1,1 +1,0 @@
-"""Sweep & regression-gate package."""
