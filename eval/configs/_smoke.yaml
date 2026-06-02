@@ -1,0 +1,30 @@
+# Smoke config — no real LLM / vector DB. Runs entirely in-memory with fake components.
+# DoD: `ragbench eval --config configs/_smoke.yaml` finishes in <5s and prints JSON metrics.
+
+pipeline:
+  name: smoke_fake_pipeline
+  parser:
+    name: echo
+  chunker:
+    name: fixed
+    chunk_size: 200
+    overlap: 20
+  embedder:
+    name: hash
+    dim: 64
+  vector_store:
+    name: inmemory
+  retriever:
+    name: dense
+    top_k: 3
+  reranker:
+    name: noop
+  generator:
+    name: fake
+    max_context_chars: 150
+
+eval:
+  golden_set: data/golden/mini_v1.json
+  top_k: 3
+  seed: 42
+  output_dir: reports

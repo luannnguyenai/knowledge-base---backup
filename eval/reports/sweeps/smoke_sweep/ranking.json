@@ -1,0 +1,294 @@
+{
+  "name": "smoke_sweep",
+  "optimize_metric": "faithfulness",
+  "optimize_direction": "maximize",
+  "total_combinations": 12,
+  "successful_combinations": 12,
+  "duration_s": 0.15,
+  "best": {
+    "params": {
+      "pipeline.chunker.chunk_size": 100,
+      "pipeline.chunker.overlap": 10,
+      "pipeline.retriever.top_k": 2
+    },
+    "metrics": {
+      "recall_at_k": 0.0,
+      "precision_at_k": 0.0,
+      "mrr": 0.0,
+      "ndcg_at_k": 0.0,
+      "faithfulness": 0.0,
+      "answer_relevancy": 0.0,
+      "context_precision": 0.0,
+      "correctness": 0.0,
+      "hallucination_rate": 0.0,
+      "avg_latency_ms": 0.047162499686237425,
+      "total_cost_usd": 0.0
+    }
+  },
+  "ranking": [
+    {
+      "rank": 1,
+      "name": "chunk_size=100_overlap=10_top_k=2",
+      "params": {
+        "pipeline.chunker.chunk_size": 100,
+        "pipeline.chunker.overlap": 10,
+        "pipeline.retriever.top_k": 2
+      },
+      "metrics": {
+        "recall_at_k": 0.0,
+        "precision_at_k": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_k": 0.0,
+        "faithfulness": 0.0,
+        "answer_relevancy": 0.0,
+        "context_precision": 0.0,
+        "correctness": 0.0,
+        "hallucination_rate": 0.0,
+        "avg_latency_ms": 0.047162499686237425,
+        "total_cost_usd": 0.0
+      }
+    },
+    {
+      "rank": 2,
+      "name": "chunk_size=100_overlap=10_top_k=3",
+      "params": {
+        "pipeline.chunker.chunk_size": 100,
+        "pipeline.chunker.overlap": 10,
+        "pipeline.retriever.top_k": 3
+      },
+      "metrics": {
+        "recall_at_k": 0.0,
+        "precision_at_k": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_k": 0.0,
+        "faithfulness": 0.0,
+        "answer_relevancy": 0.0,
+        "context_precision": 0.0,
+        "correctness": 0.0,
+        "hallucination_rate": 0.0,
+        "avg_latency_ms": 0.04702910082414746,
+        "total_cost_usd": 0.0
+      }
+    },
+    {
+      "rank": 3,
+      "name": "chunk_size=100_overlap=20_top_k=2",
+      "params": {
+        "pipeline.chunker.chunk_size": 100,
+        "pipeline.chunker.overlap": 20,
+        "pipeline.retriever.top_k": 2
+      },
+      "metrics": {
+        "recall_at_k": 0.0,
+        "precision_at_k": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_k": 0.0,
+        "faithfulness": 0.0,
+        "answer_relevancy": 0.0,
+        "context_precision": 0.0,
+        "correctness": 0.0,
+        "hallucination_rate": 0.0,
+        "avg_latency_ms": 0.05472089833347127,
+        "total_cost_usd": 0.0
+      }
+    },
+    {
+      "rank": 4,
+      "name": "chunk_size=100_overlap=20_top_k=3",
+      "params": {
+        "pipeline.chunker.chunk_size": 100,
+        "pipeline.chunker.overlap": 20,
+        "pipeline.retriever.top_k": 3
+      },
+      "metrics": {
+        "recall_at_k": 0.0,
+        "precision_at_k": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_k": 0.0,
+        "faithfulness": 0.0,
+        "answer_relevancy": 0.0,
+        "context_precision": 0.0,
+        "correctness": 0.0,
+        "hallucination_rate": 0.0,
+        "avg_latency_ms": 0.05743750080000609,
+        "total_cost_usd": 0.0
+      }
+    },
+    {
+      "rank": 5,
+      "name": "chunk_size=200_overlap=10_top_k=2",
+      "params": {
+        "pipeline.chunker.chunk_size": 200,
+        "pipeline.chunker.overlap": 10,
+        "pipeline.retriever.top_k": 2
+      },
+      "metrics": {
+        "recall_at_k": 0.0,
+        "precision_at_k": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_k": 0.0,
+        "faithfulness": 0.0,
+        "answer_relevancy": 0.0,
+        "context_precision": 0.0,
+        "correctness": 0.0,
+        "hallucination_rate": 0.0,
+        "avg_latency_ms": 0.030683497607242316,
+        "total_cost_usd": 0.0
+      }
+    },
+    {
+      "rank": 6,
+      "name": "chunk_size=200_overlap=10_top_k=3",
+      "params": {
+        "pipeline.chunker.chunk_size": 200,
+        "pipeline.chunker.overlap": 10,
+        "pipeline.retriever.top_k": 3
+      },
+      "metrics": {
+        "recall_at_k": 0.0,
+        "precision_at_k": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_k": 0.0,
+        "faithfulness": 0.0,
+        "answer_relevancy": 0.0,
+        "context_precision": 0.0,
+        "correctness": 0.0,
+        "hallucination_rate": 0.0,
+        "avg_latency_ms": 0.031229200249072164,
+        "total_cost_usd": 0.0
+      }
+    },
+    {
+      "rank": 7,
+      "name": "chunk_size=200_overlap=20_top_k=2",
+      "params": {
+        "pipeline.chunker.chunk_size": 200,
+        "pipeline.chunker.overlap": 20,
+        "pipeline.retriever.top_k": 2
+      },
+      "metrics": {
+        "recall_at_k": 0.0,
+        "precision_at_k": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_k": 0.0,
+        "faithfulness": 0.0,
+        "answer_relevancy": 0.0,
+        "context_precision": 0.0,
+        "correctness": 0.0,
+        "hallucination_rate": 0.0,
+        "avg_latency_ms": 0.03224579704692587,
+        "total_cost_usd": 0.0
+      }
+    },
+    {
+      "rank": 8,
+      "name": "chunk_size=200_overlap=20_top_k=3",
+      "params": {
+        "pipeline.chunker.chunk_size": 200,
+        "pipeline.chunker.overlap": 20,
+        "pipeline.retriever.top_k": 3
+      },
+      "metrics": {
+        "recall_at_k": 0.0,
+        "precision_at_k": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_k": 0.0,
+        "faithfulness": 0.0,
+        "answer_relevancy": 0.0,
+        "context_precision": 0.0,
+        "correctness": 0.0,
+        "hallucination_rate": 0.0,
+        "avg_latency_ms": 0.033775201882235706,
+        "total_cost_usd": 0.0
+      }
+    },
+    {
+      "rank": 9,
+      "name": "chunk_size=400_overlap=10_top_k=2",
+      "params": {
+        "pipeline.chunker.chunk_size": 400,
+        "pipeline.chunker.overlap": 10,
+        "pipeline.retriever.top_k": 2
+      },
+      "metrics": {
+        "recall_at_k": 0.0,
+        "precision_at_k": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_k": 0.0,
+        "faithfulness": 0.0,
+        "answer_relevancy": 0.0,
+        "context_precision": 0.0,
+        "correctness": 0.0,
+        "hallucination_rate": 0.0,
+        "avg_latency_ms": 0.023154099471867085,
+        "total_cost_usd": 0.0
+      }
+    },
+    {
+      "rank": 10,
+      "name": "chunk_size=400_overlap=10_top_k=3",
+      "params": {
+        "pipeline.chunker.chunk_size": 400,
+        "pipeline.chunker.overlap": 10,
+        "pipeline.retriever.top_k": 3
+      },
+      "metrics": {
+        "recall_at_k": 0.0,
+        "precision_at_k": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_k": 0.0,
+        "faithfulness": 0.0,
+        "answer_relevancy": 0.0,
+        "context_precision": 0.0,
+        "correctness": 0.0,
+        "hallucination_rate": 0.0,
+        "avg_latency_ms": 0.02443759876769036,
+        "total_cost_usd": 0.0
+      }
+    },
+    {
+      "rank": 11,
+      "name": "chunk_size=400_overlap=20_top_k=2",
+      "params": {
+        "pipeline.chunker.chunk_size": 400,
+        "pipeline.chunker.overlap": 20,
+        "pipeline.retriever.top_k": 2
+      },
+      "metrics": {
+        "recall_at_k": 0.0,
+        "precision_at_k": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_k": 0.0,
+        "faithfulness": 0.0,
+        "answer_relevancy": 0.0,
+        "context_precision": 0.0,
+        "correctness": 0.0,
+        "hallucination_rate": 0.0,
+        "avg_latency_ms": 0.02735410089371726,
+        "total_cost_usd": 0.0
+      }
+    },
+    {
+      "rank": 12,
+      "name": "chunk_size=400_overlap=20_top_k=3",
+      "params": {
+        "pipeline.chunker.chunk_size": 400,
+        "pipeline.chunker.overlap": 20,
+        "pipeline.retriever.top_k": 3
+      },
+      "metrics": {
+        "recall_at_k": 0.0,
+        "precision_at_k": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_k": 0.0,
+        "faithfulness": 0.0,
+        "answer_relevancy": 0.0,
+        "context_precision": 0.0,
+        "correctness": 0.0,
+        "hallucination_rate": 0.0,
+        "avg_latency_ms": 0.023141699784900993,
+        "total_cost_usd": 0.0
+      }
+    }
+  ]
+}

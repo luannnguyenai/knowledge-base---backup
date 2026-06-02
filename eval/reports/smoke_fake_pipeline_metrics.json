@@ -1,0 +1,19 @@
+{
+  "pipeline": "smoke_fake_pipeline",
+  "total_questions": 10,
+  "avg_latency_ms": 0.03,
+  "total_cost_usd": 0.0,
+  "retrieval": {
+    "recall_at_k": 0.0,
+    "precision_at_k": 0.0,
+    "mrr": 0.0,
+    "ndcg_at_k": 0.0
+  },
+  "generation": {
+    "faithfulness": 0.0,
+    "answer_relevancy": 0.0,
+    "context_precision": 0.0,
+    "correctness": 0.0,
+    "hallucination_rate": 0.0
+  }
+}

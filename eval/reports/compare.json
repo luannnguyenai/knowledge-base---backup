@@ -1,0 +1,159 @@
+{
+  "generated_at": "2026-06-01T01:47:53.085439+00:00",
+  "pipeline_names": [
+    "smoke_fake_pipeline",
+    "new_langgraph"
+  ],
+  "golden_set_version": "1.0.0",
+  "total_questions": 10,
+  "metrics": {
+    "recall_at_k": {
+      "display_name": "Recall@k",
+      "smoke_fake_pipeline": 0.0,
+      "new_langgraph": 0.0,
+      "deltas": {
+        "smoke_fake_pipeline": 0.0,
+        "new_langgraph": 0.0
+      },
+      "winner": "tie"
+    },
+    "precision_at_k": {
+      "display_name": "Precision@k",
+      "smoke_fake_pipeline": 0.0,
+      "new_langgraph": 0.0,
+      "deltas": {
+        "smoke_fake_pipeline": 0.0,
+        "new_langgraph": 0.0
+      },
+      "winner": "tie"
+    },
+    "mrr": {
+      "display_name": "MRR",
+      "smoke_fake_pipeline": 0.0,
+      "new_langgraph": 0.0,
+      "deltas": {
+        "smoke_fake_pipeline": 0.0,
+        "new_langgraph": 0.0
+      },
+      "winner": "tie"
+    },
+    "ndcg_at_k": {
+      "display_name": "NDCG@k",
+      "smoke_fake_pipeline": 0.0,
+      "new_langgraph": 0.0,
+      "deltas": {
+        "smoke_fake_pipeline": 0.0,
+        "new_langgraph": 0.0
+      },
+      "winner": "tie"
+    },
+    "faithfulness": {
+      "display_name": "Faithfulness",
+      "smoke_fake_pipeline": 0.0,
+      "new_langgraph": 0.0,
+      "deltas": {
+        "smoke_fake_pipeline": 0.0,
+        "new_langgraph": 0.0
+      },
+      "winner": "tie"
+    },
+    "answer_relevancy": {
+      "display_name": "Answer Relevancy",
+      "smoke_fake_pipeline": 0.0,
+      "new_langgraph": 0.0,
+      "deltas": {
+        "smoke_fake_pipeline": 0.0,
+        "new_langgraph": 0.0
+      },
+      "winner": "tie"
+    },
+    "context_precision": {
+      "display_name": "Context Precision",
+      "smoke_fake_pipeline": 0.0,
+      "new_langgraph": 0.0,
+      "deltas": {
+        "smoke_fake_pipeline": 0.0,
+        "new_langgraph": 0.0
+      },
+      "winner": "tie"
+    },
+    "correctness": {
+      "display_name": "Correctness",
+      "smoke_fake_pipeline": 0.0,
+      "new_langgraph": 0.0,
+      "deltas": {
+        "smoke_fake_pipeline": 0.0,
+        "new_langgraph": 0.0
+      },
+      "winner": "tie"
+    },
+    "hallucination_rate": {
+      "display_name": "Hallucination Rate ↓",
+      "smoke_fake_pipeline": 0.0,
+      "new_langgraph": 0.0,
+      "deltas": {
+        "smoke_fake_pipeline": 0.0,
+        "new_langgraph": 0.0
+      },
+      "winner": "tie"
+    },
+    "avg_latency_ms": {
+      "display_name": "Avg Latency (ms) ↓",
+      "smoke_fake_pipeline": 0.070817,
+      "new_langgraph": 6.034904,
+      "deltas": {
+        "smoke_fake_pipeline": 0.0,
+        "new_langgraph": 5.964088
+      },
+      "winner": "smoke_fake_pipeline"
+    },
+    "total_cost_usd": {
+      "display_name": "Total Cost (USD) ↓",
+      "smoke_fake_pipeline": 0.0,
+      "new_langgraph": 0.0,
+      "deltas": {
+        "smoke_fake_pipeline": 0.0,
+        "new_langgraph": 0.0
+      },
+      "winner": "tie"
+    }
+  },
+  "summary": {
+    "wins": {
+      "smoke_fake_pipeline": 1,
+      "new_langgraph": 0
+    },
+    "losses": {
+      "smoke_fake_pipeline": 0,
+      "new_langgraph": 1
+    },
+    "ties": {
+      "smoke_fake_pipeline": 10,
+      "new_langgraph": 10
+    }
+  },
+  "manifests": {
+    "smoke_fake_pipeline": {
+      "config_hash": "c0fec63f78c2f0dd",
+      "git_sha": "ffb2656c",
+      "data_version": "1.0.0",
+      "data_hash": "9d1cb77f16f877a7",
+      "judge_model": "gpt-4o",
+      "judge_prompt_version": "1.0.0",
+      "ragbench_version": "0.1.0",
+      "timestamp": "2026-06-01T01:47:52.666751+00:00",
+      "pipeline_name": "smoke_fake_pipeline"
+    },
+    "new_langgraph": {
+      "config_hash": "dfc114c38cdce736",
+      "git_sha": "ffb2656c",
+      "data_version": "1.0.0",
+      "data_hash": "9d1cb77f16f877a7",
+      "judge_model": "gpt-4o",
+      "judge_prompt_version": "1.0.0",
+      "ragbench_version": "0.1.0",
+      "timestamp": "2026-06-01T01:47:53.022423+00:00",
+      "pipeline_name": "new_langgraph"
+    }
+  }
+}

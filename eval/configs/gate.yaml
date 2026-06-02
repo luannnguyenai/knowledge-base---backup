@@ -1,0 +1,25 @@
+# Regression gate thresholds.
+# Shorthand: a bare float means max_drop for that metric.
+# Expanded form allows max_drop, max_increase, min_value, max_value.
+
+baseline: reports/baseline_result.json
+
+thresholds:
+  # Retrieval — allow up to 5 percentage points drop
+  recall_at_k: 0.05
+  precision_at_k: 0.05
+  mrr: 0.05
+  ndcg_at_k: 0.05
+
+  # Generation (LLM-judged) — allow up to 5 pp drop
+  faithfulness: 0.05
+  answer_relevancy: 0.05
+  correctness: 0.05
+
+  # Hallucination rate is lower-is-better — allow up to 5 pp increase
+  hallucination_rate:
+    max_increase: 0.05
+
+  # Latency — allow up to 300 ms slower
+  avg_latency_ms:
+    max_increase: 300.0

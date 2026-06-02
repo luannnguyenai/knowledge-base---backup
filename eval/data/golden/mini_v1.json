@@ -1,0 +1,96 @@
+{
+  "version": "1.0.0",
+  "description": "Mini golden set — 10 HC-NS questions for smoke/unit testing",
+  "questions": [
+    {
+      "id": "q001",
+      "question": "Quy trình xin nghỉ phép năm gồm những bước nào?",
+      "answer": "Nhân viên điền form xin nghỉ phép, trình quản lý trực tiếp phê duyệt, sau đó HR cập nhật hệ thống và xác nhận qua email.",
+      "expected_sources": ["leave_policy.pdf"],
+      "difficulty": "factual",
+      "topic": "nghỉ phép",
+      "query_type": "procedural"
+    },
+    {
+      "id": "q002",
+      "question": "Số ngày nghỉ phép năm tối đa của nhân viên chính thức là bao nhiêu?",
+      "answer": "Nhân viên chính thức được hưởng 12 ngày nghỉ phép năm theo quy định lao động Việt Nam, có thể cộng thêm theo thâm niên.",
+      "expected_sources": ["leave_policy.pdf", "labor_regulations.pdf"],
+      "difficulty": "factual",
+      "topic": "nghỉ phép",
+      "query_type": "factual"
+    },
+    {
+      "id": "q003",
+      "question": "Thủ tục thanh toán chi phí công tác nước ngoài như thế nào?",
+      "answer": "Nộp claim form kèm hóa đơn gốc trong vòng 7 ngày sau khi về, quản lý và kế toán ký duyệt, thanh toán qua tài khoản ngân hàng đã đăng ký.",
+      "expected_sources": ["travel_expense_policy.pdf"],
+      "difficulty": "procedural",
+      "topic": "công tác",
+      "query_type": "procedural"
+    },
+    {
+      "id": "q004",
+      "question": "Mức hỗ trợ tiền cơm trưa hàng ngày là bao nhiêu?",
+      "answer": "Mức hỗ trợ tiền cơm trưa là 30.000 VND/ngày cho nhân viên đi làm tại văn phòng.",
+      "expected_sources": ["benefits_policy.pdf"],
+      "difficulty": "factual",
+      "topic": "phúc lợi",
+      "query_type": "factual"
+    },
+    {
+      "id": "q005",
+      "question": "Nhân viên mới cần hoàn thành những thủ tục onboarding nào trong tuần đầu?",
+      "answer": "Ký hợp đồng lao động, nhận thẻ nhân viên, cài đặt tài khoản hệ thống IT, tham gia buổi orientation HR, và hoàn thành các module đào tạo bắt buộc online.",
+      "expected_sources": ["onboarding_checklist.pdf"],
+      "difficulty": "procedural",
+      "topic": "onboarding",
+      "query_type": "procedural"
+    },
+    {
+      "id": "q006",
+      "question": "Chính sách làm việc từ xa (WFH) áp dụng cho những đối tượng nào?",
+      "answer": "Nhân viên chính thức sau thử việc từ 3 tháng trở lên có thể đăng ký WFH tối đa 2 ngày/tuần, tùy thuộc phê duyệt của quản lý trực tiếp.",
+      "expected_sources": ["wfh_policy.pdf"],
+      "difficulty": "factual",
+      "topic": "WFH",
+      "query_type": "factual"
+    },
+    {
+      "id": "q007",
+      "question": "Quy trình đánh giá hiệu suất cuối năm diễn ra như thế nào?",
+      "answer": "Tháng 11: nhân viên tự đánh giá. Tháng 12: quản lý đánh giá và họp 1-1. Tháng 1: HR tổng hợp kết quả và công bố mức tăng lương/thưởng.",
+      "expected_sources": ["performance_review_process.pdf"],
+      "difficulty": "procedural",
+      "topic": "đánh giá hiệu suất",
+      "query_type": "procedural"
+    },
+    {
+      "id": "q008",
+      "question": "Nhân viên thử việc có được hưởng bảo hiểm y tế không?",
+      "answer": "Nhân viên trong thời gian thử việc chưa được tham gia bảo hiểm y tế; chế độ BHYT chỉ áp dụng kể từ tháng đầu tiên sau khi ký hợp đồng chính thức.",
+      "expected_sources": ["insurance_policy.pdf", "labor_regulations.pdf"],
+      "difficulty": "factual",
+      "topic": "bảo hiểm",
+      "query_type": "factual"
+    },
+    {
+      "id": "q009",
+      "question": "Làm thế nào để đăng ký tham gia khóa đào tạo nội bộ?",
+      "answer": "Tra cứu lịch đào tạo trên cổng nội bộ HR Portal, điền form đăng ký, chờ phê duyệt từ quản lý và bộ phận L&D trong vòng 3 ngày làm việc.",
+      "expected_sources": ["training_registration_guide.pdf"],
+      "difficulty": "procedural",
+      "topic": "đào tạo",
+      "query_type": "procedural"
+    },
+    {
+      "id": "q010",
+      "question": "Chính sách thưởng Tết (thưởng tháng 13) được tính như thế nào?",
+      "answer": "Thưởng Tết bằng 1 tháng lương gross cơ bản, điều chỉnh theo hệ số đánh giá hiệu suất năm (0.5x–1.5x). Nhân viên có thời gian làm việc dưới 6 tháng trong năm được tính theo tỉ lệ.",
+      "expected_sources": ["bonus_policy.pdf"],
+      "difficulty": "factual",
+      "topic": "thưởng",
+      "query_type": "factual"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "pipeline": "new_langgraph",
+  "total_questions": 10,
+  "avg_latency_ms": 5.74,
+  "retrieval": {
+    "recall_at_k": 0.0,
+    "context_precision": 0.0,
+    "mrr": 0.0,
+    "ndcg_at_k": 0.0
+  },
+  "generation": {
+    "answer_relevancy": 0.1217,
+    "faithfulness": 0.9862
+  }
+}

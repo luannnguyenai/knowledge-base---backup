@@ -1,0 +1,121 @@
+name: Regression Gate
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      # Re-run only when eval code, pipeline code, or configs change
+      - "eval/**"
+      - "agents/**"
+      - "backend/**"
+
+permissions:
+  contents: read
+  pull-requests: write   # needed to post a summary comment
+
+jobs:
+  gate:
+    name: RAGBench Regression Gate
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    defaults:
+      run:
+        working-directory: eval
+
+    steps:
+      # ── Checkout ──────────────────────────────────────────────────────────────
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # ── Python / uv setup ─────────────────────────────────────────────────────
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
+        with:
+          version: "latest"
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: uv sync --extra dev
+
+      # ── Unit tests (fast gate before heavy eval) ──────────────────────────────
+      - name: Run unit tests
+        run: uv run pytest tests/ -q --tb=short
+        env:
+          # No API keys needed — tests mock all external calls
+          PYTHONPATH: .
+
+      # ── Index corpus ──────────────────────────────────────────────────────────
+      - name: Index smoke corpus
+        run: |
+          uv run ragbench index \
+            --config configs/_smoke.yaml \
+            --corpus data/corpus_smoke
+
+      # ── Evaluate PR code ──────────────────────────────────────────────────────
+      - name: Run evaluation (PR code)
+        run: |
+          uv run ragbench eval \
+            --config configs/_smoke.yaml \
+            --corpus data/corpus_smoke \
+            --save-result reports/pr_result.json
+        env:
+          # OPENAI_API_KEY not required — skip_on_missing_key: true in _smoke.yaml
+          # Set it as a secret to enable LLM judge: secrets.OPENAI_API_KEY
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY || '' }}
+
+      # ── Regression gate ───────────────────────────────────────────────────────
+      - name: Regression gate check
+        id: gate
+        run: |
+          uv run ragbench gate \
+            --new reports/pr_result.json \
+            --baseline reports/baseline_result.json \
+            --config configs/gate.yaml
+        # Exit code 1 = gate failed; step will fail, job will fail → PR blocked
+
+      # ── Upload artifacts (always, for debugging) ──────────────────────────────
+      - name: Upload PR eval result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pr-eval-result
+          path: eval/reports/pr_result.json
+          retention-days: 30
+
+      # ── Post gate summary as PR comment ──────────────────────────────────────
+      - name: Post gate summary comment
+        if: always() && github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const outcome = '${{ steps.gate.outcome }}';
+            const icon = outcome === 'success' ? '✅' : '❌';
+            const status = outcome === 'success' ? 'PASSED' : 'FAILED';
+
+            let body = `## ${icon} RAGBench Regression Gate: ${status}\n\n`;
+            body += `**Config:** \`configs/_smoke.yaml\`  \n`;
+            body += `**Baseline:** \`reports/baseline_result.json\`  \n`;
+            body += `**Gate config:** \`configs/gate.yaml\`  \n\n`;
+
+            if (outcome !== 'success') {
+              body += `> One or more metrics dropped beyond the configured threshold.\n`;
+              body += `> Download the \`pr-eval-result\` artifact and run locally:\n`;
+              body += `> \`\`\`\n`;
+              body += `> ragbench gate --new reports/pr_result.json \\\n`;
+              body += `>   --baseline reports/baseline_result.json \\\n`;
+              body += `>   --config configs/gate.yaml\n`;
+              body += `> \`\`\`\n`;
+            }
+
+            github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.pull_request.number,
+              body
+            });

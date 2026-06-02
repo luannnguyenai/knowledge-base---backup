@@ -1,0 +1,580 @@
+{
+  "pipeline_name": "bad_candidate",
+  "manifest": {
+    "config_hash": "c0fec63f78c2f0dd",
+    "git_sha": "ffb2656c",
+    "data_version": "1.0.0",
+    "data_hash": "9d1cb77f16f877a7",
+    "judge_model": "gpt-4o",
+    "judge_prompt_version": "1.0.0",
+    "ragbench_version": "0.1.0",
+    "timestamp": "2026-06-01T02:25:27.413665+00:00",
+    "pipeline_name": "smoke_fake_pipeline"
+  },
+  "retrieval": {
+    "recall_at_k": 0.2,
+    "precision_at_k": 0.15,
+    "mrr": 0.0,
+    "ndcg_at_k": 0.0,
+    "num_questions": 10,
+    "k": 3
+  },
+  "generation": {
+    "faithfulness": 0.3,
+    "answer_relevancy": 0.0,
+    "context_precision": 0.0,
+    "correctness": 0.0,
+    "hallucination_rate": 0.4,
+    "num_questions": 10,
+    "num_cached": 0,
+    "num_llm_calls": 50
+  },
+  "avg_latency_ms": 0.034383499587420374,
+  "total_cost_usd": 0.0,
+  "question_results": [
+    {
+      "question_id": "q001",
+      "question": "Quy tr\u00ecnh xin ngh\u1ec9 ph\u00e9p n\u0103m g\u1ed3m nh\u1eefng b\u01b0\u1edbc n\u00e0o?",
+      "expected_answer": "Nh\u00e2n vi\u00ean \u0111i\u1ec1n form xin ngh\u1ec9 ph\u00e9p, tr\u00ecnh qu\u1ea3n l\u00fd tr\u1ef1c ti\u1ebfp ph\u00ea duy\u1ec7t, sau \u0111\u00f3 HR c\u1eadp nh\u1eadt h\u1ec7 th\u1ed1ng v\u00e0 x\u00e1c nh\u1eadn qua email.",
+      "expected_sources": [
+        "leave_policy.pdf"
+      ],
+      "generated_answer": "kh\u00f4ng \u0111\u01b0\u1ee3c t\u00edch l\u0169y qu\u00e1 6 ng\u00e0y sang n\u0103m sau.\n | Ch\u00ednh s\u00e1ch ph\u00fac l\u1ee3i nh\u00e2n vi\u00ean\n\nH\u1ed7 tr\u1ee3 b\u1eefa tr\u01b0a: 30.000 VND/ng\u00e0y cho nh\u00e2n vi\u00ean \u0111i l\u00e0m t\u1ea1i v\u0103n ph\u00f2ng.\nPh\u1ee5 c\u1ea5p \u0111i\u1ec7n tho\u1ea1i: 200.000 VND/th\u00e1ng cho nh\u00e2n vi\u00ea | Ch\u00ednh s\u00e1ch ngh\u1ec9 ph\u00e9p n\u0103m HC-NS\n\nNh\u00e2n vi\u00ean ch\u00ednh th\u1ee9c \u0111\u01b0\u1ee3c h\u01b0\u1edfng 12 ng\u00e0y ngh\u1ec9 ph\u00e9p n\u0103m. Th\u00e2m ni\u00ean tr\u00ean 3 n\u0103m: +1 ng\u00e0y; tr\u00ean 5 n\u0103m: +2 ng\u00e0y.\n\nQuy tr\u00ecnh ",
+      "citations": [
+        "71f19df494a42826",
+        "bc9ee987ecd03b8e",
+        "63936023e57eae1f"
+      ],
+      "contexts": [
+        "kh\u00f4ng \u0111\u01b0\u1ee3c t\u00edch l\u0169y qu\u00e1 6 ng\u00e0y sang n\u0103m sau.\n",
+        "Ch\u00ednh s\u00e1ch ph\u00fac l\u1ee3i nh\u00e2n vi\u00ean\n\nH\u1ed7 tr\u1ee3 b\u1eefa tr\u01b0a: 30.000 VND/ng\u00e0y cho nh\u00e2n vi\u00ean \u0111i l\u00e0m t\u1ea1i v\u0103n ph\u00f2ng.\nPh\u1ee5 c\u1ea5p \u0111i\u1ec7n tho\u1ea1i: 200.000 VND/th\u00e1ng cho nh\u00e2n vi\u00ea",
+        "Ch\u00ednh s\u00e1ch ngh\u1ec9 ph\u00e9p n\u0103m HC-NS\n\nNh\u00e2n vi\u00ean ch\u00ednh th\u1ee9c \u0111\u01b0\u1ee3c h\u01b0\u1edfng 12 ng\u00e0y ngh\u1ec9 ph\u00e9p n\u0103m. Th\u00e2m ni\u00ean tr\u00ean 3 n\u0103m: +1 ng\u00e0y; tr\u00ean 5 n\u0103m: +2 ng\u00e0y.\n\nQuy tr\u00ecnh "
+      ],
+      "latency_ms": 0.07479199848603457,
+      "usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "retrieval": {
+        "question_id": "q001",
+        "retrieved_ids": [
+          "71f19df494a42826",
+          "bc9ee987ecd03b8e",
+          "63936023e57eae1f"
+        ],
+        "relevant_ids": [
+          "leave_policy.pdf"
+        ],
+        "recall": 0.0,
+        "precision": 0.0,
+        "rr": 0.0,
+        "ndcg": 0.0
+      },
+      "generation": {
+        "question_id": "q001",
+        "faithfulness": 0.0,
+        "answer_relevancy": 0.0,
+        "context_precision": 0.0,
+        "correctness": 0.0,
+        "hallucination_rate": 0.0,
+        "cached_flags": {
+          "faithfulness": false,
+          "answer_relevancy": false,
+          "context_precision": false,
+          "correctness": false,
+          "hallucination": false
+        }
+      }
+    },
+    {
+      "question_id": "q002",
+      "question": "S\u1ed1 ng\u00e0y ngh\u1ec9 ph\u00e9p n\u0103m t\u1ed1i \u0111a c\u1ee7a nh\u00e2n vi\u00ean ch\u00ednh th\u1ee9c l\u00e0 bao nhi\u00eau?",
+      "expected_answer": "Nh\u00e2n vi\u00ean ch\u00ednh th\u1ee9c \u0111\u01b0\u1ee3c h\u01b0\u1edfng 12 ng\u00e0y ngh\u1ec9 ph\u00e9p n\u0103m theo quy \u0111\u1ecbnh lao \u0111\u1ed9ng Vi\u1ec7t Nam, c\u00f3 th\u1ec3 c\u1ed9ng th\u00eam theo th\u00e2m ni\u00ean.",
+      "expected_sources": [
+        "leave_policy.pdf",
+        "labor_regulations.pdf"
+      ],
+      "generated_answer": " (v\u01b0\u1ee3t m\u1ee9c).\n- Nh\u00e2n vi\u00ean d\u01b0\u1edbi 6 th\u00e1ng trong n\u0103m \u0111\u01b0\u1ee3c t\u00ednh theo t\u1ec9 l\u1ec7.\n | rm xin ngh\u1ec9 ph\u00e9p tr\u00ean HR Portal.\n2. Tr\u00ecnh qu\u1ea3n l\u00fd tr\u1ef1c ti\u1ebfp ph\u00ea duy\u1ec7t (trong v\u00f2ng 2 ng\u00e0y l\u00e0m vi\u1ec7c).\n3. HR c\u1eadp nh\u1eadt h\u1ec7 th\u1ed1ng v\u00e0 g\u1eedi x\u00e1c nh\u1eadn qua email  | e: \u00e1p d\u1ee5ng t\u1eeb th\u00e1ng \u0111\u1ea7u ti\u00ean sau khi k\u00fd h\u1ee3p \u0111\u1ed3ng ch\u00ednh th\u1ee9c.\n\nTh\u01b0\u1edfng T\u1ebft (th\u00e1ng 13):\n- B\u1eb1ng 1 th\u00e1ng l\u01b0\u01a1ng gross c\u01a1 b\u1ea3n.\n- \u0110i\u1ec1u ch\u1ec9nh theo h\u1ec7 s\u1ed1 KPI cu",
+      "citations": [
+        "813c70e0d417fb10",
+        "f2484c285eaea256",
+        "5841328ad4d4e59c"
+      ],
+      "contexts": [
+        " (v\u01b0\u1ee3t m\u1ee9c).\n- Nh\u00e2n vi\u00ean d\u01b0\u1edbi 6 th\u00e1ng trong n\u0103m \u0111\u01b0\u1ee3c t\u00ednh theo t\u1ec9 l\u1ec7.\n",
+        "rm xin ngh\u1ec9 ph\u00e9p tr\u00ean HR Portal.\n2. Tr\u00ecnh qu\u1ea3n l\u00fd tr\u1ef1c ti\u1ebfp ph\u00ea duy\u1ec7t (trong v\u00f2ng 2 ng\u00e0y l\u00e0m vi\u1ec7c).\n3. HR c\u1eadp nh\u1eadt h\u1ec7 th\u1ed1ng v\u00e0 g\u1eedi x\u00e1c nh\u1eadn qua email ",
+        "e: \u00e1p d\u1ee5ng t\u1eeb th\u00e1ng \u0111\u1ea7u ti\u00ean sau khi k\u00fd h\u1ee3p \u0111\u1ed3ng ch\u00ednh th\u1ee9c.\n\nTh\u01b0\u1edfng T\u1ebft (th\u00e1ng 13):\n- B\u1eb1ng 1 th\u00e1ng l\u01b0\u01a1ng gross c\u01a1 b\u1ea3n.\n- \u0110i\u1ec1u ch\u1ec9nh theo h\u1ec7 s\u1ed1 KPI cu"
+      ],
+      "latency_ms": 0.03650000144261867,
+      "usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "retrieval": {
+        "question_id": "q002",
+        "retrieved_ids": [
+          "813c70e0d417fb10",
+          "f2484c285eaea256",
+          "5841328ad4d4e59c"
+        ],
+        "relevant_ids": [
+          "leave_policy.pdf",
+          "labor_regulations.pdf"
+        ],
+        "recall": 0.0,
+        "precision": 0.0,
+        "rr": 0.0,
+        "ndcg": 0.0
+      },
+      "generation": {
+        "question_id": "q002",
+        "faithfulness": 0.0,
+        "answer_relevancy": 0.0,
+        "context_precision": 0.0,
+        "correctness": 0.0,
+        "hallucination_rate": 0.0,
+        "cached_flags": {
+          "faithfulness": false,
+          "answer_relevancy": false,
+          "context_precision": false,
+          "correctness": false,
+          "hallucination": false
+        }
+      }
+    },
+    {
+      "question_id": "q003",
+      "question": "Th\u1ee7 t\u1ee5c thanh to\u00e1n chi ph\u00ed c\u00f4ng t\u00e1c n\u01b0\u1edbc ngo\u00e0i nh\u01b0 th\u1ebf n\u00e0o?",
+      "expected_answer": "N\u1ed9p claim form k\u00e8m h\u00f3a \u0111\u01a1n g\u1ed1c trong v\u00f2ng 7 ng\u00e0y sau khi v\u1ec1, qu\u1ea3n l\u00fd v\u00e0 k\u1ebf to\u00e1n k\u00fd duy\u1ec7t, thanh to\u00e1n qua t\u00e0i kho\u1ea3n ng\u00e2n h\u00e0ng \u0111\u00e3 \u0111\u0103ng k\u00fd.",
+      "expected_sources": [
+        "travel_expense_policy.pdf"
+      ],
+      "generated_answer": "kh\u00f4ng \u0111\u01b0\u1ee3c t\u00edch l\u0169y qu\u00e1 6 ng\u00e0y sang n\u0103m sau.\n | rm xin ngh\u1ec9 ph\u00e9p tr\u00ean HR Portal.\n2. Tr\u00ecnh qu\u1ea3n l\u00fd tr\u1ef1c ti\u1ebfp ph\u00ea duy\u1ec7t (trong v\u00f2ng 2 ng\u00e0y l\u00e0m vi\u1ec7c).\n3. HR c\u1eadp nh\u1eadt h\u1ec7 th\u1ed1ng v\u00e0 g\u1eedi x\u00e1c nh\u1eadn qua email  |  (v\u01b0\u1ee3t m\u1ee9c).\n- Nh\u00e2n vi\u00ean d\u01b0\u1edbi 6 th\u00e1ng trong n\u0103m \u0111\u01b0\u1ee3c t\u00ednh theo t\u1ec9 l\u1ec7.\n",
+      "citations": [
+        "71f19df494a42826",
+        "f2484c285eaea256",
+        "813c70e0d417fb10"
+      ],
+      "contexts": [
+        "kh\u00f4ng \u0111\u01b0\u1ee3c t\u00edch l\u0169y qu\u00e1 6 ng\u00e0y sang n\u0103m sau.\n",
+        "rm xin ngh\u1ec9 ph\u00e9p tr\u00ean HR Portal.\n2. Tr\u00ecnh qu\u1ea3n l\u00fd tr\u1ef1c ti\u1ebfp ph\u00ea duy\u1ec7t (trong v\u00f2ng 2 ng\u00e0y l\u00e0m vi\u1ec7c).\n3. HR c\u1eadp nh\u1eadt h\u1ec7 th\u1ed1ng v\u00e0 g\u1eedi x\u00e1c nh\u1eadn qua email ",
+        " (v\u01b0\u1ee3t m\u1ee9c).\n- Nh\u00e2n vi\u00ean d\u01b0\u1edbi 6 th\u00e1ng trong n\u0103m \u0111\u01b0\u1ee3c t\u00ednh theo t\u1ec9 l\u1ec7.\n"
+      ],
+      "latency_ms": 0.031000003218650818,
+      "usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "retrieval": {
+        "question_id": "q003",
+        "retrieved_ids": [
+          "71f19df494a42826",
+          "f2484c285eaea256",
+          "813c70e0d417fb10"
+        ],
+        "relevant_ids": [
+          "travel_expense_policy.pdf"
+        ],
+        "recall": 0.0,
+        "precision": 0.0,
+        "rr": 0.0,
+        "ndcg": 0.0
+      },
+      "generation": {
+        "question_id": "q003",
+        "faithfulness": 0.0,
+        "answer_relevancy": 0.0,
+        "context_precision": 0.0,
+        "correctness": 0.0,
+        "hallucination_rate": 0.0,
+        "cached_flags": {
+          "faithfulness": false,
+          "answer_relevancy": false,
+          "context_precision": false,
+          "correctness": false,
+          "hallucination": false
+        }
+      }
+    },
+    {
+      "question_id": "q004",
+      "question": "M\u1ee9c h\u1ed7 tr\u1ee3 ti\u1ec1n c\u01a1m tr\u01b0a h\u00e0ng ng\u00e0y l\u00e0 bao nhi\u00eau?",
+      "expected_answer": "M\u1ee9c h\u1ed7 tr\u1ee3 ti\u1ec1n c\u01a1m tr\u01b0a l\u00e0 30.000 VND/ng\u00e0y cho nh\u00e2n vi\u00ean \u0111i l\u00e0m t\u1ea1i v\u0103n ph\u00f2ng.",
+      "expected_sources": [
+        "benefits_policy.pdf"
+      ],
+      "generated_answer": "rm xin ngh\u1ec9 ph\u00e9p tr\u00ean HR Portal.\n2. Tr\u00ecnh qu\u1ea3n l\u00fd tr\u1ef1c ti\u1ebfp ph\u00ea duy\u1ec7t (trong v\u00f2ng 2 ng\u00e0y l\u00e0m vi\u1ec7c).\n3. HR c\u1eadp nh\u1eadt h\u1ec7 th\u1ed1ng v\u00e0 g\u1eedi x\u00e1c nh\u1eadn qua email  | kh\u00f4ng \u0111\u01b0\u1ee3c t\u00edch l\u0169y qu\u00e1 6 ng\u00e0y sang n\u0103m sau.\n | Ch\u00ednh s\u00e1ch ngh\u1ec9 ph\u00e9p n\u0103m HC-NS\n\nNh\u00e2n vi\u00ean ch\u00ednh th\u1ee9c \u0111\u01b0\u1ee3c h\u01b0\u1edfng 12 ng\u00e0y ngh\u1ec9 ph\u00e9p n\u0103m. Th\u00e2m ni\u00ean tr\u00ean 3 n\u0103m: +1 ng\u00e0y; tr\u00ean 5 n\u0103m: +2 ng\u00e0y.\n\nQuy tr\u00ecnh ",
+      "citations": [
+        "f2484c285eaea256",
+        "71f19df494a42826",
+        "63936023e57eae1f"
+      ],
+      "contexts": [
+        "rm xin ngh\u1ec9 ph\u00e9p tr\u00ean HR Portal.\n2. Tr\u00ecnh qu\u1ea3n l\u00fd tr\u1ef1c ti\u1ebfp ph\u00ea duy\u1ec7t (trong v\u00f2ng 2 ng\u00e0y l\u00e0m vi\u1ec7c).\n3. HR c\u1eadp nh\u1eadt h\u1ec7 th\u1ed1ng v\u00e0 g\u1eedi x\u00e1c nh\u1eadn qua email ",
+        "kh\u00f4ng \u0111\u01b0\u1ee3c t\u00edch l\u0169y qu\u00e1 6 ng\u00e0y sang n\u0103m sau.\n",
+        "Ch\u00ednh s\u00e1ch ngh\u1ec9 ph\u00e9p n\u0103m HC-NS\n\nNh\u00e2n vi\u00ean ch\u00ednh th\u1ee9c \u0111\u01b0\u1ee3c h\u01b0\u1edfng 12 ng\u00e0y ngh\u1ec9 ph\u00e9p n\u0103m. Th\u00e2m ni\u00ean tr\u00ean 3 n\u0103m: +1 ng\u00e0y; tr\u00ean 5 n\u0103m: +2 ng\u00e0y.\n\nQuy tr\u00ecnh "
+      ],
+      "latency_ms": 0.029166985768824816,
+      "usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "retrieval": {
+        "question_id": "q004",
+        "retrieved_ids": [
+          "f2484c285eaea256",
+          "71f19df494a42826",
+          "63936023e57eae1f"
+        ],
+        "relevant_ids": [
+          "benefits_policy.pdf"
+        ],
+        "recall": 0.0,
+        "precision": 0.0,
+        "rr": 0.0,
+        "ndcg": 0.0
+      },
+      "generation": {
+        "question_id": "q004",
+        "faithfulness": 0.0,
+        "answer_relevancy": 0.0,
+        "context_precision": 0.0,
+        "correctness": 0.0,
+        "hallucination_rate": 0.0,
+        "cached_flags": {
+          "faithfulness": false,
+          "answer_relevancy": false,
+          "context_precision": false,
+          "correctness": false,
+          "hallucination": false
+        }
+      }
+    },
+    {
+      "question_id": "q005",
+      "question": "Nh\u00e2n vi\u00ean m\u1edbi c\u1ea7n ho\u00e0n th\u00e0nh nh\u1eefng th\u1ee7 t\u1ee5c onboarding n\u00e0o trong tu\u1ea7n \u0111\u1ea7u?",
+      "expected_answer": "K\u00fd h\u1ee3p \u0111\u1ed3ng lao \u0111\u1ed9ng, nh\u1eadn th\u1ebb nh\u00e2n vi\u00ean, c\u00e0i \u0111\u1eb7t t\u00e0i kho\u1ea3n h\u1ec7 th\u1ed1ng IT, tham gia bu\u1ed5i orientation HR, v\u00e0 ho\u00e0n th\u00e0nh c\u00e1c module \u0111\u00e0o t\u1ea1o b\u1eaft bu\u1ed9c online.",
+      "expected_sources": [
+        "onboarding_checklist.pdf"
+      ],
+      "generated_answer": "Ch\u00ednh s\u00e1ch ph\u00fac l\u1ee3i nh\u00e2n vi\u00ean\n\nH\u1ed7 tr\u1ee3 b\u1eefa tr\u01b0a: 30.000 VND/ng\u00e0y cho nh\u00e2n vi\u00ean \u0111i l\u00e0m t\u1ea1i v\u0103n ph\u00f2ng.\nPh\u1ee5 c\u1ea5p \u0111i\u1ec7n tho\u1ea1i: 200.000 VND/th\u00e1ng cho nh\u00e2n vi\u00ea | kh\u00f4ng \u0111\u01b0\u1ee3c t\u00edch l\u0169y qu\u00e1 6 ng\u00e0y sang n\u0103m sau.\n | e: \u00e1p d\u1ee5ng t\u1eeb th\u00e1ng \u0111\u1ea7u ti\u00ean sau khi k\u00fd h\u1ee3p \u0111\u1ed3ng ch\u00ednh th\u1ee9c.\n\nTh\u01b0\u1edfng T\u1ebft (th\u00e1ng 13):\n- B\u1eb1ng 1 th\u00e1ng l\u01b0\u01a1ng gross c\u01a1 b\u1ea3n.\n- \u0110i\u1ec1u ch\u1ec9nh theo h\u1ec7 s\u1ed1 KPI cu",
+      "citations": [
+        "bc9ee987ecd03b8e",
+        "71f19df494a42826",
+        "5841328ad4d4e59c"
+      ],
+      "contexts": [
+        "Ch\u00ednh s\u00e1ch ph\u00fac l\u1ee3i nh\u00e2n vi\u00ean\n\nH\u1ed7 tr\u1ee3 b\u1eefa tr\u01b0a: 30.000 VND/ng\u00e0y cho nh\u00e2n vi\u00ean \u0111i l\u00e0m t\u1ea1i v\u0103n ph\u00f2ng.\nPh\u1ee5 c\u1ea5p \u0111i\u1ec7n tho\u1ea1i: 200.000 VND/th\u00e1ng cho nh\u00e2n vi\u00ea",
+        "kh\u00f4ng \u0111\u01b0\u1ee3c t\u00edch l\u0169y qu\u00e1 6 ng\u00e0y sang n\u0103m sau.\n",
+        "e: \u00e1p d\u1ee5ng t\u1eeb th\u00e1ng \u0111\u1ea7u ti\u00ean sau khi k\u00fd h\u1ee3p \u0111\u1ed3ng ch\u00ednh th\u1ee9c.\n\nTh\u01b0\u1edfng T\u1ebft (th\u00e1ng 13):\n- B\u1eb1ng 1 th\u00e1ng l\u01b0\u01a1ng gross c\u01a1 b\u1ea3n.\n- \u0110i\u1ec1u ch\u1ec9nh theo h\u1ec7 s\u1ed1 KPI cu"
+      ],
+      "latency_ms": 0.029542003176175058,
+      "usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "retrieval": {
+        "question_id": "q005",
+        "retrieved_ids": [
+          "bc9ee987ecd03b8e",
+          "71f19df494a42826",
+          "5841328ad4d4e59c"
+        ],
+        "relevant_ids": [
+          "onboarding_checklist.pdf"
+        ],
+        "recall": 0.0,
+        "precision": 0.0,
+        "rr": 0.0,
+        "ndcg": 0.0
+      },
+      "generation": {
+        "question_id": "q005",
+        "faithfulness": 0.0,
+        "answer_relevancy": 0.0,
+        "context_precision": 0.0,
+        "correctness": 0.0,
+        "hallucination_rate": 0.0,
+        "cached_flags": {
+          "faithfulness": false,
+          "answer_relevancy": false,
+          "context_precision": false,
+          "correctness": false,
+          "hallucination": false
+        }
+      }
+    },
+    {
+      "question_id": "q006",
+      "question": "Ch\u00ednh s\u00e1ch l\u00e0m vi\u1ec7c t\u1eeb xa (WFH) \u00e1p d\u1ee5ng cho nh\u1eefng \u0111\u1ed1i t\u01b0\u1ee3ng n\u00e0o?",
+      "expected_answer": "Nh\u00e2n vi\u00ean ch\u00ednh th\u1ee9c sau th\u1eed vi\u1ec7c t\u1eeb 3 th\u00e1ng tr\u1edf l\u00ean c\u00f3 th\u1ec3 \u0111\u0103ng k\u00fd WFH t\u1ed1i \u0111a 2 ng\u00e0y/tu\u1ea7n, t\u00f9y thu\u1ed9c ph\u00ea duy\u1ec7t c\u1ee7a qu\u1ea3n l\u00fd tr\u1ef1c ti\u1ebfp.",
+      "expected_sources": [
+        "wfh_policy.pdf"
+      ],
+      "generated_answer": "Ch\u00ednh s\u00e1ch ph\u00fac l\u1ee3i nh\u00e2n vi\u00ean\n\nH\u1ed7 tr\u1ee3 b\u1eefa tr\u01b0a: 30.000 VND/ng\u00e0y cho nh\u00e2n vi\u00ean \u0111i l\u00e0m t\u1ea1i v\u0103n ph\u00f2ng.\nPh\u1ee5 c\u1ea5p \u0111i\u1ec7n tho\u1ea1i: 200.000 VND/th\u00e1ng cho nh\u00e2n vi\u00ea | kh\u00f4ng \u0111\u01b0\u1ee3c t\u00edch l\u0169y qu\u00e1 6 ng\u00e0y sang n\u0103m sau.\n | e: \u00e1p d\u1ee5ng t\u1eeb th\u00e1ng \u0111\u1ea7u ti\u00ean sau khi k\u00fd h\u1ee3p \u0111\u1ed3ng ch\u00ednh th\u1ee9c.\n\nTh\u01b0\u1edfng T\u1ebft (th\u00e1ng 13):\n- B\u1eb1ng 1 th\u00e1ng l\u01b0\u01a1ng gross c\u01a1 b\u1ea3n.\n- \u0110i\u1ec1u ch\u1ec9nh theo h\u1ec7 s\u1ed1 KPI cu",
+      "citations": [
+        "bc9ee987ecd03b8e",
+        "71f19df494a42826",
+        "5841328ad4d4e59c"
+      ],
+      "contexts": [
+        "Ch\u00ednh s\u00e1ch ph\u00fac l\u1ee3i nh\u00e2n vi\u00ean\n\nH\u1ed7 tr\u1ee3 b\u1eefa tr\u01b0a: 30.000 VND/ng\u00e0y cho nh\u00e2n vi\u00ean \u0111i l\u00e0m t\u1ea1i v\u0103n ph\u00f2ng.\nPh\u1ee5 c\u1ea5p \u0111i\u1ec7n tho\u1ea1i: 200.000 VND/th\u00e1ng cho nh\u00e2n vi\u00ea",
+        "kh\u00f4ng \u0111\u01b0\u1ee3c t\u00edch l\u0169y qu\u00e1 6 ng\u00e0y sang n\u0103m sau.\n",
+        "e: \u00e1p d\u1ee5ng t\u1eeb th\u00e1ng \u0111\u1ea7u ti\u00ean sau khi k\u00fd h\u1ee3p \u0111\u1ed3ng ch\u00ednh th\u1ee9c.\n\nTh\u01b0\u1edfng T\u1ebft (th\u00e1ng 13):\n- B\u1eb1ng 1 th\u00e1ng l\u01b0\u01a1ng gross c\u01a1 b\u1ea3n.\n- \u0110i\u1ec1u ch\u1ec9nh theo h\u1ec7 s\u1ed1 KPI cu"
+      ],
+      "latency_ms": 0.02866699651349336,
+      "usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "retrieval": {
+        "question_id": "q006",
+        "retrieved_ids": [
+          "bc9ee987ecd03b8e",
+          "71f19df494a42826",
+          "5841328ad4d4e59c"
+        ],
+        "relevant_ids": [
+          "wfh_policy.pdf"
+        ],
+        "recall": 0.0,
+        "precision": 0.0,
+        "rr": 0.0,
+        "ndcg": 0.0
+      },
+      "generation": {
+        "question_id": "q006",
+        "faithfulness": 0.0,
+        "answer_relevancy": 0.0,
+        "context_precision": 0.0,
+        "correctness": 0.0,
+        "hallucination_rate": 0.0,
+        "cached_flags": {
+          "faithfulness": false,
+          "answer_relevancy": false,
+          "context_precision": false,
+          "correctness": false,
+          "hallucination": false
+        }
+      }
+    },
+    {
+      "question_id": "q007",
+      "question": "Quy tr\u00ecnh \u0111\u00e1nh gi\u00e1 hi\u1ec7u su\u1ea5t cu\u1ed1i n\u0103m di\u1ec5n ra nh\u01b0 th\u1ebf n\u00e0o?",
+      "expected_answer": "Th\u00e1ng 11: nh\u00e2n vi\u00ean t\u1ef1 \u0111\u00e1nh gi\u00e1. Th\u00e1ng 12: qu\u1ea3n l\u00fd \u0111\u00e1nh gi\u00e1 v\u00e0 h\u1ecdp 1-1. Th\u00e1ng 1: HR t\u1ed5ng h\u1ee3p k\u1ebft qu\u1ea3 v\u00e0 c\u00f4ng b\u1ed1 m\u1ee9c t\u0103ng l\u01b0\u01a1ng/th\u01b0\u1edfng.",
+      "expected_sources": [
+        "performance_review_process.pdf"
+      ],
+      "generated_answer": " (v\u01b0\u1ee3t m\u1ee9c).\n- Nh\u00e2n vi\u00ean d\u01b0\u1edbi 6 th\u00e1ng trong n\u0103m \u0111\u01b0\u1ee3c t\u00ednh theo t\u1ec9 l\u1ec7.\n | e: \u00e1p d\u1ee5ng t\u1eeb th\u00e1ng \u0111\u1ea7u ti\u00ean sau khi k\u00fd h\u1ee3p \u0111\u1ed3ng ch\u00ednh th\u1ee9c.\n\nTh\u01b0\u1edfng T\u1ebft (th\u00e1ng 13):\n- B\u1eb1ng 1 th\u00e1ng l\u01b0\u01a1ng gross c\u01a1 b\u1ea3n.\n- \u0110i\u1ec1u ch\u1ec9nh theo h\u1ec7 s\u1ed1 KPI cu | Ch\u00ednh s\u00e1ch ph\u00fac l\u1ee3i nh\u00e2n vi\u00ean\n\nH\u1ed7 tr\u1ee3 b\u1eefa tr\u01b0a: 30.000 VND/ng\u00e0y cho nh\u00e2n vi\u00ean \u0111i l\u00e0m t\u1ea1i v\u0103n ph\u00f2ng.\nPh\u1ee5 c\u1ea5p \u0111i\u1ec7n tho\u1ea1i: 200.000 VND/th\u00e1ng cho nh\u00e2n vi\u00ea",
+      "citations": [
+        "813c70e0d417fb10",
+        "5841328ad4d4e59c",
+        "bc9ee987ecd03b8e"
+      ],
+      "contexts": [
+        " (v\u01b0\u1ee3t m\u1ee9c).\n- Nh\u00e2n vi\u00ean d\u01b0\u1edbi 6 th\u00e1ng trong n\u0103m \u0111\u01b0\u1ee3c t\u00ednh theo t\u1ec9 l\u1ec7.\n",
+        "e: \u00e1p d\u1ee5ng t\u1eeb th\u00e1ng \u0111\u1ea7u ti\u00ean sau khi k\u00fd h\u1ee3p \u0111\u1ed3ng ch\u00ednh th\u1ee9c.\n\nTh\u01b0\u1edfng T\u1ebft (th\u00e1ng 13):\n- B\u1eb1ng 1 th\u00e1ng l\u01b0\u01a1ng gross c\u01a1 b\u1ea3n.\n- \u0110i\u1ec1u ch\u1ec9nh theo h\u1ec7 s\u1ed1 KPI cu",
+        "Ch\u00ednh s\u00e1ch ph\u00fac l\u1ee3i nh\u00e2n vi\u00ean\n\nH\u1ed7 tr\u1ee3 b\u1eefa tr\u01b0a: 30.000 VND/ng\u00e0y cho nh\u00e2n vi\u00ean \u0111i l\u00e0m t\u1ea1i v\u0103n ph\u00f2ng.\nPh\u1ee5 c\u1ea5p \u0111i\u1ec7n tho\u1ea1i: 200.000 VND/th\u00e1ng cho nh\u00e2n vi\u00ea"
+      ],
+      "latency_ms": 0.028041991754435003,
+      "usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "retrieval": {
+        "question_id": "q007",
+        "retrieved_ids": [
+          "813c70e0d417fb10",
+          "5841328ad4d4e59c",
+          "bc9ee987ecd03b8e"
+        ],
+        "relevant_ids": [
+          "performance_review_process.pdf"
+        ],
+        "recall": 0.0,
+        "precision": 0.0,
+        "rr": 0.0,
+        "ndcg": 0.0
+      },
+      "generation": {
+        "question_id": "q007",
+        "faithfulness": 0.0,
+        "answer_relevancy": 0.0,
+        "context_precision": 0.0,
+        "correctness": 0.0,
+        "hallucination_rate": 0.0,
+        "cached_flags": {
+          "faithfulness": false,
+          "answer_relevancy": false,
+          "context_precision": false,
+          "correctness": false,
+          "hallucination": false
+        }
+      }
+    },
+    {
+      "question_id": "q008",
+      "question": "Nh\u00e2n vi\u00ean th\u1eed vi\u1ec7c c\u00f3 \u0111\u01b0\u1ee3c h\u01b0\u1edfng b\u1ea3o hi\u1ec3m y t\u1ebf kh\u00f4ng?",
+      "expected_answer": "Nh\u00e2n vi\u00ean trong th\u1eddi gian th\u1eed vi\u1ec7c ch\u01b0a \u0111\u01b0\u1ee3c tham gia b\u1ea3o hi\u1ec3m y t\u1ebf; ch\u1ebf \u0111\u1ed9 BHYT ch\u1ec9 \u00e1p d\u1ee5ng k\u1ec3 t\u1eeb th\u00e1ng \u0111\u1ea7u ti\u00ean sau khi k\u00fd h\u1ee3p \u0111\u1ed3ng ch\u00ednh th\u1ee9c.",
+      "expected_sources": [
+        "insurance_policy.pdf",
+        "labor_regulations.pdf"
+      ],
+      "generated_answer": " (v\u01b0\u1ee3t m\u1ee9c).\n- Nh\u00e2n vi\u00ean d\u01b0\u1edbi 6 th\u00e1ng trong n\u0103m \u0111\u01b0\u1ee3c t\u00ednh theo t\u1ec9 l\u1ec7.\n | Ch\u00ednh s\u00e1ch ph\u00fac l\u1ee3i nh\u00e2n vi\u00ean\n\nH\u1ed7 tr\u1ee3 b\u1eefa tr\u01b0a: 30.000 VND/ng\u00e0y cho nh\u00e2n vi\u00ean \u0111i l\u00e0m t\u1ea1i v\u0103n ph\u00f2ng.\nPh\u1ee5 c\u1ea5p \u0111i\u1ec7n tho\u1ea1i: 200.000 VND/th\u00e1ng cho nh\u00e2n vi\u00ea | e: \u00e1p d\u1ee5ng t\u1eeb th\u00e1ng \u0111\u1ea7u ti\u00ean sau khi k\u00fd h\u1ee3p \u0111\u1ed3ng ch\u00ednh th\u1ee9c.\n\nTh\u01b0\u1edfng T\u1ebft (th\u00e1ng 13):\n- B\u1eb1ng 1 th\u00e1ng l\u01b0\u01a1ng gross c\u01a1 b\u1ea3n.\n- \u0110i\u1ec1u ch\u1ec9nh theo h\u1ec7 s\u1ed1 KPI cu",
+      "citations": [
+        "813c70e0d417fb10",
+        "bc9ee987ecd03b8e",
+        "5841328ad4d4e59c"
+      ],
+      "contexts": [
+        " (v\u01b0\u1ee3t m\u1ee9c).\n- Nh\u00e2n vi\u00ean d\u01b0\u1edbi 6 th\u00e1ng trong n\u0103m \u0111\u01b0\u1ee3c t\u00ednh theo t\u1ec9 l\u1ec7.\n",
+        "Ch\u00ednh s\u00e1ch ph\u00fac l\u1ee3i nh\u00e2n vi\u00ean\n\nH\u1ed7 tr\u1ee3 b\u1eefa tr\u01b0a: 30.000 VND/ng\u00e0y cho nh\u00e2n vi\u00ean \u0111i l\u00e0m t\u1ea1i v\u0103n ph\u00f2ng.\nPh\u1ee5 c\u1ea5p \u0111i\u1ec7n tho\u1ea1i: 200.000 VND/th\u00e1ng cho nh\u00e2n vi\u00ea",
+        "e: \u00e1p d\u1ee5ng t\u1eeb th\u00e1ng \u0111\u1ea7u ti\u00ean sau khi k\u00fd h\u1ee3p \u0111\u1ed3ng ch\u00ednh th\u1ee9c.\n\nTh\u01b0\u1edfng T\u1ebft (th\u00e1ng 13):\n- B\u1eb1ng 1 th\u00e1ng l\u01b0\u01a1ng gross c\u01a1 b\u1ea3n.\n- \u0110i\u1ec1u ch\u1ec9nh theo h\u1ec7 s\u1ed1 KPI cu"
+      ],
+      "latency_ms": 0.02750000567175448,
+      "usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "retrieval": {
+        "question_id": "q008",
+        "retrieved_ids": [
+          "813c70e0d417fb10",
+          "bc9ee987ecd03b8e",
+          "5841328ad4d4e59c"
+        ],
+        "relevant_ids": [
+          "insurance_policy.pdf",
+          "labor_regulations.pdf"
+        ],
+        "recall": 0.0,
+        "precision": 0.0,
+        "rr": 0.0,
+        "ndcg": 0.0
+      },
+      "generation": {
+        "question_id": "q008",
+        "faithfulness": 0.0,
+        "answer_relevancy": 0.0,
+        "context_precision": 0.0,
+        "correctness": 0.0,
+        "hallucination_rate": 0.0,
+        "cached_flags": {
+          "faithfulness": false,
+          "answer_relevancy": false,
+          "context_precision": false,
+          "correctness": false,
+          "hallucination": false
+        }
+      }
+    },
+    {
+      "question_id": "q009",
+      "question": "L\u00e0m th\u1ebf n\u00e0o \u0111\u1ec3 \u0111\u0103ng k\u00fd tham gia kh\u00f3a \u0111\u00e0o t\u1ea1o n\u1ed9i b\u1ed9?",
+      "expected_answer": "Tra c\u1ee9u l\u1ecbch \u0111\u00e0o t\u1ea1o tr\u00ean c\u1ed5ng n\u1ed9i b\u1ed9 HR Portal, \u0111i\u1ec1n form \u0111\u0103ng k\u00fd, ch\u1edd ph\u00ea duy\u1ec7t t\u1eeb qu\u1ea3n l\u00fd v\u00e0 b\u1ed9 ph\u1eadn L&D trong v\u00f2ng 3 ng\u00e0y l\u00e0m vi\u1ec7c.",
+      "expected_sources": [
+        "training_registration_guide.pdf"
+      ],
+      "generated_answer": "Ch\u00ednh s\u00e1ch ph\u00fac l\u1ee3i nh\u00e2n vi\u00ean\n\nH\u1ed7 tr\u1ee3 b\u1eefa tr\u01b0a: 30.000 VND/ng\u00e0y cho nh\u00e2n vi\u00ean \u0111i l\u00e0m t\u1ea1i v\u0103n ph\u00f2ng.\nPh\u1ee5 c\u1ea5p \u0111i\u1ec7n tho\u1ea1i: 200.000 VND/th\u00e1ng cho nh\u00e2n vi\u00ea | Ch\u00ednh s\u00e1ch ngh\u1ec9 ph\u00e9p n\u0103m HC-NS\n\nNh\u00e2n vi\u00ean ch\u00ednh th\u1ee9c \u0111\u01b0\u1ee3c h\u01b0\u1edfng 12 ng\u00e0y ngh\u1ec9 ph\u00e9p n\u0103m. Th\u00e2m ni\u00ean tr\u00ean 3 n\u0103m: +1 ng\u00e0y; tr\u00ean 5 n\u0103m: +2 ng\u00e0y.\n\nQuy tr\u00ecnh  | e: \u00e1p d\u1ee5ng t\u1eeb th\u00e1ng \u0111\u1ea7u ti\u00ean sau khi k\u00fd h\u1ee3p \u0111\u1ed3ng ch\u00ednh th\u1ee9c.\n\nTh\u01b0\u1edfng T\u1ebft (th\u00e1ng 13):\n- B\u1eb1ng 1 th\u00e1ng l\u01b0\u01a1ng gross c\u01a1 b\u1ea3n.\n- \u0110i\u1ec1u ch\u1ec9nh theo h\u1ec7 s\u1ed1 KPI cu",
+      "citations": [
+        "bc9ee987ecd03b8e",
+        "63936023e57eae1f",
+        "5841328ad4d4e59c"
+      ],
+      "contexts": [
+        "Ch\u00ednh s\u00e1ch ph\u00fac l\u1ee3i nh\u00e2n vi\u00ean\n\nH\u1ed7 tr\u1ee3 b\u1eefa tr\u01b0a: 30.000 VND/ng\u00e0y cho nh\u00e2n vi\u00ean \u0111i l\u00e0m t\u1ea1i v\u0103n ph\u00f2ng.\nPh\u1ee5 c\u1ea5p \u0111i\u1ec7n tho\u1ea1i: 200.000 VND/th\u00e1ng cho nh\u00e2n vi\u00ea",
+        "Ch\u00ednh s\u00e1ch ngh\u1ec9 ph\u00e9p n\u0103m HC-NS\n\nNh\u00e2n vi\u00ean ch\u00ednh th\u1ee9c \u0111\u01b0\u1ee3c h\u01b0\u1edfng 12 ng\u00e0y ngh\u1ec9 ph\u00e9p n\u0103m. Th\u00e2m ni\u00ean tr\u00ean 3 n\u0103m: +1 ng\u00e0y; tr\u00ean 5 n\u0103m: +2 ng\u00e0y.\n\nQuy tr\u00ecnh ",
+        "e: \u00e1p d\u1ee5ng t\u1eeb th\u00e1ng \u0111\u1ea7u ti\u00ean sau khi k\u00fd h\u1ee3p \u0111\u1ed3ng ch\u00ednh th\u1ee9c.\n\nTh\u01b0\u1edfng T\u1ebft (th\u00e1ng 13):\n- B\u1eb1ng 1 th\u00e1ng l\u01b0\u01a1ng gross c\u01a1 b\u1ea3n.\n- \u0110i\u1ec1u ch\u1ec9nh theo h\u1ec7 s\u1ed1 KPI cu"
+      ],
+      "latency_ms": 0.02791700535453856,
+      "usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "retrieval": {
+        "question_id": "q009",
+        "retrieved_ids": [
+          "bc9ee987ecd03b8e",
+          "63936023e57eae1f",
+          "5841328ad4d4e59c"
+        ],
+        "relevant_ids": [
+          "training_registration_guide.pdf"
+        ],
+        "recall": 0.0,
+        "precision": 0.0,
+        "rr": 0.0,
+        "ndcg": 0.0
+      },
+      "generation": {
+        "question_id": "q009",
+        "faithfulness": 0.0,
+        "answer_relevancy": 0.0,
+        "context_precision": 0.0,
+        "correctness": 0.0,
+        "hallucination_rate": 0.0,
+        "cached_flags": {
+          "faithfulness": false,
+          "answer_relevancy": false,
+          "context_precision": false,
+          "correctness": false,
+          "hallucination": false
+        }
+      }
+    },
+    {
+      "question_id": "q010",
+      "question": "Ch\u00ednh s\u00e1ch th\u01b0\u1edfng T\u1ebft (th\u01b0\u1edfng th\u00e1ng 13) \u0111\u01b0\u1ee3c t\u00ednh nh\u01b0 th\u1ebf n\u00e0o?",
+      "expected_answer": "Th\u01b0\u1edfng T\u1ebft b\u1eb1ng 1 th\u00e1ng l\u01b0\u01a1ng gross c\u01a1 b\u1ea3n, \u0111i\u1ec1u ch\u1ec9nh theo h\u1ec7 s\u1ed1 \u0111\u00e1nh gi\u00e1 hi\u1ec7u su\u1ea5t n\u0103m (0.5x\u20131.5x). Nh\u00e2n vi\u00ean c\u00f3 th\u1eddi gian l\u00e0m vi\u1ec7c d\u01b0\u1edbi 6 th\u00e1ng trong n\u0103m \u0111\u01b0\u1ee3c t\u00ednh theo t\u1ec9 l\u1ec7.",
+      "expected_sources": [
+        "bonus_policy.pdf"
+      ],
+      "generated_answer": "e: \u00e1p d\u1ee5ng t\u1eeb th\u00e1ng \u0111\u1ea7u ti\u00ean sau khi k\u00fd h\u1ee3p \u0111\u1ed3ng ch\u00ednh th\u1ee9c.\n\nTh\u01b0\u1edfng T\u1ebft (th\u00e1ng 13):\n- B\u1eb1ng 1 th\u00e1ng l\u01b0\u01a1ng gross c\u01a1 b\u1ea3n.\n- \u0110i\u1ec1u ch\u1ec9nh theo h\u1ec7 s\u1ed1 KPI cu | Ch\u00ednh s\u00e1ch ngh\u1ec9 ph\u00e9p n\u0103m HC-NS\n\nNh\u00e2n vi\u00ean ch\u00ednh th\u1ee9c \u0111\u01b0\u1ee3c h\u01b0\u1edfng 12 ng\u00e0y ngh\u1ec9 ph\u00e9p n\u0103m. Th\u00e2m ni\u00ean tr\u00ean 3 n\u0103m: +1 ng\u00e0y; tr\u00ean 5 n\u0103m: +2 ng\u00e0y.\n\nQuy tr\u00ecnh  | Ch\u00ednh s\u00e1ch ph\u00fac l\u1ee3i nh\u00e2n vi\u00ean\n\nH\u1ed7 tr\u1ee3 b\u1eefa tr\u01b0a: 30.000 VND/ng\u00e0y cho nh\u00e2n vi\u00ean \u0111i l\u00e0m t\u1ea1i v\u0103n ph\u00f2ng.\nPh\u1ee5 c\u1ea5p \u0111i\u1ec7n tho\u1ea1i: 200.000 VND/th\u00e1ng cho nh\u00e2n vi\u00ea",
+      "citations": [
+        "5841328ad4d4e59c",
+        "63936023e57eae1f",
+        "bc9ee987ecd03b8e"
+      ],
+      "contexts": [
+        "e: \u00e1p d\u1ee5ng t\u1eeb th\u00e1ng \u0111\u1ea7u ti\u00ean sau khi k\u00fd h\u1ee3p \u0111\u1ed3ng ch\u00ednh th\u1ee9c.\n\nTh\u01b0\u1edfng T\u1ebft (th\u00e1ng 13):\n- B\u1eb1ng 1 th\u00e1ng l\u01b0\u01a1ng gross c\u01a1 b\u1ea3n.\n- \u0110i\u1ec1u ch\u1ec9nh theo h\u1ec7 s\u1ed1 KPI cu",
+        "Ch\u00ednh s\u00e1ch ngh\u1ec9 ph\u00e9p n\u0103m HC-NS\n\nNh\u00e2n vi\u00ean ch\u00ednh th\u1ee9c \u0111\u01b0\u1ee3c h\u01b0\u1edfng 12 ng\u00e0y ngh\u1ec9 ph\u00e9p n\u0103m. Th\u00e2m ni\u00ean tr\u00ean 3 n\u0103m: +1 ng\u00e0y; tr\u00ean 5 n\u0103m: +2 ng\u00e0y.\n\nQuy tr\u00ecnh ",
+        "Ch\u00ednh s\u00e1ch ph\u00fac l\u1ee3i nh\u00e2n vi\u00ean\n\nH\u1ed7 tr\u1ee3 b\u1eefa tr\u01b0a: 30.000 VND/ng\u00e0y cho nh\u00e2n vi\u00ean \u0111i l\u00e0m t\u1ea1i v\u0103n ph\u00f2ng.\nPh\u1ee5 c\u1ea5p \u0111i\u1ec7n tho\u1ea1i: 200.000 VND/th\u00e1ng cho nh\u00e2n vi\u00ea"
+      ],
+      "latency_ms": 0.03070800448767841,
+      "usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+      },
+      "retrieval": {
+        "question_id": "q010",
+        "retrieved_ids": [
+          "5841328ad4d4e59c",
+          "63936023e57eae1f",
+          "bc9ee987ecd03b8e"
+        ],
+        "relevant_ids": [
+          "bonus_policy.pdf"
+        ],
+        "recall": 0.0,
+        "precision": 0.0,
+        "rr": 0.0,
+        "ndcg": 0.0
+      },
+      "generation": {
+        "question_id": "q010",
+        "faithfulness": 0.0,
+        "answer_relevancy": 0.0,
+        "context_precision": 0.0,
+        "correctness": 0.0,
+        "hallucination_rate": 0.0,
+        "cached_flags": {
+          "faithfulness": false,
+          "answer_relevancy": false,
+          "context_precision": false,
+          "correctness": false,
+          "hallucination": false
+        }
+      }
+    }
+  ]
+}
