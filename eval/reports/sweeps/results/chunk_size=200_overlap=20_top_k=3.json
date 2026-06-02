@@ -2,13 +2,13 @@
   "pipeline_name": "combo_b937acda",
   "manifest": {
     "config_hash": "c0fec63f78c2f0dd",
-    "git_sha": "ffb2656c",
+    "git_sha": "7a0f8ba9",
     "data_version": "1.0.0",
     "data_hash": "9d1cb77f16f877a7",
     "judge_model": "gpt-4o",
     "judge_prompt_version": "1.0.0",
     "ragbench_version": "0.1.0",
-    "timestamp": "2026-06-01T02:28:35.578727+00:00",
+    "timestamp": "2026-06-01T03:07:16.876502+00:00",
     "pipeline_name": "combo_b937acda"
   },
   "retrieval": {
@@ -29,7 +29,7 @@
     "num_cached": 0,
     "num_llm_calls": 50
   },
-  "avg_latency_ms": 0.033775201882235706,
+  "avg_latency_ms": 0.03310839820187539,
   "total_cost_usd": 0.0,
   "question_results": [
     {
@@ -50,7 +50,7 @@
         "Chính sách phúc lợi nhân viên\n\nHỗ trợ bữa trưa: 30.000 VND/ngày cho nhân viên đi làm tại văn phòng.\nPhụ cấp điện thoại: 200.000 VND/tháng cho nhân viê",
         "Chính sách nghỉ phép năm HC-NS\n\nNhân viên chính thức được hưởng 12 ngày nghỉ phép năm. Thâm niên trên 3 năm: +1 ngày; trên 5 năm: +2 ngày.\n\nQuy trình "
       ],
-      "latency_ms": 0.07008400280028582,
+      "latency_ms": 0.059708007029257715,
       "usage": {
         "prompt_tokens": 0,
         "completion_tokens": 0
@@ -105,7 +105,7 @@
         "rm xin nghỉ phép trên HR Portal.\n2. Trình quản lý trực tiếp phê duyệt (trong vòng 2 ngày làm việc).\n3. HR cập nhật hệ thống và gửi xác nhận qua email ",
         "e: áp dụng từ tháng đầu tiên sau khi ký hợp đồng chính thức.\n\nThưởng Tết (tháng 13):\n- Bằng 1 tháng lương gross cơ bản.\n- Điều chỉnh theo hệ số KPI cu"
       ],
-      "latency_ms": 0.0314170029014349,
+      "latency_ms": 0.031791001674719155,
       "usage": {
         "prompt_tokens": 0,
         "completion_tokens": 0
@@ -160,7 +160,7 @@
         "rm xin nghỉ phép trên HR Portal.\n2. Trình quản lý trực tiếp phê duyệt (trong vòng 2 ngày làm việc).\n3. HR cập nhật hệ thống và gửi xác nhận qua email ",
         " (vượt mức).\n- Nhân viên dưới 6 tháng trong năm được tính theo tỉ lệ.\n"
       ],
-      "latency_ms": 0.03737500810530037,
+      "latency_ms": 0.02924998989328742,
       "usage": {
         "prompt_tokens": 0,
         "completion_tokens": 0
@@ -214,7 +214,7 @@
         "không được tích lũy quá 6 ngày sang năm sau.\n",
         "Chính sách nghỉ phép năm HC-NS\n\nNhân viên chính thức được hưởng 12 ngày nghỉ phép năm. Thâm niên trên 3 năm: +1 ngày; trên 5 năm: +2 ngày.\n\nQuy trình "
       ],
-      "latency_ms": 0.02995900285895914,
+      "latency_ms": 0.028542010113596916,
       "usage": {
         "prompt_tokens": 0,
         "completion_tokens": 0
@@ -268,7 +268,7 @@
         "không được tích lũy quá 6 ngày sang năm sau.\n",
         "e: áp dụng từ tháng đầu tiên sau khi ký hợp đồng chính thức.\n\nThưởng Tết (tháng 13):\n- Bằng 1 tháng lương gross cơ bản.\n- Điều chỉnh theo hệ số KPI cu"
       ],
-      "latency_ms": 0.02837499778252095,
+      "latency_ms": 0.039457998354919255,
       "usage": {
         "prompt_tokens": 0,
         "completion_tokens": 0
@@ -322,7 +322,7 @@
         "không được tích lũy quá 6 ngày sang năm sau.\n",
         "e: áp dụng từ tháng đầu tiên sau khi ký hợp đồng chính thức.\n\nThưởng Tết (tháng 13):\n- Bằng 1 tháng lương gross cơ bản.\n- Điều chỉnh theo hệ số KPI cu"
       ],
-      "latency_ms": 0.028375012334436178,
+      "latency_ms": 0.02924998989328742,
       "usage": {
         "prompt_tokens": 0,
         "completion_tokens": 0
@@ -376,7 +376,7 @@
         "e: áp dụng từ tháng đầu tiên sau khi ký hợp đồng chính thức.\n\nThưởng Tết (tháng 13):\n- Bằng 1 tháng lương gross cơ bản.\n- Điều chỉnh theo hệ số KPI cu",
         "Chính sách phúc lợi nhân viên\n\nHỗ trợ bữa trưa: 30.000 VND/ngày cho nhân viên đi làm tại văn phòng.\nPhụ cấp điện thoại: 200.000 VND/tháng cho nhân viê"
       ],
-      "latency_ms": 0.02995799877680838,
+      "latency_ms": 0.02995900285895914,
       "usage": {
         "prompt_tokens": 0,
         "completion_tokens": 0
@@ -431,7 +431,7 @@
         "Chính sách phúc lợi nhân viên\n\nHỗ trợ bữa trưa: 30.000 VND/ngày cho nhân viên đi làm tại văn phòng.\nPhụ cấp điện thoại: 200.000 VND/tháng cho nhân viê",
         "e: áp dụng từ tháng đầu tiên sau khi ký hợp đồng chính thức.\n\nThưởng Tết (tháng 13):\n- Bằng 1 tháng lương gross cơ bản.\n- Điều chỉnh theo hệ số KPI cu"
       ],
-      "latency_ms": 0.0272089964710176,
+      "latency_ms": 0.02808398858178407,
       "usage": {
         "prompt_tokens": 0,
         "completion_tokens": 0
@@ -486,7 +486,7 @@
         "Chính sách nghỉ phép năm HC-NS\n\nNhân viên chính thức được hưởng 12 ngày nghỉ phép năm. Thâm niên trên 3 năm: +1 ngày; trên 5 năm: +2 ngày.\n\nQuy trình ",
         "e: áp dụng từ tháng đầu tiên sau khi ký hợp đồng chính thức.\n\nThưởng Tết (tháng 13):\n- Bằng 1 tháng lương gross cơ bản.\n- Điều chỉnh theo hệ số KPI cu"
       ],
-      "latency_ms": 0.027707996196113527,
+      "latency_ms": 0.027542002499103546,
       "usage": {
         "prompt_tokens": 0,
         "completion_tokens": 0
@@ -540,7 +540,7 @@
         "Chính sách nghỉ phép năm HC-NS\n\nNhân viên chính thức được hưởng 12 ngày nghỉ phép năm. Thâm niên trên 3 năm: +1 ngày; trên 5 năm: +2 ngày.\n\nQuy trình ",
         "Chính sách phúc lợi nhân viên\n\nHỗ trợ bữa trưa: 30.000 VND/ngày cho nhân viên đi làm tại văn phòng.\nPhụ cấp điện thoại: 200.000 VND/tháng cho nhân viê"
       ],
-      "latency_ms": 0.027292000595480204,
+      "latency_ms": 0.02749999111983925,
       "usage": {
         "prompt_tokens": 0,
         "completion_tokens": 0

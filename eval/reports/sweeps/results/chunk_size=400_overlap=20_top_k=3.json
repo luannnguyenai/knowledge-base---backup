@@ -2,13 +2,13 @@
   "pipeline_name": "combo_06ee65d0",
   "manifest": {
     "config_hash": "c0fec63f78c2f0dd",
-    "git_sha": "ffb2656c",
+    "git_sha": "7a0f8ba9",
     "data_version": "1.0.0",
     "data_hash": "9d1cb77f16f877a7",
     "judge_model": "gpt-4o",
     "judge_prompt_version": "1.0.0",
     "ragbench_version": "0.1.0",
-    "timestamp": "2026-06-01T02:28:35.627169+00:00",
+    "timestamp": "2026-06-01T03:07:16.924428+00:00",
     "pipeline_name": "combo_06ee65d0"
   },
   "retrieval": {
@@ -29,7 +29,7 @@
     "num_cached": 0,
     "num_llm_calls": 50
   },
-  "avg_latency_ms": 0.023141699784900993,
+  "avg_latency_ms": 0.025145901599898934,
   "total_cost_usd": 0.0,
   "question_results": [
     {
@@ -50,7 +50,7 @@
         "viên dưới 6 tháng trong năm được tính theo tỉ lệ.\n",
         "Chính sách nghỉ phép năm HC-NS\n\nNhân viên chính thức được hưởng 12 ngày nghỉ phép năm. Thâm niên trên 3 năm: +1 ngày; trên 5 năm: +2 ngày.\n\nQuy trình "
       ],
-      "latency_ms": 0.04400000034365803,
+      "latency_ms": 0.048834001063369215,
       "usage": {
         "prompt_tokens": 0,
         "completion_tokens": 0
@@ -160,7 +160,7 @@
         "viên dưới 6 tháng trong năm được tính theo tỉ lệ.\n",
         "Chính sách phúc lợi nhân viên\n\nHỗ trợ bữa trưa: 30.000 VND/ngày cho nhân viên đi làm tại văn phòng.\nPhụ cấp điện thoại: 200.000 VND/tháng cho nhân viê"
       ],
-      "latency_ms": 0.02154200046788901,
+      "latency_ms": 0.02112500078510493,
       "usage": {
         "prompt_tokens": 0,
         "completion_tokens": 0
@@ -214,7 +214,7 @@
         "quá 6 ngày sang năm sau.\n",
         "Chính sách phúc lợi nhân viên\n\nHỗ trợ bữa trưa: 30.000 VND/ngày cho nhân viên đi làm tại văn phòng.\nPhụ cấp điện thoại: 200.000 VND/tháng cho nhân viê"
       ],
-      "latency_ms": 0.020749997929669917,
+      "latency_ms": 0.02070800110232085,
       "usage": {
         "prompt_tokens": 0,
         "completion_tokens": 0
@@ -268,7 +268,7 @@
         "Chính sách nghỉ phép năm HC-NS\n\nNhân viên chính thức được hưởng 12 ngày nghỉ phép năm. Thâm niên trên 3 năm: +1 ngày; trên 5 năm: +2 ngày.\n\nQuy trình ",
         "viên dưới 6 tháng trong năm được tính theo tỉ lệ.\n"
       ],
-      "latency_ms": 0.020332998246885836,
+      "latency_ms": 0.020209001377224922,
       "usage": {
         "prompt_tokens": 0,
         "completion_tokens": 0
@@ -322,7 +322,7 @@
         "Chính sách phúc lợi nhân viên\n\nHỗ trợ bữa trưa: 30.000 VND/ngày cho nhân viên đi làm tại văn phòng.\nPhụ cấp điện thoại: 200.000 VND/tháng cho nhân viê",
         "viên dưới 6 tháng trong năm được tính theo tỉ lệ.\n"
       ],
-      "latency_ms": 0.020332998246885836,
+      "latency_ms": 0.020749997929669917,
       "usage": {
         "prompt_tokens": 0,
         "completion_tokens": 0
@@ -376,7 +376,7 @@
         "quá 6 ngày sang năm sau.\n",
         "Chính sách nghỉ phép năm HC-NS\n\nNhân viên chính thức được hưởng 12 ngày nghỉ phép năm. Thâm niên trên 3 năm: +1 ngày; trên 5 năm: +2 ngày.\n\nQuy trình "
       ],
-      "latency_ms": 0.02170899824704975,
+      "latency_ms": 0.03287500294391066,
       "usage": {
         "prompt_tokens": 0,
         "completion_tokens": 0
@@ -431,7 +431,7 @@
         "Chính sách phúc lợi nhân viên\n\nHỗ trợ bữa trưa: 30.000 VND/ngày cho nhân viên đi làm tại văn phòng.\nPhụ cấp điện thoại: 200.000 VND/tháng cho nhân viê",
         "quá 6 ngày sang năm sau.\n"
       ],
-      "latency_ms": 0.02025000867433846,
+      "latency_ms": 0.02229200617875904,
       "usage": {
         "prompt_tokens": 0,
         "completion_tokens": 0
@@ -486,7 +486,7 @@
         "quá 6 ngày sang năm sau.\n",
         "viên dưới 6 tháng trong năm được tính theo tỉ lệ.\n"
       ],
-      "latency_ms": 0.01970799348782748,
+      "latency_ms": 0.021041007130406797,
       "usage": {
         "prompt_tokens": 0,
         "completion_tokens": 0
@@ -540,7 +540,7 @@
         "viên dưới 6 tháng trong năm được tính theo tỉ lệ.\n",
         "Chính sách phúc lợi nhân viên\n\nHỗ trợ bữa trưa: 30.000 VND/ngày cho nhân viên đi làm tại văn phòng.\nPhụ cấp điện thoại: 200.000 VND/tháng cho nhân viê"
       ],
-      "latency_ms": 0.01966700074262917,
+      "latency_ms": 0.020499996026046574,
       "usage": {
         "prompt_tokens": 0,
         "completion_tokens": 0

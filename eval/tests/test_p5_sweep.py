@@ -16,9 +16,9 @@ from pathlib import Path
 
 import pytest
 
-from ragbench.sweep.config import GateConfig, MetricThreshold, SweepConfig
-from ragbench.sweep.gate import _check_metric, check_gate
-from ragbench.sweep.grid import apply_overrides, combo_name, generate_combinations
+from hcns_eval.sweep.config import GateConfig, MetricThreshold, SweepConfig
+from hcns_eval.sweep.gate import _check_metric, check_gate
+from hcns_eval.sweep.grid import apply_overrides, combo_name, generate_combinations
 
 
 # ── generate_combinations ──────────────────────────────────────────────────────
@@ -168,10 +168,10 @@ class TestGate:
     def _make_result(self, recall: float = 0.5, faithfulness: float = 0.8,
                      latency: float = 100.0, hallucination: float = 0.1,
                      name: str = "test") -> "RunResult":  # type: ignore[name-defined]
-        from ragbench.eval.harness import RunResult
-        from ragbench.eval.metrics.retrieval import AggRetrievalMetrics
-        from ragbench.eval.metrics.generation import AggGenerationMetrics
-        from ragbench.eval.manifest import RunManifest
+        from hcns_eval.harness import RunResult
+        from hcns_eval.metrics.retrieval import AggRetrievalMetrics
+        from hcns_eval.metrics.generation import AggGenerationMetrics
+        from hcns_eval.manifest import RunManifest
 
         manifest = RunManifest(config_hash="abc", git_sha="def", data_version="1.0",
                                data_hash="hash", judge_model="gpt-4o",
@@ -271,11 +271,11 @@ class TestGate:
 
 class TestSweepReport:
     def _make_sweep_result(self) -> "SweepResult":  # type: ignore[name-defined]
-        from ragbench.sweep.runner import SweepResult, ComboResult
-        from ragbench.eval.harness import RunResult
-        from ragbench.eval.metrics.retrieval import AggRetrievalMetrics
-        from ragbench.eval.metrics.generation import AggGenerationMetrics
-        from ragbench.eval.manifest import RunManifest
+        from hcns_eval.sweep.runner import SweepResult, ComboResult
+        from hcns_eval.harness import RunResult
+        from hcns_eval.metrics.retrieval import AggRetrievalMetrics
+        from hcns_eval.metrics.generation import AggGenerationMetrics
+        from hcns_eval.manifest import RunManifest
 
         def _run(name: str, recall: float, faith: float, latency: float) -> RunResult:
             m = RunManifest(config_hash="x", git_sha="y", data_version="1.0",
@@ -299,7 +299,7 @@ class TestSweepReport:
                            successful_combinations=2, combos=combos, duration_s=5.2)
 
     def test_ranking_markdown_has_table(self):
-        from ragbench.sweep.report import format_ranking_markdown
+        from hcns_eval.sweep.report import format_ranking_markdown
         result = self._make_sweep_result()
         md = format_ranking_markdown(result)
         assert "# Sweep: test_sweep" in md
@@ -307,7 +307,7 @@ class TestSweepReport:
         assert "200" in md   # param value appears in the table row
 
     def test_ablation_markdown_has_per_param_section(self):
-        from ragbench.sweep.report import format_ablation_markdown
+        from hcns_eval.sweep.report import format_ablation_markdown
         result = self._make_sweep_result()
         md = format_ablation_markdown(result)
         assert "## `chunk_size`" in md
@@ -319,7 +319,7 @@ class TestSweepReport:
         json.dumps(d)  # should not raise
 
     def test_sweep_result_save(self, tmp_path: Path):
-        from ragbench.sweep.report import save_sweep_reports
+        from hcns_eval.sweep.report import save_sweep_reports
         result = self._make_sweep_result()
         save_sweep_reports(result, tmp_path / "out")
         assert (tmp_path / "out" / "ranking.md").exists()
@@ -368,9 +368,9 @@ optimize_direction: maximize
 output_dir: {tmp_path / "reports" / "sweeps"}
 """)
 
-        from ragbench.sweep.config import SweepConfig
-        from ragbench.sweep.runner import run_sweep
-        from ragbench.sweep.report import save_sweep_reports
+        from hcns_eval.sweep.config import SweepConfig
+        from hcns_eval.sweep.runner import run_sweep
+        from hcns_eval.sweep.report import save_sweep_reports
 
         cfg = SweepConfig.from_yaml(sweep_yaml)
         result = run_sweep(cfg)
@@ -388,12 +388,12 @@ output_dir: {tmp_path / "reports" / "sweeps"}
 
     def test_gate_passes_on_identical_result(self, tmp_path: Path):  # noqa: ARG002
         """Gate with identical baseline and candidate → all checks PASS."""
-        from ragbench.eval.harness import RunResult
-        from ragbench.eval.metrics.retrieval import AggRetrievalMetrics
-        from ragbench.eval.metrics.generation import AggGenerationMetrics
-        from ragbench.eval.manifest import RunManifest
-        from ragbench.sweep.gate import check_gate
-        from ragbench.sweep.config import GateConfig, MetricThreshold
+        from hcns_eval.harness import RunResult
+        from hcns_eval.metrics.retrieval import AggRetrievalMetrics
+        from hcns_eval.metrics.generation import AggGenerationMetrics
+        from hcns_eval.manifest import RunManifest
+        from hcns_eval.sweep.gate import check_gate
+        from hcns_eval.sweep.config import GateConfig, MetricThreshold
 
         m = RunManifest(config_hash="x", git_sha="y", data_version="1.0",
                         data_hash="h", judge_model="gpt-4o", judge_prompt_version="1.0",
@@ -414,12 +414,12 @@ output_dir: {tmp_path / "reports" / "sweeps"}
 
     def test_gate_fails_on_degraded_result(self, tmp_path: Path):  # noqa: ARG002
         """Gate with severely degraded candidate → FAIL (exit code 1)."""
-        from ragbench.eval.harness import RunResult
-        from ragbench.eval.metrics.retrieval import AggRetrievalMetrics
-        from ragbench.eval.metrics.generation import AggGenerationMetrics
-        from ragbench.eval.manifest import RunManifest
-        from ragbench.sweep.gate import check_gate
-        from ragbench.sweep.config import GateConfig, MetricThreshold
+        from hcns_eval.harness import RunResult
+        from hcns_eval.metrics.retrieval import AggRetrievalMetrics
+        from hcns_eval.metrics.generation import AggGenerationMetrics
+        from hcns_eval.manifest import RunManifest
+        from hcns_eval.sweep.gate import check_gate
+        from hcns_eval.sweep.config import GateConfig, MetricThreshold
 
         def _run(name: str, recall: float) -> RunResult:
             m = RunManifest(config_hash="x", git_sha="y", data_version="1.0",

@@ -15,18 +15,18 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 
-from ragbench.components.chunkers import (
+from hcns_backend.chunking import (
     ContextualParentChildChunker,
     _nearest_heading,
 )
-from ragbench.components.embedders import HashEmbedder
-from ragbench.components.generators import FakeGenerator, RoutedGenerator
-from ragbench.components.parsers import EchoParser
-from ragbench.components.rerankers import NoReranker
-from ragbench.components.retrievers import HybridRrfRetriever, _rrf_fuse
-from ragbench.components.vector_stores import InMemoryVectorStore
-from ragbench.core.pipeline import StaticPipeline
-from ragbench.core.types import Chunk, Document, ScoredChunk
+from hcns_backend.embedding import HashEmbedder
+from hcns_agents.generators import FakeGenerator, RoutedGenerator
+from hcns_backend.parsing import EchoParser
+from hcns_backend.reranking import NoReranker
+from hcns_backend.retrieval.retrievers import HybridRrfRetriever, _rrf_fuse
+from hcns_backend.retrieval.vector_stores import InMemoryVectorStore
+from hcns_agents.pipelines.static_pipeline import StaticPipeline
+from hcns_shared.types import Chunk, Document, ScoredChunk
 
 
 # ── helpers ────────────────────────────────────────────────────────────────────
@@ -122,7 +122,7 @@ class TestContextualParentChildChunker:
 
 class TestBgeM3EmbedderMocked:
     def _make_embedder(self, dim: int = 8):
-        from ragbench.components.embedders import BgeM3Embedder
+        from hcns_backend.embedding import BgeM3Embedder
 
         emb = BgeM3Embedder.__new__(BgeM3Embedder)
         emb.batch_size = 32
@@ -151,7 +151,7 @@ class TestBgeM3EmbedderMocked:
             assert all(isinstance(v, float) for v in d.values())
 
     def test_embed_sparse_string_keys_are_hashed(self):
-        from ragbench.components.embedders import BgeM3Embedder
+        from hcns_backend.embedding import BgeM3Embedder
 
         emb = BgeM3Embedder.__new__(BgeM3Embedder)
         emb.batch_size = 32
@@ -226,7 +226,7 @@ class TestHybridRrfRetriever:
         pipeline = StaticPipeline(
             parser=EchoParser(),
             chunker=__import__(
-                "ragbench.components.chunkers", fromlist=["FixedChunker"]
+                "hcns_backend.chunking", fromlist=["FixedChunker"]
             ).FixedChunker(chunk_size=50, overlap=5),
             embedder=emb,
             vector_store=store,
@@ -256,7 +256,7 @@ class TestHybridRrfRetriever:
 
 class TestCohereRerankerMocked:
     def _make_reranker(self):
-        from ragbench.components.rerankers import CohereReranker
+        from hcns_backend.reranking import CohereReranker
 
         r = CohereReranker.__new__(CohereReranker)
         r.model = "rerank-multilingual-v3.0"
@@ -300,7 +300,7 @@ class TestCohereRerankerMocked:
         env = {k: v for k, v in os.environ.items() if k != "COHERE_API_KEY"}
         with patch.dict(os.environ, env, clear=True):
             with pytest.raises(EnvironmentError, match="COHERE_API_KEY"):
-                from ragbench.components.rerankers import CohereReranker
+                from hcns_backend.reranking import CohereReranker
                 CohereReranker(api_key_env="COHERE_API_KEY")
 
 
@@ -308,7 +308,7 @@ class TestCohereRerankerMocked:
 
 class TestBgeRerankerMocked:
     def _make_reranker(self, score_threshold: float = 0.0):
-        from ragbench.components.rerankers import BgeReranker
+        from hcns_backend.reranking import BgeReranker
 
         r = BgeReranker.__new__(BgeReranker)
         r.top_k = 3
@@ -441,12 +441,12 @@ eval:
   output_dir: {tmp_path / "reports"}
 """)
 
-        from ragbench.core.config import BenchmarkConfig
-        from ragbench.core.pipeline import build_pipeline_from_config
+        from hcns_shared.config import BenchmarkConfig
+        from hcns_agents.pipelines.static_pipeline import build_pipeline_from_config
 
         cfg = BenchmarkConfig.from_yaml(cfg_yaml)
         pipeline = build_pipeline_from_config(cfg)
-        from ragbench.components.generators import RoutedGenerator
+        from hcns_agents.generators import RoutedGenerator
         assert isinstance(pipeline._generator, RoutedGenerator)
 
     def test_routed_missing_subgenerator_raises(self, tmp_path: Path):
@@ -472,8 +472,8 @@ eval:
   seed: 42
   output_dir: {tmp_path}
 """)
-        from ragbench.core.config import BenchmarkConfig
-        from ragbench.core.pipeline import build_pipeline_from_config
+        from hcns_shared.config import BenchmarkConfig
+        from hcns_agents.pipelines.static_pipeline import build_pipeline_from_config
 
         cfg = BenchmarkConfig.from_yaml(cfg_yaml)
         with pytest.raises(ValueError, match="fast_generator"):

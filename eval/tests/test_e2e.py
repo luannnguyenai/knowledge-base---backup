@@ -2,15 +2,15 @@
 import tempfile
 from pathlib import Path
 
-from ragbench.components.chunkers import FixedChunker
-from ragbench.components.embedders import HashEmbedder
-from ragbench.components.generators import FakeGenerator
-from ragbench.components.parsers import EchoParser
-from ragbench.components.rerankers import NoReranker
-from ragbench.components.retrievers import DenseRetriever
-from ragbench.components.vector_stores import InMemoryVectorStore
-from ragbench.core.pipeline import StaticPipeline
-from ragbench.core.types import Answer
+from hcns_backend.chunking import FixedChunker
+from hcns_backend.embedding import HashEmbedder
+from hcns_agents.generators import FakeGenerator
+from hcns_backend.parsing import EchoParser
+from hcns_backend.reranking import NoReranker
+from hcns_backend.retrieval.retrievers import DenseRetriever
+from hcns_backend.retrieval.vector_stores import InMemoryVectorStore
+from hcns_agents.pipelines.static_pipeline import StaticPipeline
+from hcns_shared.types import Answer
 
 
 def _build_smoke_pipeline() -> StaticPipeline:
@@ -46,9 +46,9 @@ def test_e2e_from_yaml_config(tmp_path: Path):
     """Build pipeline via BenchmarkConfig.from_yaml and run eval harness."""
     import json
 
-    from ragbench.core.config import BenchmarkConfig
-    from ragbench.core.pipeline import build_pipeline_from_config
-    from ragbench.harness import run_eval
+    from hcns_shared.config import BenchmarkConfig
+    from hcns_agents.pipelines.static_pipeline import build_pipeline_from_config
+    from hcns_eval.legacy_harness import run_eval
 
     # Write minimal corpus
     corpus = tmp_path / "corpus"

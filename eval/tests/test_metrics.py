@@ -1,7 +1,7 @@
 """Unit tests for metric calculation functions."""
 import math
 
-from ragbench.metrics import (
+from hcns_eval.legacy_metrics import (
     aggregate_generation,
     aggregate_retrieval,
     ndcg_at_k,

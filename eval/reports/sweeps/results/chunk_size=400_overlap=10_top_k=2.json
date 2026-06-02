@@ -2,13 +2,13 @@
   "pipeline_name": "combo_7a1c00e4",
   "manifest": {
     "config_hash": "c0fec63f78c2f0dd",
-    "git_sha": "ffb2656c",
+    "git_sha": "7a0f8ba9",
     "data_version": "1.0.0",
     "data_hash": "9d1cb77f16f877a7",
     "judge_model": "gpt-4o",
     "judge_prompt_version": "1.0.0",
     "ragbench_version": "0.1.0",
-    "timestamp": "2026-06-01T02:28:35.591338+00:00",
+    "timestamp": "2026-06-01T03:07:16.889255+00:00",
     "pipeline_name": "combo_7a1c00e4"
   },
   "retrieval": {
@@ -29,7 +29,7 @@
     "num_cached": 0,
     "num_llm_calls": 50
   },
-  "avg_latency_ms": 0.023154099471867085,
+  "avg_latency_ms": 0.025975202152039856,
   "total_cost_usd": 0.0,
   "question_results": [
     {
@@ -48,7 +48,7 @@
         "6 tháng trong năm được tính theo tỉ lệ.\n",
         "Chính sách nghỉ phép năm HC-NS\n\nNhân viên chính thức được hưởng 12 ngày nghỉ phép năm. Thâm niên trên 3 năm: +1 ngày; trên 5 năm: +2 ngày.\n\nQuy trình "
       ],
-      "latency_ms": 0.04587500006891787,
+      "latency_ms": 0.06808299804106355,
       "usage": {
         "prompt_tokens": 0,
         "completion_tokens": 0
@@ -100,7 +100,7 @@
         "Chính sách phúc lợi nhân viên\n\nHỗ trợ bữa trưa: 30.000 VND/ngày cho nhân viên đi làm tại văn phòng.\nPhụ cấp điện thoại: 200.000 VND/tháng cho nhân viê",
         "Chính sách nghỉ phép năm HC-NS\n\nNhân viên chính thức được hưởng 12 ngày nghỉ phép năm. Thâm niên trên 3 năm: +1 ngày; trên 5 năm: +2 ngày.\n\nQuy trình "
       ],
-      "latency_ms": 0.026332985726185143,
+      "latency_ms": 0.029041999368928373,
       "usage": {
         "prompt_tokens": 0,
         "completion_tokens": 0
@@ -152,7 +152,7 @@
         "Chính sách nghỉ phép năm HC-NS\n\nNhân viên chính thức được hưởng 12 ngày nghỉ phép năm. Thâm niên trên 3 năm: +1 ngày; trên 5 năm: +2 ngày.\n\nQuy trình ",
         "Chính sách phúc lợi nhân viên\n\nHỗ trợ bữa trưa: 30.000 VND/ngày cho nhân viên đi làm tại văn phòng.\nPhụ cấp điện thoại: 200.000 VND/tháng cho nhân viê"
       ],
-      "latency_ms": 0.020749997929669917,
+      "latency_ms": 0.020916995708830655,
       "usage": {
         "prompt_tokens": 0,
         "completion_tokens": 0
@@ -203,7 +203,7 @@
         " sang năm sau.\n",
         "6 tháng trong năm được tính theo tỉ lệ.\n"
       ],
-      "latency_ms": 0.02025000867433846,
+      "latency_ms": 0.021667001419700682,
       "usage": {
         "prompt_tokens": 0,
         "completion_tokens": 0
@@ -254,7 +254,7 @@
         "Chính sách nghỉ phép năm HC-NS\n\nNhân viên chính thức được hưởng 12 ngày nghỉ phép năm. Thâm niên trên 3 năm: +1 ngày; trên 5 năm: +2 ngày.\n\nQuy trình ",
         "6 tháng trong năm được tính theo tỉ lệ.\n"
       ],
-      "latency_ms": 0.02012500772252679,
+      "latency_ms": 0.020083010895177722,
       "usage": {
         "prompt_tokens": 0,
         "completion_tokens": 0
@@ -305,7 +305,7 @@
         "Chính sách nghỉ phép năm HC-NS\n\nNhân viên chính thức được hưởng 12 ngày nghỉ phép năm. Thâm niên trên 3 năm: +1 ngày; trên 5 năm: +2 ngày.\n\nQuy trình ",
         "6 tháng trong năm được tính theo tỉ lệ.\n"
       ],
-      "latency_ms": 0.019500002963468432,
+      "latency_ms": 0.020332998246885836,
       "usage": {
         "prompt_tokens": 0,
         "completion_tokens": 0
@@ -356,7 +356,7 @@
         " sang năm sau.\n",
         "6 tháng trong năm được tính theo tỉ lệ.\n"
       ],
-      "latency_ms": 0.01979200169444084,
+      "latency_ms": 0.019917002646252513,
       "usage": {
         "prompt_tokens": 0,
         "completion_tokens": 0
@@ -408,7 +408,7 @@
         "Chính sách nghỉ phép năm HC-NS\n\nNhân viên chính thức được hưởng 12 ngày nghỉ phép năm. Thâm niên trên 3 năm: +1 ngày; trên 5 năm: +2 ngày.\n\nQuy trình ",
         "Chính sách phúc lợi nhân viên\n\nHỗ trợ bữa trưa: 30.000 VND/ngày cho nhân viên đi làm tại văn phòng.\nPhụ cấp điện thoại: 200.000 VND/tháng cho nhân viê"
       ],
-      "latency_ms": 0.019666986190713942,
+      "latency_ms": 0.01995899947360158,
       "usage": {
         "prompt_tokens": 0,
         "completion_tokens": 0
@@ -460,7 +460,7 @@
         "Chính sách nghỉ phép năm HC-NS\n\nNhân viên chính thức được hưởng 12 ngày nghỉ phép năm. Thâm niên trên 3 năm: +1 ngày; trên 5 năm: +2 ngày.\n\nQuy trình ",
         " sang năm sau.\n"
       ],
-      "latency_ms": 0.019790997612290084,
+      "latency_ms": 0.019917002646252513,
       "usage": {
         "prompt_tokens": 0,
         "completion_tokens": 0
@@ -511,7 +511,7 @@
         " sang năm sau.\n",
         "6 tháng trong năm được tính theo tỉ lệ.\n"
       ],
-      "latency_ms": 0.019458006136119366,
+      "latency_ms": 0.019834013073705137,
       "usage": {
         "prompt_tokens": 0,
         "completion_tokens": 0
