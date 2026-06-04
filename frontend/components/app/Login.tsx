@@ -2,9 +2,10 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { KeyRound, Mail, Lock, EyeOff, ShieldCheck, Moon, Sun } from 'lucide-react';
+import { Mail, Lock, EyeOff, ShieldCheck, Moon, Sun } from 'lucide-react';
 import { useTheme } from '@/ThemeProvider';
 import logoImage from '@/assets/logo/logo.png';
+import bgImage from '@/assets/images/tro-ly-tin-cay.jpg';
 
 export default function Login({ onLogin }: { onLogin: () => void }) {
   const { theme, toggleTheme } = useTheme();
@@ -15,7 +16,7 @@ export default function Login({ onLogin }: { onLogin: () => void }) {
 
       {/* Left Column: Login Form */}
       <div className="w-full lg:w-5/12 xl:w-[480px] flex flex-col justify-center px-6 md:px-16 py-12 relative z-10 bg-white/[0.03] backdrop-blur-[16px] border-r border-black/10 dark:border-white/10 overflow-y-auto">
-        
+
         <div className="flex-1 flex flex-col justify-center max-w-[380px] mx-auto w-full my-auto">
           {/* Brand Header */}
           <div className="mb-10 flex items-center justify-between">
@@ -29,7 +30,7 @@ export default function Login({ onLogin }: { onLogin: () => void }) {
                 priority
               />
             </div>
-            
+
             <button
               onClick={toggleTheme}
               className="transition-colors p-2 rounded-full text-gray-600 dark:text-gray-400 hover:text-[#1b1b1b] dark:hover:text-white hover:bg-black/10 dark:hover:bg-white/10 hover:scale-110 active:scale-95"
@@ -53,10 +54,10 @@ export default function Login({ onLogin }: { onLogin: () => void }) {
 
           {/* Credentials Form */}
           <form className="space-y-5" onSubmit={(e) => { e.preventDefault(); onLogin(); }}>
-            
+
             {/* Email Input */}
             <div className="space-y-2 group">
-              <label 
+              <label
                 htmlFor="email"
                 className="text-[10px] font-bold uppercase tracking-widest text-gray-600 dark:text-gray-400 group-focus-within:text-[#1b1b1b] dark:group-focus-within:text-white transition-colors"
               >
@@ -75,7 +76,7 @@ export default function Login({ onLogin }: { onLogin: () => void }) {
 
             {/* Password Input */}
             <div className="space-y-2 group">
-              <label 
+              <label
                 htmlFor="password"
                 className="text-[10px] font-bold uppercase tracking-widest text-gray-600 dark:text-gray-400 group-focus-within:text-[#1b1b1b] dark:group-focus-within:text-white transition-colors"
               >
@@ -138,16 +139,21 @@ export default function Login({ onLogin }: { onLogin: () => void }) {
 
       {/* Right Column: Hero Image Container */}
       <div className="hidden lg:block lg:flex-1 relative overflow-hidden bg-transparent pointer-events-none">
-        
+
         {/* Blended Background Image */}
-        <div 
+        <div
           className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat opacity-40 mix-blend-screen"
-          style={{ 
-            backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuBTCzjScDsNAtv47jhQTvVVPxVcfIY3GpUj1DyoTQvS_8_tG2spHfpJhzlM-wUl7xzFeCeOWsyhlf904EWA_ndubGvEqfJpsdO2thuz8zHXINXUfjoNjsKkaL6Uy9YozLaE6kuhOU6LVNWfFQg37COVmGhUkk_MV7HOH_oRcac6hZ6ABb97xOgZr9VvgHpKDZUtOxB-0an7t1iCbo7YQc2WTB2BGPuK7gxxtWnCG-xysFLHk4AhigHCGB85vBIB0guoqd6UicTho4WJ')"
-          }}
         >
+          <Image
+            alt="Secure Access"
+            src={bgImage}
+            layout="fill"
+            objectFit="cover"
+            priority
+          />
+
         </div>
-        
+
         {/* Soft atmospheric gradients */}
         <div className="absolute inset-0 bg-gradient-to-r from-[#f9f9f9] dark:from-[#0a0a0a] via-transparent to-transparent z-10 pointer-events-none opacity-80"></div>
         <div className="absolute inset-0 bg-gradient-to-t from-[#f9f9f9]/90 dark:from-[#0a0a0a]/90 via-transparent to-[#f9f9f9]/20 dark:to-[#0a0a0a]/20 z-10 pointer-events-none"></div>
@@ -170,7 +176,7 @@ export default function Login({ onLogin }: { onLogin: () => void }) {
             </div>
           </div>
         </div>
-        
+
       </div>
     </div>
   );
