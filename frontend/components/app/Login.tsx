@@ -83,7 +83,7 @@ export default function Login({ onLogin }: { onLogin: () => void }) {
                 <input
                   id="email"
                   type="email"
-                  placeholder="employee@vinfast.com"
+                  placeholder="employee@vinsmartfuture.tech"
                   className="w-full py-2.5 pl-11 pr-4 bg-transparent outline-none placeholder:text-gray-500 dark:text-gray-500 text-[#1b1b1b] dark:text-white text-sm focus:ring-0"
                 />
               </div>
@@ -180,7 +180,7 @@ export default function Login({ onLogin }: { onLogin: () => void }) {
                   Enterprise Security
                 </h3>
                 <p className="text-[11px] font-normal leading-relaxed text-gray-600 dark:text-gray-400">
-                  This portal is restricted to authorized VinFast personnel. All activities are monitored and logged to ensure data integrity.
+                  This portal is restricted to authorized VFS personnel. All activities are monitored and logged to ensure data integrity.
                 </p>
               </div>
             </div>

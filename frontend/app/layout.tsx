@@ -9,7 +9,7 @@ const lexend = Lexend({
 
 export const metadata: Metadata = {
   title: "HR Policy Explorer",
-  description: "VinFast HR knowledge base assistant powered by Next.js 16",
+  description: "VFS HR knowledge base assistant",
 };
 
 export default function RootLayout({

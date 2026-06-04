@@ -113,7 +113,7 @@ export default function Profile({ onLogout }: ProfileProps) {
               <div className="flex flex-col gap-4">
                 <div className="flex items-center gap-3 text-gray-700 dark:text-gray-300 font-medium">
                   <Mail className="w-5 h-5 text-[#ea0029]" />
-                  s.jenkins@vinfast.com
+                  s.jenkins@vinsmartfuture.tech
                 </div>
                 <div className="flex items-center gap-3 text-gray-700 dark:text-gray-300 font-medium">
                   <Phone className="w-5 h-5 text-[#ea0029]" />
