@@ -12,6 +12,7 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    "ai20k-bktt-hcns-vsf-main/**",
   ]),
 ]);
 

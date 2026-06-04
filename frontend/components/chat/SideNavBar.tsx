@@ -1,8 +1,13 @@
-import { MessageSquarePlus, FileText, CreditCard, HeartPulse, Calendar, History, Plus, Settings, HelpCircle, Info } from 'lucide-react';
-import { NavLink } from 'react-router-dom';
+"use client";
+
+import { MessageSquarePlus, FileText, CreditCard, HeartPulse, History, Plus, Settings, HelpCircle, Info } from 'lucide-react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 export function SideNavBar() {
-  const getNavClasses = ({ isActive }: { isActive: boolean }) => {
+  const pathname = usePathname();
+  const getNavClasses = (href: string) => {
+    const isActive = pathname === href;
     return `flex items-center space-x-3 px-4 py-3 rounded-lg font-semibold active:scale-95 duration-150 transition-colors ${
       isActive 
         ? 'bg-[#ea0029]/10 text-[#ea0029] shadow-sm' 
@@ -23,14 +28,14 @@ export function SideNavBar() {
       
       <div className="flex-1 overflow-y-auto px-4 flex flex-col gap-1">
         <div className="space-y-1">
-          <NavLink to="/overview" className={getNavClasses}>
+          <Link href="/overview" className={getNavClasses("/overview")}>
             <Info className="w-5 h-5" />
             <span className="text-sm">Overview</span>
-          </NavLink>
-          <NavLink to="/" className={getNavClasses}>
+          </Link>
+          <Link href="/" className={getNavClasses("/")}>
             <MessageSquarePlus className="w-5 h-5" />
             <span className="text-sm">HR Assistant</span>
-          </NavLink>
+          </Link>
           <a className="flex items-center space-x-3 px-4 py-3 text-gray-600 dark:text-gray-400 hover:bg-black/5 dark:hover:bg-white/5 hover:text-[#1b1b1b] dark:hover:text-white rounded-lg transition-colors active:scale-95 duration-150 cursor-pointer" href="#">
             <FileText className="w-5 h-5" />
             <span className="text-sm">Policy Guide</span>

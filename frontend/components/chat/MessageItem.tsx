@@ -1,3 +1,5 @@
+"use client";
+
 import { ReactNode } from 'react';
 import { ShieldCheck, CheckCircle2, Clock, Bot, Book, FileText, Database, ChevronRight, ThumbsUp, ThumbsDown, Copy, Flag } from 'lucide-react';
 import { Message, Citation } from '../../types';

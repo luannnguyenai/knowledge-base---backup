@@ -1,3 +1,5 @@
+"use client";
+
 import { Paperclip, Send } from 'lucide-react';
 
 interface ChatInputProps {

@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useRef, useEffect } from 'react';
 
 export const TypewriterText = ({ content, speed = 15, onTyping }: { content: string, speed?: number, onTyping?: () => void }) => {
@@ -10,7 +12,6 @@ export const TypewriterText = ({ content, speed = 15, onTyping }: { content: str
   
   useEffect(() => {
     let i = 0;
-    setDisplayedContent('');
     const interval = setInterval(() => {
       setDisplayedContent(content.substring(0, i));
       if (onTypingRef.current) onTypingRef.current();

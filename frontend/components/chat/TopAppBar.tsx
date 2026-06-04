@@ -1,7 +1,9 @@
+"use client";
+
 import { Search, Bell, User, LogOut, Moon, Sun } from 'lucide-react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import { useState, useRef, useEffect } from 'react';
-import { useTheme } from '../../ThemeProvider';
+import { useTheme } from '@/ThemeProvider';
 
 interface TopAppBarProps {
   onLogout?: () => void;
@@ -12,7 +14,7 @@ export function TopAppBar({ onLogout }: TopAppBarProps) {
   const [showProfileMenu, setShowProfileMenu] = useState(false);
   const notificationRef = useRef<HTMLDivElement>(null);
   const profileMenuRef = useRef<HTMLDivElement>(null);
-  const navigate = useNavigate();
+  const router = useRouter();
   const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
@@ -114,7 +116,7 @@ export function TopAppBar({ onLogout }: TopAppBarProps) {
                   className="px-4 py-2 hover:bg-black/5 dark:bg-white/5 cursor-pointer transition-colors flex items-center gap-3 text-gray-800 dark:text-gray-200 hover:text-[#1b1b1b] dark:hover:text-white"
                   onClick={() => {
                     setShowProfileMenu(false);
-                    navigate('/profile');
+                    router.push('/profile');
                   }}
                 >
                   <User className="w-4 h-4" />

@@ -1,3 +1,5 @@
+"use client";
+
 import { FileText, Calendar, Clock, ExternalLink, X } from 'lucide-react';
 import { motion } from 'motion/react';
 import { Citation } from '../../types';
