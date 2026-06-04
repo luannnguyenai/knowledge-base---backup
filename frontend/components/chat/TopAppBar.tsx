@@ -35,7 +35,6 @@ export function TopAppBar({ onLogout }: TopAppBarProps) {
   return (
     <header className="bg-white/[0.02] backdrop-blur-[16px] w-full z-40 border-b border-black/10 dark:border-white/10 flex justify-between items-center h-16 px-4 md:px-8 shrink-0 shadow-sm shadow-black/5 dark:shadow-black/10">
       <div className="flex items-center gap-4">
-        <h1 className="text-lg md:text-xl font-bold text-[#1b1b1b] dark:text-white tracking-tight">HR Policy Explorer</h1>
       </div>
       <div className="flex items-center gap-4 md:gap-6">
         <div className="relative group hidden sm:flex items-center">

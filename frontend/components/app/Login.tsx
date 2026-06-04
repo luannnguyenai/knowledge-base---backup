@@ -19,9 +19,6 @@ export default function Login({ onLogin }: { onLogin: () => void }) {
           {/* Brand Header */}
           <div className="mb-10 flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <div className="w-11 h-11 rounded-xl bg-gradient-to-tr from-[#ea0029] to-[#a3001c] flex items-center justify-center shadow-lg shadow-[#ea0029]/20 shrink-0">
-                <span className="text-white font-bold text-lg">VF</span>
-              </div>
               <Image
                 alt="Vinsmart Future"
                 className="h-9 w-auto object-contain brightness-0 dark:invert opacity-90"
@@ -44,26 +41,12 @@ export default function Login({ onLogin }: { onLogin: () => void }) {
           <h1 className="text-[32px] md:text-[36px] font-bold text-[#1b1b1b] dark:text-white mb-2 leading-tight">
             Sign in to your account
           </h1>
-          <p className="text-sm text-gray-600 dark:text-gray-400 font-normal mb-8">
+          <p className="text-sm text-gray-600 dark:text-gray-400 font-normal mb-2">
             Secure access to enterprise policies, benefits, and support.
           </p>
 
-          {/* SSO Action */}
-          <button 
-            type="button" 
-            onClick={onLogin}
-            className="w-full flex items-center justify-center gap-3 bg-black/5 dark:bg-white/5 text-[#1b1b1b] dark:text-white font-medium text-sm py-3 px-4 rounded-xl hover:bg-black/10 dark:bg-white/10 transition-all duration-200 border border-black/10 dark:border-white/10 focus:outline-none focus:ring-1 focus:ring-black/30 dark:ring-white/30"
-          >
-            <KeyRound className="w-[18px] h-[18px] text-gray-600 dark:text-gray-400 opacity-80" />
-            Sign in with SSO
-          </button>
-
           {/* Divider */}
           <div className="relative flex items-center py-8">
-            <div className="flex-grow border-t border-black/10 dark:border-white/10"></div>
-            <span className="flex-shrink-0 mx-4 text-[10px] font-bold uppercase tracking-widest text-gray-500 dark:text-gray-500">
-              or continue with email
-            </span>
             <div className="flex-grow border-t border-black/10 dark:border-white/10"></div>
           </div>
 

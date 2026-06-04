@@ -19,9 +19,6 @@ export function SideNavBar() {
     <nav className="w-[280px] h-full flex flex-col z-40 bg-white/[0.03] backdrop-blur-xl border-r border-black/10 dark:border-white/10 shrink-0 hidden md:flex">
       <div className="px-6 py-4 flex flex-col gap-1 mb-4 h-16 justify-center">
         <div className="flex items-center justify-start py-2 gap-3">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-[#ea0029] to-[#a3001c] flex items-center justify-center shadow-md shadow-[#ea0029]/10 shrink-0">
-            <span className="text-white font-bold text-sm">VF</span>
-          </div>
           <span className="font-bold text-lg tracking-tight text-[#1b1b1b] dark:text-white">HR Portal</span>
         </div>
       </div>
