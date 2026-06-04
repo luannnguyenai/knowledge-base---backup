@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { KeyRound, Mail, Lock, EyeOff, ShieldCheck, Moon, Sun } from 'lucide-react';
 import { useTheme } from '@/ThemeProvider';
+import logoImage from '@/assets/logo/logo.png';
 
 export default function Login({ onLogin }: { onLogin: () => void }) {
   const { theme, toggleTheme } = useTheme();
@@ -22,7 +23,7 @@ export default function Login({ onLogin }: { onLogin: () => void }) {
               <Image
                 alt="Vinsmart Future"
                 className="h-9 w-auto object-contain brightness-0 dark:invert opacity-90"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzi-N9RnqP52swXsaOrd2HWG3cgNEFmjFiHBAEbuFnNqcAR7LhBTtwRcref_yQaxHdAs-qfII-AdXxIQQyZiZlRLUINfH9tLWJgAw-rmen7cQpWbyb3ofyB5c9IuE7JDQl5RqFMEAlHrN0fXYOyef0cH4SYRDSkeCQb3pLKgkZ4FkYGsZn1mjwYnWHhaShdt7msL6SWjQkb-dcdsh1VSUs4tuU5sw6HN5qTMlPkerEL0Yl5HywTRkZq-GkO-T0kYvb-ndfFz24EmPF"
+                src={logoImage}
                 width={180}
                 height={36}
                 priority
