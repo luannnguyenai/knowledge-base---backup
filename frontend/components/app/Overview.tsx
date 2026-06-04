@@ -1,5 +1,6 @@
 "use client";
 
+import Image from 'next/image';
 import { Sparkles, Rocket, AlertTriangle, XCircle, X, CheckCircle2, Check, LayoutGrid, Shield, Scale, TrendingUp } from 'lucide-react';
 
 export default function Overview() {
@@ -29,10 +30,12 @@ export default function Overview() {
           </div>
           <div className="hidden md:block w-1/3 pl-8 relative z-10">
             <div className="w-48 h-48 mx-auto rounded-full bg-gradient-to-tr from-vinfast-red to-orange-500 opacity-10 blur-2xl absolute right-10 top-10"></div>
-            <img 
-              alt="Corporate office concept" 
-              className="relative z-10 rounded-xl shadow-lg border border-black/10 dark:border-white/10 object-cover h-64 w-full" 
-              src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=600" 
+            <Image
+              alt="Corporate office concept"
+              className="relative z-10 rounded-xl shadow-lg border border-black/10 dark:border-white/10 object-cover h-64 w-full"
+              src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=600"
+              width={600}
+              height={256}
             />
           </div>
         </section>

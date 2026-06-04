@@ -1,5 +1,6 @@
 "use client";
 
+import Image from 'next/image';
 import { Badge, Mail, Phone, Book, Users, Settings, CheckCircle2, XCircle, LogOut } from 'lucide-react';
 
 interface ProfileProps {
@@ -40,10 +41,12 @@ export default function Profile({ onLogout }: ProfileProps) {
             <div className="absolute top-0 left-0 w-full h-1 bg-[#ea0029]"></div>
             
             <div className="w-24 h-24 rounded-full bg-black/10 dark:bg-white/10 mb-4 overflow-hidden border-2 border-black/20 dark:border-white/20 mt-2">
-              <img 
-                alt="Professional headshot" 
-                className="w-full h-full object-cover" 
-                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=200&h=200" 
+              <Image
+                alt="Professional headshot"
+                className="w-full h-full object-cover"
+                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=200&h=200"
+                width={96}
+                height={96}
               />
             </div>
             
@@ -87,10 +90,12 @@ export default function Profile({ onLogout }: ProfileProps) {
               <div>
                 <label className="block font-bold text-xs text-gray-500 dark:text-gray-500 mb-2 uppercase tracking-wider">Reports To</label>
                 <div className="text-lg text-[#1b1b1b] dark:text-white border-b border-black/10 dark:border-white/10 pb-3 font-medium flex items-center gap-3">
-                  <img 
-                    alt="Manager avatar" 
-                    className="w-8 h-8 rounded-full object-cover border border-black/20 dark:border-white/20" 
-                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=100&h=100" 
+                  <Image
+                    alt="Manager avatar"
+                    className="w-8 h-8 rounded-full object-cover border border-black/20 dark:border-white/20"
+                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=100&h=100"
+                    width={32}
+                    height={32}
                   />
                   Michael Chang (Director)
                 </div>

@@ -1,5 +1,7 @@
 "use client";
 
+import Image from 'next/image';
+import Link from 'next/link';
 import { KeyRound, Mail, Lock, EyeOff, ShieldCheck, Moon, Sun } from 'lucide-react';
 import { useTheme } from '@/ThemeProvider';
 
@@ -20,10 +22,13 @@ export default function Login({ onLogin }: { onLogin: () => void }) {
               <div className="w-11 h-11 rounded-xl bg-gradient-to-tr from-[#ea0029] to-[#a3001c] flex items-center justify-center shadow-lg shadow-[#ea0029]/20 shrink-0">
                 <span className="text-white font-bold text-lg">VF</span>
               </div>
-              <img
+              <Image
                 alt="Vinsmart Future"
                 className="h-9 w-auto object-contain brightness-0 dark:invert opacity-90"
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzi-N9RnqP52swXsaOrd2HWG3cgNEFmjFiHBAEbuFnNqcAR7LhBTtwRcref_yQaxHdAs-qfII-AdXxIQQyZiZlRLUINfH9tLWJgAw-rmen7cQpWbyb3ofyB5c9IuE7JDQl5RqFMEAlHrN0fXYOyef0cH4SYRDSkeCQb3pLKgkZ4FkYGsZn1mjwYnWHhaShdt7msL6SWjQkb-dcdsh1VSUs4tuU5sw6HN5qTMlPkerEL0Yl5HywTRkZq-GkO-T0kYvb-ndfFz24EmPF"
+                width={180}
+                height={36}
+                priority
               />
             </div>
             
@@ -121,9 +126,9 @@ export default function Login({ onLogin }: { onLogin: () => void }) {
                   Remember me
                 </span>
               </label>
-              <a href="#" className="text-xs font-bold text-[#ea0029] hover:text-[#ff4d6d] hover:underline transition-colors tracking-wide">
+              <Link href="/" className="text-xs font-bold text-[#ea0029] hover:text-[#ff4d6d] hover:underline transition-colors tracking-wide">
                 Forgot password?
-              </a>
+              </Link>
             </div>
 
             {/* Submit */}
@@ -140,9 +145,9 @@ export default function Login({ onLogin }: { onLogin: () => void }) {
         <div className="w-full pt-8 pb-4 text-center">
           <p className="text-[11px] font-medium tracking-wide text-gray-500 dark:text-gray-500">
             Need help?{' '}
-            <a href="#" className="text-gray-700 dark:text-gray-300 hover:text-[#1b1b1b] dark:hover:text-white hover:underline transition-colors font-bold">
+            <Link href="/" className="text-gray-700 dark:text-gray-300 hover:text-[#1b1b1b] dark:hover:text-white hover:underline transition-colors font-bold">
               Contact IT Support
-            </a>
+            </Link>
           </p>
         </div>
       </div>

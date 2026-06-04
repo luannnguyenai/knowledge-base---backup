@@ -36,31 +36,31 @@ export function SideNavBar() {
             <MessageSquarePlus className="w-5 h-5" />
             <span className="text-sm">HR Assistant</span>
           </Link>
-          <a className="flex items-center space-x-3 px-4 py-3 text-gray-600 dark:text-gray-400 hover:bg-black/5 dark:hover:bg-white/5 hover:text-[#1b1b1b] dark:hover:text-white rounded-lg transition-colors active:scale-95 duration-150 cursor-pointer" href="#">
+          <Link className="flex items-center space-x-3 px-4 py-3 text-gray-600 dark:text-gray-400 hover:bg-black/5 dark:hover:bg-white/5 hover:text-[#1b1b1b] dark:hover:text-white rounded-lg transition-colors active:scale-95 duration-150 cursor-pointer" href="/">
             <FileText className="w-5 h-5" />
             <span className="text-sm">Policy Guide</span>
-          </a>
-          <a className="flex items-center space-x-3 px-4 py-3 text-gray-600 dark:text-gray-400 hover:bg-black/5 dark:hover:bg-white/5 hover:text-[#1b1b1b] dark:hover:text-white rounded-lg transition-colors active:scale-95 duration-150 cursor-pointer" href="#">
+          </Link>
+          <Link className="flex items-center space-x-3 px-4 py-3 text-gray-600 dark:text-gray-400 hover:bg-black/5 dark:hover:bg-white/5 hover:text-[#1b1b1b] dark:hover:text-white rounded-lg transition-colors active:scale-95 duration-150 cursor-pointer" href="/">
             <HeartPulse className="w-5 h-5" />
             <span className="text-sm">Benefits</span>
-          </a>
-          <a className="flex items-center space-x-3 px-4 py-3 text-gray-600 dark:text-gray-400 hover:bg-black/5 dark:hover:bg-white/5 hover:text-[#1b1b1b] dark:hover:text-white rounded-lg transition-colors active:scale-95 duration-150 cursor-pointer" href="#">
+          </Link>
+          <Link className="flex items-center space-x-3 px-4 py-3 text-gray-600 dark:text-gray-400 hover:bg-black/5 dark:hover:bg-white/5 hover:text-[#1b1b1b] dark:hover:text-white rounded-lg transition-colors active:scale-95 duration-150 cursor-pointer" href="/">
             <CreditCard className="w-5 h-5" />
             <span className="text-sm font-medium">Salary & Pay</span>
-          </a>
+          </Link>
         </div>
         
         <div className="h-px w-full bg-black/10 dark:bg-white/10 my-4"></div>
         
         <div className="px-4 mb-2 text-[10px] font-bold text-gray-500 dark:text-gray-500 uppercase tracking-widest">Lịch sử hội thoại</div>
-        <a className="flex items-center gap-3 text-gray-700 dark:text-gray-300 hover:text-[#1b1b1b] dark:hover:text-white px-4 py-1.5 hover:bg-black/5 dark:hover:bg-white/5 transition-colors duration-200 rounded-xl group" href="#">
+        <Link className="flex items-center gap-3 text-gray-700 dark:text-gray-300 hover:text-[#1b1b1b] dark:hover:text-white px-4 py-1.5 hover:bg-black/5 dark:hover:bg-white/5 transition-colors duration-200 rounded-xl group" href="/">
           <History className="w-[18px] h-[18px] opacity-70 group-hover:opacity-100" />
           <span className="text-sm truncate font-medium">Cách tính lương OT ngày lễ</span>
-        </a>
-        <a className="flex items-center gap-3 text-gray-700 dark:text-gray-300 hover:text-[#1b1b1b] dark:hover:text-white px-4 py-1.5 hover:bg-black/5 dark:hover:bg-white/5 transition-colors duration-200 rounded-xl group" href="#">
+        </Link>
+        <Link className="flex items-center gap-3 text-gray-700 dark:text-gray-300 hover:text-[#1b1b1b] dark:hover:text-white px-4 py-1.5 hover:bg-black/5 dark:hover:bg-white/5 transition-colors duration-200 rounded-xl group" href="/">
           <History className="w-[18px] h-[18px] opacity-70 group-hover:opacity-100" />
           <span className="text-sm truncate font-medium">Cập nhật tài khoản ngân hàng</span>
-        </a>
+        </Link>
       </div>
       
       <div className="px-4 mt-auto pt-4 pb-4 border-t border-black/10 dark:border-white/10 flex flex-col gap-3">
@@ -69,14 +69,14 @@ export function SideNavBar() {
           Apply for Leave
         </button>
         <div className="flex justify-between mt-2">
-          <a className="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-[#1b1b1b] dark:hover:text-white p-2 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg transition-colors" href="#">
+          <Link className="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-[#1b1b1b] dark:hover:text-white p-2 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg transition-colors" href="/">
             <Settings className="w-4 h-4" />
             <span className="text-[11px] font-bold">Settings</span>
-          </a>
-          <a className="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-[#1b1b1b] dark:hover:text-white p-2 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg transition-colors" href="#">
+          </Link>
+          <Link className="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-[#1b1b1b] dark:hover:text-white p-2 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg transition-colors" href="/">
             <HelpCircle className="w-4 h-4" />
             <span className="text-[11px] font-bold">Help Center</span>
-          </a>
+          </Link>
         </div>
       </div>
     </nav>
