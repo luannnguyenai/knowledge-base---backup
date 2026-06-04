@@ -20,11 +20,16 @@ export default function NextAppShell({ view = "chat" }: { view?: AppView }) {
       {!isLoggedIn ? (
         <Login onLogin={() => setIsLoggedIn(true)} />
       ) : (
-        <Layout onLogout={handleLogout}>
-          {view === "overview" && <Overview />}
-          {view === "profile" && <Profile onLogout={handleLogout} />}
-          {view === "chat" && <Chat />}
-        </Layout>
+        <Layout
+          onLogout={handleLogout}
+          content={
+            <>
+              {view === "overview" && <Overview />}
+              {view === "profile" && <Profile onLogout={handleLogout} />}
+              {view === "chat" && <Chat />}
+            </>
+          }
+        />
       )}
     </ThemeProvider>
   );

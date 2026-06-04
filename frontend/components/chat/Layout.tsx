@@ -1,14 +1,15 @@
 "use client";
 
+import type { ReactNode } from "react";
 import { SideNavBar } from './SideNavBar';
 import { TopAppBar } from './TopAppBar';
 
-interface LayoutProps {
-  children: React.ReactNode;
+type LayoutProps = {
+  content: ReactNode;
   onLogout?: () => void;
-}
+};
 
-export function Layout({ children, onLogout }: LayoutProps) {
+export function Layout({ content, onLogout }: LayoutProps) {
   return (
     <div className="flex w-full h-screen relative bg-[#f9f9f9] dark:bg-[#0a0a0a] text-[#1b1b1b] dark:text-white overflow-hidden">
       <div className="mesh-bg pointer-events-none"></div>
@@ -19,7 +20,7 @@ export function Layout({ children, onLogout }: LayoutProps) {
         <TopAppBar onLogout={onLogout} />
 
         <div className="flex-1 flex flex-row relative h-[calc(100vh-64px)] overflow-hidden">
-          {children}
+          {content}
         </div>
       </div>
     </div>
